@@ -1,5 +1,11 @@
+import MenuEditor from "../../components/owner/MenuEditor";
+
 function OwnerMenu() {
-  return <h1>Owner Menu Page</h1>;
+  return (
+    <div className="p-6">
+      <MenuEditor />
+    </div>
+  );
 }
 
 export default OwnerMenu;
