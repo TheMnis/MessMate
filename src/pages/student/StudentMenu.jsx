@@ -2,95 +2,72 @@ import { useMemo, useState } from "react";
 
 import MenuHeader from "../../components/menu/MenuHeader";
 import TodaysSpecial from "../../components/menu/TodaysSpecial";
+import MenuViewToggle from "../../components/menu/MenuViewToggle";
 import MenuSummaryCard from "../../components/menu/MenuSummaryCard";
 import MenuSearch from "../../components/menu/MenuSearch";
 import MealTabs from "../../components/menu/MealTabs";
 import MealCard from "../../components/menu/MealCard";
-import MenuViewToggle from "../../components/menu/MenuViewToggle";
+import WeeklyMenu from "../../components/menu/WeeklyMenu";
 
 import { getAllMeals } from "../../services/student/menu.service";
 
-function StudentMenu() {
+const StudentMenu = () => {
   const [view, setView] = useState("today");
-  const [searchTerm, setSearchTerm] = useState("");
+  const [search, setSearch] = useState("");
   const [selectedMeal, setSelectedMeal] = useState("All");
 
   const meals = getAllMeals();
 
   const filteredMeals = useMemo(() => {
     return meals.filter((meal) => {
-      const matchesMeal =
-        selectedMeal === "All" ||
-        meal.meal === selectedMeal;
-
-      const query = searchTerm.toLowerCase();
-
       const matchesSearch =
-        meal.meal.toLowerCase().includes(query) ||
+        meal.meal.toLowerCase().includes(search.toLowerCase()) ||
         meal.items.some((item) =>
-          item.toLowerCase().includes(query)
+          item.toLowerCase().includes(search.toLowerCase())
         );
 
-      return matchesMeal && matchesSearch;
+      const matchesTab =
+        selectedMeal === "All" || meal.meal === selectedMeal;
+
+      return matchesSearch && matchesTab;
     });
-  }, [meals, selectedMeal, searchTerm]);
+  }, [meals, search, selectedMeal]);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="space-y-6">
       <MenuHeader />
 
       <TodaysSpecial />
 
-      <MenuViewToggle
-        view={view}
-        onChange={setView}
-      />
+      <MenuViewToggle view={view} setView={setView} />
 
       {view === "today" ? (
         <>
-          <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {meals.map((meal) => (
-              <MenuSummaryCard
-                key={meal.id}
-                icon={meal.icon}
-                title={meal.meal}
-                status={meal.available ? "Available" : "Closed"}
-              />
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <MenuSummaryCard />
           </div>
 
           <MenuSearch
-            searchTerm={searchTerm}
-            onSearch={setSearchTerm}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
 
           <MealTabs
             selectedMeal={selectedMeal}
-            onSelectMeal={setSelectedMeal}
+            setSelectedMeal={setSelectedMeal}
           />
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             {filteredMeals.map((meal) => (
-              <MealCard
-                key={meal.id}
-                meal={meal}
-              />
+              <MealCard key={meal.id} meal={meal} />
             ))}
           </div>
         </>
       ) : (
-        <div className="rounded-3xl bg-white p-10 text-center shadow-lg">
-          <h2 className="text-3xl font-bold">
-            📅 Weekly Menu
-          </h2>
-
-          <p className="mt-4 text-gray-500">
-            Weekly Menu Component will be added in the next step.
-          </p>
-        </div>
+        <WeeklyMenu />
       )}
     </div>
   );
-}
+};
 
 export default StudentMenu;
