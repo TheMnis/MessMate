@@ -1,137 +1,154 @@
 import { useState } from "react";
+
 import {
-  FaPlus,
-  FaEdit,
-  FaTrash,
-} from "react-icons/fa";
+  getWeeklyMenu,
+  addMeal,
+  updateMeal,
+  deleteMeal,
+} from "../../services/owner/menu.service";
+
+import SearchBar from "../../components/owner/SearchBar";
+import DayFilter from "../../components/owner/DayFilter";
+import MenuTable from "../../components/owner/MenuTable";
+import MealModal from "../../components/owner/MealModal";
+import DeleteDialog from "../../components/owner/DeleteDialog";
+
+import { FaPlus } from "react-icons/fa";
 
 function OwnerMenu() {
-  const [menu] = useState([
-    {
-      id: 1,
-      day: "Monday",
-      breakfast: "Poha & Tea",
-      lunch: "Rice, Dal, Paneer",
-      dinner: "Roti, Mix Veg",
-    },
-    {
-      id: 2,
-      day: "Tuesday",
-      breakfast: "Upma & Tea",
-      lunch: "Jeera Rice, Rajma",
-      dinner: "Roti, Aloo Gobhi",
-    },
-    {
-      id: 3,
-      day: "Wednesday",
-      breakfast: "Paratha & Curd",
-      lunch: "Rice, Chole",
-      dinner: "Roti, Bhindi",
-    },
-  ]);
+  const [menu, setMenu] = useState(getWeeklyMenu());
+
+  const [search, setSearch] = useState("");
+
+  const [dayFilter, setDayFilter] = useState("All");
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const [editingMeal, setEditingMeal] = useState(null);
+
+  const [deleteOpen, setDeleteOpen] = useState(false);
+
+  const [selectedMeal, setSelectedMeal] = useState(null);
+
+  const filteredMenu = menu.filter((meal) => {
+    const matchesSearch =
+      meal.day.toLowerCase().includes(search.toLowerCase()) ||
+      meal.breakfast.toLowerCase().includes(search.toLowerCase()) ||
+      meal.lunch.toLowerCase().includes(search.toLowerCase()) ||
+      meal.dinner.toLowerCase().includes(search.toLowerCase());
+
+    const matchesDay =
+      dayFilter === "All" || meal.day === dayFilter;
+
+    return matchesSearch && matchesDay;
+  });
+
+  const handleSave = (meal) => {
+    if (editingMeal) {
+      const updated = updateMeal(editingMeal.id, meal);
+      setMenu([...updated]);
+    } else {
+      const updated = addMeal(meal);
+      setMenu([...updated]);
+    }
+
+    setEditingMeal(null);
+  };
+
+  const handleEdit = (meal) => {
+    setEditingMeal(meal);
+
+    setModalOpen(true);
+  };
+
+  const handleDelete = (id) => {
+    const meal = menu.find((m) => m.id === id);
+
+    setSelectedMeal(meal);
+
+    setDeleteOpen(true);
+  };
+
+  const confirmDelete = () => {
+    const updated = deleteMeal(selectedMeal.id);
+
+    setMenu([...updated]);
+
+    setDeleteOpen(false);
+
+    setSelectedMeal(null);
+  };
 
   return (
     <div className="space-y-8">
 
-      {/* Header */}
-
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+      <div className="flex flex-col lg:flex-row justify-between gap-4">
 
         <div>
+
           <h1 className="text-4xl font-bold">
-            🍽 Weekly Menu
+            Weekly Menu
           </h1>
 
           <p className="text-gray-500 mt-2">
-            Manage your weekly mess menu.
+            Manage your complete weekly menu.
           </p>
+
         </div>
 
-        <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl flex items-center gap-3 font-semibold transition">
+        <button
+          onClick={() => {
+            setEditingMeal(null);
+
+            setModalOpen(true);
+          }}
+          className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl flex items-center gap-3"
+        >
           <FaPlus />
+
           Add Meal
+
         </button>
 
       </div>
 
-      {/* Table */}
+      <div className="flex flex-col md:flex-row gap-4 justify-between">
 
-      <div className="bg-white rounded-2xl shadow-md overflow-hidden">
+        <SearchBar
+          value={search}
+          onChange={setSearch}
+        />
 
-        <table className="w-full">
-
-          <thead className="bg-green-600 text-white">
-
-            <tr>
-
-              <th className="p-4 text-left">Day</th>
-
-              <th className="p-4 text-left">Breakfast</th>
-
-              <th className="p-4 text-left">Lunch</th>
-
-              <th className="p-4 text-left">Dinner</th>
-
-              <th className="p-4 text-center">Actions</th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            {menu.map((meal) => (
-
-              <tr
-                key={meal.id}
-                className="border-b hover:bg-gray-50"
-              >
-
-                <td className="p-4 font-semibold">
-                  {meal.day}
-                </td>
-
-                <td className="p-4">
-                  {meal.breakfast}
-                </td>
-
-                <td className="p-4">
-                  {meal.lunch}
-                </td>
-
-                <td className="p-4">
-                  {meal.dinner}
-                </td>
-
-                <td className="p-4">
-
-                  <div className="flex justify-center gap-3">
-
-                    <button className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg transition">
-
-                      <FaEdit />
-
-                    </button>
-
-                    <button className="bg-red-500 hover:bg-red-600 text-white p-3 rounded-lg transition">
-
-                      <FaTrash />
-
-                    </button>
-
-                  </div>
-
-                </td>
-
-              </tr>
-
-            ))}
-
-          </tbody>
-
-        </table>
+        <DayFilter
+          value={dayFilter}
+          onChange={setDayFilter}
+        />
 
       </div>
+
+      <MenuTable
+        menu={filteredMenu}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
+
+      <MealModal
+        isOpen={modalOpen}
+        onClose={() => {
+          setModalOpen(false);
+
+          setEditingMeal(null);
+        }}
+        onSave={handleSave}
+        initialData={editingMeal}
+      />
+
+      <DeleteDialog
+        isOpen={deleteOpen}
+        meal={selectedMeal}
+        onClose={() => setDeleteOpen(false)}
+        onConfirm={confirmDelete}
+      />
 
     </div>
   );
