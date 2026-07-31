@@ -1,91 +1,77 @@
-const menuData = [
-  {
-    id: 1,
-    day: "Monday",
-    breakfast: "Poha & Tea",
-    lunch: "Rice, Dal, Paneer",
-    dinner: "Roti, Mix Veg",
-  },
-  {
-    id: 2,
-    day: "Tuesday",
-    breakfast: "Upma & Tea",
-    lunch: "Jeera Rice, Rajma",
-    dinner: "Roti, Aloo Gobhi",
-  },
-  {
-    id: 3,
-    day: "Wednesday",
-    breakfast: "Paratha & Curd",
-    lunch: "Rice, Chole",
-    dinner: "Roti, Bhindi",
-  },
-  {
-    id: 4,
-    day: "Thursday",
-    breakfast: "Idli & Sambar",
-    lunch: "Veg Biryani",
-    dinner: "Dal Fry & Rice",
-  },
-  {
-    id: 5,
-    day: "Friday",
-    breakfast: "Bread Omelette",
-    lunch: "Rice, Kadhi",
-    dinner: "Roti, Soyabean Curry",
-  },
-  {
-    id: 6,
-    day: "Saturday",
-    breakfast: "Sandwich",
-    lunch: "Pulao, Raita",
-    dinner: "Paneer Butter Masala",
-  },
-  {
-    id: 7,
-    day: "Sunday",
-    breakfast: "Poori Sabji",
-    lunch: "Special Thali",
-    dinner: "Fried Rice",
-  },
-];
+import ownerMenuData from "../../data/ownerMenuData";
 
+// Get complete weekly menu
 export const getWeeklyMenu = () => {
-  return menuData;
+  return ownerMenuData;
 };
 
+// Get menu by id
 export const getMenuById = (id) => {
-  return menuData.find((meal) => meal.id === id);
+  return ownerMenuData.find((meal) => meal.id === id);
 };
 
+// Get menu by day
+export const getMenuByDay = (day) => {
+  return ownerMenuData.find((meal) => meal.day === day);
+};
+
+// Add meal
 export const addMeal = (meal) => {
-  menuData.push({
+  ownerMenuData.push({
     id: Date.now(),
     ...meal,
   });
 
-  return menuData;
+  return ownerMenuData;
 };
 
+// Update meal by id
 export const updateMeal = (id, updatedMeal) => {
-  const index = menuData.findIndex((meal) => meal.id === id);
+  const index = ownerMenuData.findIndex(
+    (meal) => meal.id === id
+  );
 
-  if (index !== -1) {
-    menuData[index] = {
-      ...menuData[index],
-      ...updatedMeal,
-    };
+  if (index === -1) {
+    return null;
   }
 
-  return menuData;
+  ownerMenuData[index] = {
+    ...ownerMenuData[index],
+    ...updatedMeal,
+  };
+
+  return ownerMenuData[index];
 };
 
-export const deleteMeal = (id) => {
-  const index = menuData.findIndex((meal) => meal.id === id);
+// Update menu by day
+export const updateMenuByDay = (day, updatedMenu) => {
+  const index = ownerMenuData.findIndex(
+    (meal) => meal.day === day
+  );
 
-  if (index !== -1) {
-    menuData.splice(index, 1);
+  if (index === -1) {
+    return null;
   }
 
-  return menuData;
+  ownerMenuData[index] = {
+    ...ownerMenuData[index],
+    ...updatedMenu,
+  };
+
+  return ownerMenuData[index];
+};
+
+// Delete meal
+export const deleteMeal = (id) => {
+  const index = ownerMenuData.findIndex(
+    (meal) => meal.id === id
+  );
+
+  if (index === -1) {
+    return null;
+  }
+
+  ownerMenuData.splice(index, 1);
+
+  return ownerMenuData;
 };

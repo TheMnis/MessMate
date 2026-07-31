@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import DayMenuCard from "./DayMenuCard";
-import { getWeeklyMenu } from "../../services/owner/ownerMenu.service";
+import { getWeeklyMenu } from "../../services/owner/menu.service";
 
 const MenuEditor = () => {
   const [weeklyMenu, setWeeklyMenu] = useState([]);
