@@ -1,39 +1,27 @@
+import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import Sidebar from "../components/dashboard/Sidebar";
 import Topbar from "../components/dashboard/Topbar";
 
-function StudentLayout({ children }) {
+function StudentLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const openSidebar = () => setIsSidebarOpen(true);
-  const closeSidebar = () => setIsSidebarOpen(false);
-
   return (
-    <div className="min-h-screen bg-slate-100 flex">
-
-      {/* Sidebar */}
-
+    <div className="min-h-screen flex bg-slate-100">
       <Sidebar
         isOpen={isSidebarOpen}
-        closeSidebar={closeSidebar}
+        closeSidebar={() => setIsSidebarOpen(false)}
       />
 
-      {/* Main Content */}
-
-      <div className="flex-1 flex flex-col lg:ml-0">
-
+      <div className="flex-1 flex flex-col">
         <Topbar
-          toggleSidebar={openSidebar}
+          toggleSidebar={() => setIsSidebarOpen(true)}
         />
 
-        <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto">
-
-          {children}
-
+        <main className="flex-1 p-6 overflow-y-auto">
+          <Outlet />
         </main>
-
       </div>
-
     </div>
   );
 }

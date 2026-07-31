@@ -4,9 +4,8 @@ import {
   FaUtensils,
   FaClipboardCheck,
   FaWallet,
-  FaChartPie,
-  FaComments,
-  FaCog,
+  FaBell,
+  FaUserCircle,
   FaSignOutAlt,
   FaTimes,
 } from "react-icons/fa";
@@ -14,7 +13,7 @@ import {
 const menuItems = [
   {
     title: "Dashboard",
-    path: "/student",
+    path: "/student/dashboard",
     icon: <FaHome />,
   },
   {
@@ -28,24 +27,19 @@ const menuItems = [
     icon: <FaClipboardCheck />,
   },
   {
+    title: "Notifications",
+    path: "/student/notifications",
+    icon: <FaBell />,
+  },
+  {
     title: "Subscription",
     path: "/student/subscription",
     icon: <FaWallet />,
   },
   {
-    title: "Analytics",
-    path: "/student/analytics",
-    icon: <FaChartPie />,
-  },
-  {
-    title: "Suggest Food",
-    path: "/student/suggestions",
-    icon: <FaComments />,
-  },
-  {
-    title: "Settings",
-    path: "/student/settings",
-    icon: <FaCog />,
+    title: "Profile",
+    path: "/student/profile",
+    icon: <FaUserCircle />,
   },
 ];
 
@@ -53,7 +47,6 @@ function Sidebar({ isOpen, closeSidebar }) {
   return (
     <>
       {/* Overlay */}
-
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/40 z-40 lg:hidden"
@@ -62,28 +55,24 @@ function Sidebar({ isOpen, closeSidebar }) {
       )}
 
       {/* Sidebar */}
-
       <aside
         className={`
-        fixed lg:static
-        top-0 left-0
-        h-screen
-        w-72
-        bg-white
-        shadow-xl
-        border-r
-        z-50
-        transition-transform
-        duration-300
-        ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
-      `}
+          fixed lg:static
+          top-0 left-0
+          h-screen
+          w-72
+          bg-white
+          shadow-xl
+          border-r
+          z-50
+          transition-transform
+          duration-300
+          ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
+        `}
       >
         {/* Header */}
-
         <div className="flex items-center justify-between p-6 border-b">
-
           <div>
-
             <h1 className="text-3xl font-bold text-green-600">
               MessMate
             </h1>
@@ -91,7 +80,6 @@ function Sidebar({ isOpen, closeSidebar }) {
             <p className="text-sm text-gray-500 mt-1">
               Student Dashboard
             </p>
-
           </div>
 
           <button
@@ -100,15 +88,11 @@ function Sidebar({ isOpen, closeSidebar }) {
           >
             <FaTimes />
           </button>
-
         </div>
 
         {/* Menu */}
-
         <nav className="p-5">
-
           <ul className="space-y-3">
-
             {menuItems.map((item) => (
               <li key={item.title}>
                 <NavLink
@@ -130,15 +114,11 @@ function Sidebar({ isOpen, closeSidebar }) {
                 </NavLink>
               </li>
             ))}
-
           </ul>
-
         </nav>
 
         {/* Bottom */}
-
         <div className="absolute bottom-6 left-5 right-5">
-
           <button
             className="
               w-full
@@ -155,12 +135,9 @@ function Sidebar({ isOpen, closeSidebar }) {
             "
           >
             <FaSignOutAlt />
-
             Logout
           </button>
-
         </div>
-
       </aside>
     </>
   );
