@@ -1,0 +1,86 @@
+import {
+  FaCheckCircle,
+  FaUtensils,
+  FaClipboardCheck,
+  FaBell,
+  FaHeadset,
+  FaUserShield,
+} from "react-icons/fa";
+
+import { motion } from "framer-motion";
+
+function PlanDetails() {
+  const features = [
+    {
+      title: "Unlimited Meals",
+      icon: <FaUtensils />,
+    },
+    {
+      title: "Attendance Tracking",
+      icon: <FaClipboardCheck />,
+    },
+    {
+      title: "Instant Notifications",
+      icon: <FaBell />,
+    },
+    {
+      title: "Priority Support",
+      icon: <FaHeadset />,
+    },
+    {
+      title: "Secure Account",
+      icon: <FaUserShield />,
+    },
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6"
+    >
+      <h2 className="text-2xl font-bold mb-6">
+        Plan Features
+      </h2>
+
+      <div className="grid md:grid-cols-2 gap-5">
+
+        {features.map((feature) => (
+
+          <div
+            key={feature.title}
+            className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-green-50 transition-all"
+          >
+
+            <div className="w-12 h-12 rounded-2xl bg-green-600 text-white flex items-center justify-center text-xl">
+
+              {feature.icon}
+
+            </div>
+
+            <div className="flex-1">
+
+              <h3 className="font-semibold">
+                {feature.title}
+              </h3>
+
+              <p className="text-sm text-gray-500">
+                Included in your current plan
+              </p>
+
+            </div>
+
+            <FaCheckCircle className="text-green-600 text-xl" />
+
+          </div>
+
+        ))}
+
+      </div>
+
+    </motion.div>
+  );
+}
+
+export default PlanDetails;

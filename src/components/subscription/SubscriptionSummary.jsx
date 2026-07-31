@@ -1,0 +1,133 @@
+import {
+  FaCrown,
+  FaCalendarAlt,
+  FaCheckCircle,
+  FaWallet,
+} from "react-icons/fa";
+
+import { motion } from "framer-motion";
+
+function SubscriptionSummary({ subscription }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="bg-gradient-to-r from-green-600 to-emerald-500 rounded-3xl p-8 text-white shadow-xl"
+    >
+      <div className="flex flex-col lg:flex-row justify-between gap-8">
+
+        <div>
+
+          <div className="flex items-center gap-3">
+
+            <FaCrown className="text-4xl text-yellow-300" />
+
+            <div>
+
+              <h2 className="text-3xl font-bold">
+                {subscription.plan}
+              </h2>
+
+              <p className="text-green-100 mt-1">
+                Your current subscription plan
+              </p>
+
+            </div>
+
+          </div>
+
+          <div className="grid grid-cols-2 gap-6 mt-8">
+
+            <div>
+
+              <p className="text-green-100 text-sm">
+                Monthly Fee
+              </p>
+
+              <h3 className="text-2xl font-bold mt-1">
+                ₹{subscription.price}
+              </h3>
+
+            </div>
+
+            <div>
+
+              <p className="text-green-100 text-sm">
+                Remaining Days
+              </p>
+
+              <h3 className="text-2xl font-bold mt-1">
+                {subscription.remainingDays}
+              </h3>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div className="bg-white/10 rounded-3xl p-6 backdrop-blur-lg min-w-[280px]">
+
+          <div className="flex items-center gap-3 mb-5">
+
+            <FaCalendarAlt />
+
+            <span>
+              Expiry Date
+            </span>
+
+          </div>
+
+          <h2 className="text-3xl font-bold">
+            {subscription.expiry}
+          </h2>
+
+          <div className="mt-6">
+
+            <div className="flex justify-between text-sm mb-2">
+
+              <span>Status</span>
+
+              <span className="flex items-center gap-2">
+
+                <FaCheckCircle />
+
+                Active
+
+              </span>
+
+            </div>
+
+            <div className="w-full bg-white/20 rounded-full h-3">
+
+              <div
+                className="bg-white rounded-full h-3"
+                style={{
+                  width: `${subscription.progress}%`,
+                }}
+              />
+
+            </div>
+
+          </div>
+
+          <div className="flex items-center gap-3 mt-8">
+
+            <FaWallet />
+
+            <span>
+              Auto Renewal Disabled
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </motion.div>
+  );
+}
+
+export default SubscriptionSummary;
