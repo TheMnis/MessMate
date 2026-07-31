@@ -1,14 +1,90 @@
-function WelcomeBanner() {
-  return (
-    <div className="bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-3xl p-8 shadow-lg mb-8">
-      <h1 className="text-4xl font-bold">
-        👋 Welcome Back, DEWA
-      </h1>
+import { motion } from "framer-motion";
+import {
+  FaCalendarDays,
+  FaClock,
+} from "react-icons/fa6";
 
-      <p className="mt-3 text-lg text-green-100">
-        Manage your meals, attendance and subscription from one place.
-      </p>
-    </div>
+function WelcomeBanner() {
+  const now = new Date();
+
+  const hour = now.getHours();
+
+  let greeting = "Good Evening";
+
+  if (hour < 12) {
+    greeting = "Good Morning";
+  } else if (hour < 18) {
+    greeting = "Good Afternoon";
+  }
+
+  const currentDate = now.toLocaleDateString("en-IN", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  const currentTime = now.toLocaleTimeString("en-IN", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return (
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: -20,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 0.5,
+      }}
+      className="bg-gradient-to-r from-green-600 via-emerald-500 to-green-700 rounded-3xl shadow-xl text-white p-8"
+    >
+      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
+
+        <div>
+
+          <h1 className="text-4xl font-bold">
+            👋 {greeting}, Deva Yadav
+          </h1>
+
+          <p className="mt-3 text-green-100 text-lg">
+            Welcome back to MessMate.
+            Manage your meals, attendance and subscription from one place.
+          </p>
+
+        </div>
+
+        <div className="bg-white/15 backdrop-blur-md rounded-2xl px-6 py-4 space-y-3">
+
+          <div className="flex items-center gap-3">
+
+            <FaCalendarDays />
+
+            <span>
+              {currentDate}
+            </span>
+
+          </div>
+
+          <div className="flex items-center gap-3">
+
+            <FaClock />
+
+            <span>
+              {currentTime}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+    </motion.div>
   );
 }
 

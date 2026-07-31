@@ -1,65 +1,110 @@
 import {
   FaBell,
   FaCheckCircle,
-  FaExclamationCircle,
+  FaExclamationTriangle,
+  FaArrowRight,
 } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 function RecentNotifications() {
   const notifications = [
     {
       id: 1,
-      title: "Today's menu has been updated.",
+      title: "Today's menu has been updated",
+      description: "Breakfast and lunch menu changed for today.",
       time: "10 min ago",
       icon: <FaBell />,
       color: "bg-blue-500",
     },
     {
       id: 2,
-      title: "Attendance marked successfully.",
+      title: "Attendance marked successfully",
+      description: "Your attendance has been recorded.",
       time: "1 hour ago",
       icon: <FaCheckCircle />,
       color: "bg-green-500",
     },
     {
       id: 3,
-      title: "Subscription expires in 5 days.",
+      title: "Subscription expires soon",
+      description: "Your subscription will expire in 5 days.",
       time: "Yesterday",
-      icon: <FaExclamationCircle />,
+      icon: <FaExclamationTriangle />,
       color: "bg-red-500",
     },
   ];
 
   return (
-    <div className="bg-white rounded-2xl shadow-md p-6">
-      <h2 className="text-2xl font-bold mb-6">
-        🔔 Recent Notifications
-      </h2>
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4 }}
+      className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6"
+    >
+      <div className="flex items-center justify-between mb-6">
+
+        <h2 className="text-2xl font-bold">
+          🔔 Recent Notifications
+        </h2>
+
+        <button className="text-green-600 flex items-center gap-2 text-sm font-semibold hover:text-green-700 transition">
+          View All
+          <FaArrowRight />
+        </button>
+
+      </div>
 
       <div className="space-y-5">
+
         {notifications.map((item) => (
-          <div
+
+          <motion.div
             key={item.id}
-            className="flex items-start gap-4 border-b pb-4 last:border-none last:pb-0"
+            whileHover={{
+              x: 5,
+            }}
+            className="flex items-start gap-4 p-4 rounded-2xl hover:bg-green-50 transition-all"
           >
+
             <div
-              className={`w-12 h-12 rounded-full flex items-center justify-center text-white ${item.color}`}
+              className={`
+                w-14
+                h-14
+                rounded-2xl
+                flex
+                items-center
+                justify-center
+                text-white
+                text-xl
+                shadow-md
+                ${item.color}
+              `}
             >
               {item.icon}
             </div>
 
             <div className="flex-1">
-              <h3 className="font-semibold">
+
+              <h3 className="font-semibold text-gray-800">
                 {item.title}
               </h3>
 
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-gray-500 text-sm mt-1">
+                {item.description}
+              </p>
+
+              <p className="text-xs text-gray-400 mt-2">
                 {item.time}
               </p>
+
             </div>
-          </div>
+
+          </motion.div>
+
         ))}
+
       </div>
-    </div>
+    </motion.div>
   );
 }
 

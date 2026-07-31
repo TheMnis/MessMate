@@ -1,4 +1,11 @@
-import { FaSun, FaHamburger, FaMoon } from "react-icons/fa";
+import {
+  FaSun,
+  FaMoon,
+  FaBowlFood,
+  FaCircleCheck,
+} from "react-icons/fa6";
+
+import { motion } from "framer-motion";
 
 function TodayMenuCard() {
   const menu = [
@@ -6,45 +13,83 @@ function TodayMenuCard() {
       meal: "Breakfast",
       icon: <FaSun />,
       items: "Poha, Banana & Tea",
+      time: "08:00 AM",
     },
     {
       meal: "Lunch",
-      icon: <FaHamburger />,
+      icon: <FaBowlFood />,
       items: "Rice, Dal, Paneer & Salad",
+      time: "01:00 PM",
     },
     {
       meal: "Dinner",
       icon: <FaMoon />,
       items: "Roti, Mix Veg & Sweet",
+      time: "08:00 PM",
     },
   ];
 
   return (
-    <div className="bg-white rounded-2xl shadow-md p-6">
-      <h2 className="text-2xl font-bold mb-6">
-        🍽 Today's Menu
-      </h2>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6"
+    >
+      <div className="flex items-center justify-between mb-6">
 
-      <div className="space-y-4">
-        {menu.map((item) => (
-          <div
-            key={item.meal}
-            className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 hover:bg-green-50 transition"
-          >
-            <div className="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center text-xl">
-              {item.icon}
-            </div>
+        <h2 className="text-2xl font-bold">
+          🍽 Today's Menu
+        </h2>
 
-            <div>
-              <h3 className="font-semibold">{item.meal}</h3>
-              <p className="text-gray-600 text-sm">
-                {item.items}
-              </p>
-            </div>
-          </div>
-        ))}
+        <span className="text-green-600 text-sm font-semibold">
+          3 Meals
+        </span>
+
       </div>
-    </div>
+
+      <div className="space-y-5">
+
+        {menu.map((item) => (
+
+          <motion.div
+            key={item.meal}
+            whileHover={{ scale: 1.02 }}
+            className="flex items-center justify-between p-5 rounded-2xl bg-gray-50 hover:bg-green-50 transition-all"
+          >
+
+            <div className="flex items-center gap-4">
+
+              <div className="w-14 h-14 rounded-2xl bg-green-600 text-white flex items-center justify-center text-xl shadow-lg">
+                {item.icon}
+              </div>
+
+              <div>
+
+                <h3 className="font-bold text-lg">
+                  {item.meal}
+                </h3>
+
+                <p className="text-gray-500 text-sm">
+                  {item.items}
+                </p>
+
+                <p className="text-green-600 text-xs mt-1">
+                  {item.time}
+                </p>
+
+              </div>
+
+            </div>
+
+            <FaCircleCheck className="text-green-600 text-2xl" />
+
+          </motion.div>
+
+        ))}
+
+      </div>
+    </motion.div>
   );
 }
 
