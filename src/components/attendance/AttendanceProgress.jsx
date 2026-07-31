@@ -1,41 +1,139 @@
+import {
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+} from "recharts";
+
+import { FaChartPie } from "react-icons/fa6";
+
 import { getAttendanceSummary } from "../../services/student/attendance.service";
 
 function AttendanceProgress() {
   const summary = getAttendanceSummary();
 
+  const data = [
+    {
+      name: "Present",
+      value: summary.present,
+      color: "#16a34a",
+    },
+    {
+      name: "Absent",
+      value: summary.absent,
+      color: "#dc2626",
+    },
+    {
+      name: "Leave",
+      value: summary.leave,
+      color: "#eab308",
+    },
+  ];
+
   return (
-    <div className="mt-8 rounded-2xl bg-white p-6 shadow-md">
+    <div className="mt-8 bg-white rounded-3xl shadow-lg border border-gray-100 p-6">
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-8">
 
-        <h2 className="text-xl font-bold">
-          Attendance Percentage
-        </h2>
+        <div>
 
-        <span className="text-2xl font-bold text-green-600">
-          {summary.percentage}%
-        </span>
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+
+            <FaChartPie className="text-green-600" />
+
+            Attendance Analytics
+
+          </h2>
+
+          <p className="text-gray-500 mt-1">
+            Monthly attendance overview
+          </p>
+
+        </div>
+
+        <div className="text-right">
+
+          <h2 className="text-4xl font-bold text-green-600">
+            {summary.percentage}%
+          </h2>
+
+          <p className="text-sm text-gray-500">
+            Overall Attendance
+          </p>
+
+        </div>
 
       </div>
 
-      <div className="mt-6 h-5 w-full overflow-hidden rounded-full bg-gray-200">
+      <div className="grid lg:grid-cols-2 gap-8 items-center">
 
-        <div
-          className="h-full rounded-full bg-green-500 transition-all duration-700"
-          style={{
-            width: `${summary.percentage}%`,
-          }}
-        />
+        <div className="h-72">
 
-      </div>
+          <ResponsiveContainer width="100%" height="100%">
 
-      <div className="mt-6 flex justify-between text-sm text-gray-600">
+            <PieChart>
 
-        <span>Present : {summary.present}</span>
+              <Pie
+                data={data}
+                dataKey="value"
+                innerRadius={70}
+                outerRadius={95}
+                paddingAngle={4}
+              >
 
-        <span>Absent : {summary.absent}</span>
+                {data.map((item) => (
 
-        <span>Leave : {summary.leave}</span>
+                  <Cell
+                    key={item.name}
+                    fill={item.color}
+                  />
+
+                ))}
+
+              </Pie>
+
+              <Tooltip />
+
+            </PieChart>
+
+          </ResponsiveContainer>
+
+        </div>
+
+        <div className="space-y-5">
+
+          {data.map((item) => (
+
+            <div
+              key={item.name}
+              className="flex items-center justify-between bg-gray-50 rounded-2xl p-4"
+            >
+
+              <div className="flex items-center gap-3">
+
+                <div
+                  className="w-4 h-4 rounded-full"
+                  style={{
+                    background: item.color,
+                  }}
+                />
+
+                <span className="font-semibold">
+                  {item.name}
+                </span>
+
+              </div>
+
+              <span className="text-xl font-bold">
+                {item.value}
+              </span>
+
+            </div>
+
+          ))}
+
+        </div>
 
       </div>
 

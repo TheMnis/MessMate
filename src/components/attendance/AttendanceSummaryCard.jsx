@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import { FaArrowTrendUp } from "react-icons/fa6";
+
 function AttendanceSummaryCard({
   title,
   value,
@@ -6,25 +9,75 @@ function AttendanceSummaryCard({
   textColor,
 }) {
   return (
-    <div
-      className={`rounded-2xl p-5 shadow-md ${bgColor} transition-all duration-300 hover:scale-105`}
+    <motion.div
+      whileHover={{
+        y: -6,
+        scale: 1.02,
+      }}
+      transition={{
+        duration: 0.25,
+      }}
+      className={`
+        ${bgColor}
+        rounded-3xl
+        shadow-lg
+        border
+        border-gray-100
+        p-6
+        overflow-hidden
+        relative
+      `}
     >
-      <div className="flex items-center justify-between">
+      <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-white/20"></div>
+
+      <div className="relative flex items-center justify-between">
+
         <div>
-          <p className="text-sm font-medium text-gray-600">
+
+          <p className="text-gray-600 text-sm font-semibold uppercase tracking-wide">
             {title}
           </p>
 
-          <h2 className={`mt-2 text-3xl font-bold ${textColor}`}>
+          <h2 className={`mt-3 text-4xl font-bold ${textColor}`}>
             {value}
           </h2>
+
+          <div className="flex items-center gap-2 mt-4">
+
+            <FaArrowTrendUp className="text-green-600 text-sm" />
+
+            <span className="text-green-600 text-sm font-semibold">
+              +5%
+            </span>
+
+            <span className="text-gray-500 text-sm">
+              This Month
+            </span>
+
+          </div>
+
         </div>
 
-        <div className="text-4xl">
+        <div
+          className={`
+            w-16
+            h-16
+            rounded-2xl
+            bg-white
+            shadow-md
+            flex
+            items-center
+            justify-center
+            text-3xl
+            ${textColor}
+          `}
+        >
           {icon}
         </div>
+
       </div>
-    </div>
+
+    </motion.div>
   );
 }
 
