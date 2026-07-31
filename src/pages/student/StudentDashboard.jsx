@@ -9,6 +9,7 @@ import WelcomeBanner from "../../components/dashboard/WelcomeBanner";
 import StatsCard from "../../components/dashboard/StatsCard";
 import TodayMenuCard from "../../components/dashboard/TodayMenuCard";
 import RecentNotifications from "../../components/dashboard/RecentNotifications";
+import AttendanceProgressCard from "../../components/dashboard/AttendanceProgressCard";
 
 function StudentDashboard() {
   return (
@@ -59,6 +60,8 @@ function StudentDashboard() {
         <RecentNotifications />
 
       </div>
+
+      <AttendanceProgressCard />
 
     </div>
   );
