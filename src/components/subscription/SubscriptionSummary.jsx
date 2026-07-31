@@ -1,7 +1,7 @@
 import {
-  FaCrown,
   FaCalendarAlt,
   FaCheckCircle,
+  FaCrown,
   FaWallet,
 } from "react-icons/fa";
 
@@ -67,7 +67,7 @@ function SubscriptionSummary({ subscription }) {
 
         </div>
 
-        <div className="bg-white/10 rounded-3xl p-6 backdrop-blur-lg min-w-[280px]">
+        <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 min-w-[280px]">
 
           <div className="flex items-center gap-3 mb-5">
 
@@ -93,7 +93,7 @@ function SubscriptionSummary({ subscription }) {
 
                 <FaCheckCircle />
 
-                Active
+                {subscription.status}
 
               </span>
 
@@ -102,7 +102,7 @@ function SubscriptionSummary({ subscription }) {
             <div className="w-full bg-white/20 rounded-full h-3">
 
               <div
-                className="bg-white rounded-full h-3"
+                className="bg-white rounded-full h-3 transition-all"
                 style={{
                   width: `${subscription.progress}%`,
                 }}
@@ -117,7 +117,7 @@ function SubscriptionSummary({ subscription }) {
             <FaWallet />
 
             <span>
-              Auto Renewal Disabled
+              {subscription.duration} Plan
             </span>
 
           </div>

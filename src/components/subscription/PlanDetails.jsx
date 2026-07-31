@@ -9,29 +9,32 @@ import {
 
 import { motion } from "framer-motion";
 
+import { getPlanFeatures } from "../../services/student/subscription.service";
+
+function getIcon(icon) {
+  switch (icon) {
+    case "meal":
+      return <FaUtensils />;
+
+    case "attendance":
+      return <FaClipboardCheck />;
+
+    case "notification":
+      return <FaBell />;
+
+    case "support":
+      return <FaHeadset />;
+
+    case "security":
+      return <FaUserShield />;
+
+    default:
+      return <FaCheckCircle />;
+  }
+}
+
 function PlanDetails() {
-  const features = [
-    {
-      title: "Unlimited Meals",
-      icon: <FaUtensils />,
-    },
-    {
-      title: "Attendance Tracking",
-      icon: <FaClipboardCheck />,
-    },
-    {
-      title: "Instant Notifications",
-      icon: <FaBell />,
-    },
-    {
-      title: "Priority Support",
-      icon: <FaHeadset />,
-    },
-    {
-      title: "Secure Account",
-      icon: <FaUserShield />,
-    },
-  ];
+  const features = getPlanFeatures();
 
   return (
     <motion.div
@@ -49,13 +52,13 @@ function PlanDetails() {
         {features.map((feature) => (
 
           <div
-            key={feature.title}
+            key={feature.id}
             className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-green-50 transition-all"
           >
 
             <div className="w-12 h-12 rounded-2xl bg-green-600 text-white flex items-center justify-center text-xl">
 
-              {feature.icon}
+              {getIcon(feature.icon)}
 
             </div>
 
@@ -66,12 +69,14 @@ function PlanDetails() {
               </h3>
 
               <p className="text-sm text-gray-500">
-                Included in your current plan
+                {feature.description}
               </p>
 
             </div>
 
-            <FaCheckCircle className="text-green-600 text-xl" />
+            {feature.available && (
+              <FaCheckCircle className="text-green-600 text-xl" />
+            )}
 
           </div>
 

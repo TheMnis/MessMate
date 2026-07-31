@@ -6,30 +6,12 @@ import {
 
 import { motion } from "framer-motion";
 
+import {
+  getPaymentHistory,
+} from "../../services/student/subscription.service";
+
 function PaymentHistory() {
-  const payments = [
-    {
-      id: 1,
-      month: "August 2026",
-      amount: "₹3,000",
-      status: "Paid",
-      date: "01 Aug 2026",
-    },
-    {
-      id: 2,
-      month: "July 2026",
-      amount: "₹3,000",
-      status: "Paid",
-      date: "01 Jul 2026",
-    },
-    {
-      id: 3,
-      month: "June 2026",
-      amount: "₹3,000",
-      status: "Paid",
-      date: "01 Jun 2026",
-    },
-  ];
+  const payments = getPaymentHistory();
 
   return (
     <motion.div
@@ -76,7 +58,7 @@ function PaymentHistory() {
             <div className="text-right">
 
               <h3 className="text-xl font-bold text-green-600">
-                {payment.amount}
+                ₹{payment.amount}
               </h3>
 
               <div className="flex justify-end items-center gap-2 mt-2 text-green-600">

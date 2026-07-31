@@ -5,7 +5,23 @@ import {
   FaCalendarDays,
 } from "react-icons/fa6";
 
+import {
+  getRenewInfo,
+  renewSubscription,
+} from "../../services/student/subscription.service";
+
 function RenewSubscription() {
+  const renewInfo = getRenewInfo();
+
+  const handleRenew = () => {
+    const response = renewSubscription();
+
+    console.log(response);
+
+    // Backend aane par
+    // Payment Gateway open hoga
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 25 }}
@@ -29,8 +45,8 @@ function RenewSubscription() {
 
           <p className="text-blue-100 leading-7 max-w-xl">
             Renew your mess subscription before it expires to
-            continue enjoying uninterrupted meals, attendance
-            tracking and all premium features.
+            continue enjoying uninterrupted meals,
+            attendance tracking and all premium features.
           </p>
 
           <div className="flex items-center gap-3 mt-6">
@@ -38,7 +54,8 @@ function RenewSubscription() {
             <FaCalendarDays />
 
             <span>
-              Next Renewal : <strong>30 August 2026</strong>
+              Next Renewal :
+              <strong> {renewInfo.renewalDate}</strong>
             </span>
 
           </div>
@@ -54,12 +71,13 @@ function RenewSubscription() {
             </span>
 
             <span className="bg-yellow-300 text-black px-3 py-1 rounded-full text-sm font-bold">
-              10% OFF
+              {renewInfo.discount}% OFF
             </span>
 
           </div>
 
           <button
+            onClick={handleRenew}
             className="
               w-full
               bg-white
@@ -82,7 +100,7 @@ function RenewSubscription() {
           </button>
 
           <p className="text-center text-sm text-blue-100 mt-4">
-            Offer valid till 30 August
+            {renewInfo.offerText}
           </p>
 
         </div>
