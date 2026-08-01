@@ -48,3 +48,4 @@ function RevenueChart({ data }) {
 }
 
 export default RevenueChart;
+

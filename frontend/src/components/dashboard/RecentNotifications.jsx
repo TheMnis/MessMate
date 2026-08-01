@@ -38,3 +38,4 @@ function RecentNotifications() {
 }
 
 export default RecentNotifications;
+

@@ -65,3 +65,4 @@ function AttendanceProgressCard() {
 }
 
 export default AttendanceProgressCard;
+

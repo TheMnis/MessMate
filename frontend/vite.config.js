@@ -9,6 +9,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+<<<<<<< HEAD
   server: {
     proxy: {
       '/api': {
@@ -18,3 +19,6 @@ export default defineConfig({
     },
   },
 })
+=======
+})
+>>>>>>> 74ec9b4 (refactor: implement centralized theme system)

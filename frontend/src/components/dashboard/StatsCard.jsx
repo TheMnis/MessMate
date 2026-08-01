@@ -35,3 +35,4 @@ function StatsCard({ title, value, icon, color, link, change = "+12%" }) {
 }
 
 export default StatsCard;
+

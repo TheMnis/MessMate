@@ -30,3 +30,4 @@ function DashboardCard({ title, value, icon, color = "from-[var(--color-success)
 }
 
 export default DashboardCard;
+
