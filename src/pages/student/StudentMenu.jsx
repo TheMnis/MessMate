@@ -11,7 +11,7 @@ import WeeklyMenu from "../../components/menu/WeeklyMenu";
 
 import { getAllMeals } from "../../services/student/menu.service";
 
-const StudentMenu = () => {
+function StudentMenu() {
   const [view, setView] = useState("today");
   const [search, setSearch] = useState("");
   const [selectedMeal, setSelectedMeal] = useState("All");
@@ -27,47 +27,129 @@ const StudentMenu = () => {
         );
 
       const matchesTab =
-        selectedMeal === "All" || meal.meal === selectedMeal;
+        selectedMeal === "All" ||
+        meal.meal === selectedMeal;
 
       return matchesSearch && matchesTab;
     });
   }, [meals, search, selectedMeal]);
 
   return (
-    <div className="space-y-6">
-      <MenuHeader />
+    <div
+      className="relative space-y-8 overflow-hidden"
+      style={{
+        paddingBottom: "30px",
+      }}
+    >
+      {/* Background Blob */}
 
-      <TodaysSpecial />
+      <div
+        style={{
+          position: "absolute",
+          top: -150,
+          right: -120,
+          width: 350,
+          height: 350,
+          borderRadius: "999px",
+          background:
+            "linear-gradient(135deg,var(--color-primary),var(--color-secondary))",
+          opacity: .05,
+          filter: "blur(30px)",
+        }}
+      />
 
-      <MenuViewToggle view={view} setView={setView} />
+      <div
+        style={{
+          position: "absolute",
+          bottom: -180,
+          left: -120,
+          width: 320,
+          height: 320,
+          borderRadius: "999px",
+          background:
+            "linear-gradient(135deg,var(--color-success),var(--color-primary))",
+          opacity: .05,
+          filter: "blur(30px)",
+        }}
+      />
 
-      {view === "today" ? (
-        <>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <MenuSummaryCard />
-          </div>
+      <div className="relative">
 
-          <MenuSearch
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+        <MenuHeader />
 
-          <MealTabs
-            selectedMeal={selectedMeal}
-            setSelectedMeal={setSelectedMeal}
-          />
+        <TodaysSpecial />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-            {filteredMeals.map((meal) => (
-              <MealCard key={meal.id} meal={meal} />
-            ))}
-          </div>
-        </>
-      ) : (
-        <WeeklyMenu />
-      )}
+        <MenuViewToggle
+          view={view}
+          onChange={setView}
+        />
+
+        {view === "today" ? (
+          <>
+            {/* Summary */}
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+
+              <MenuSummaryCard
+                icon="🍳"
+                title="Breakfast"
+                status="Available"
+              />
+
+              <MenuSummaryCard
+                icon="🍛"
+                title="Lunch"
+                status="Available"
+              />
+
+              <MenuSummaryCard
+                icon="☕"
+                title="Snacks"
+                status="Closed"
+              />
+
+              <MenuSummaryCard
+                icon="🌙"
+                title="Dinner"
+                status="Available"
+              />
+
+            </div>
+
+            {/* Search */}
+
+            <MenuSearch
+              search={search}
+              setSearch={setSearch}
+            />
+
+            {/* Tabs */}
+
+            <MealTabs
+              selectedMeal={selectedMeal}
+              onSelectMeal={setSelectedMeal}
+            />
+
+            {/* Cards */}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-7">
+
+              {filteredMeals.map((meal) => (
+                <MealCard
+                  key={meal.id}
+                  meal={meal}
+                />
+              ))}
+
+            </div>
+          </>
+        ) : (
+          <WeeklyMenu />
+        )}
+
+      </div>
     </div>
   );
-};
+}
 
 export default StudentMenu;

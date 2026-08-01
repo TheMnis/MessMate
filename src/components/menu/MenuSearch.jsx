@@ -1,23 +1,65 @@
-import { FiSearch } from "react-icons/fi";
+import { motion } from "framer-motion";
+import { FaSearch, FaFilter } from "react-icons/fa";
 
-function MenuSearch({ searchTerm, onSearch }) {
+function MenuSearch({
+  search,
+  setSearch,
+}) {
   return (
-    <div className="mb-8">
-      <div className="relative">
-        <FiSearch
-          className="absolute left-4 top-1/2 -translate-y-1/2 [color:var(--color-text-disabled)]"
-          size={20}
-        />
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35 }}
+      className="mb-8"
+    >
+      <div
+        className="flex flex-col lg:flex-row gap-4"
+      >
+        {/* Search */}
 
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => onSearch(e.target.value)}
-          placeholder="Search meals or food items..."
-          className="w-full radius-2xl border [border-color:var(--color-border-strong)] [background:var(--color-surface)] py-4 pl-12 pr-4 elevation-sm outline-none transition-all duration-300 focus:[border-color:var(--color-success)] focus:ring-2 focus:[--tw-ring-color:var(--color-primary-muted)]"
-        />
+        <div
+          className="relative flex-1"
+        >
+          <FaSearch
+            className="absolute left-5 top-1/2 -translate-y-1/2 text-lg"
+            style={{
+              color: "var(--color-primary)",
+            }}
+          />
+
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search meals, dishes or ingredients..."
+            className="w-full pl-14 pr-5 py-4 rounded-3xl outline-none transition-all duration-300"
+            style={{
+              background: "var(--color-surface)",
+              border: "1px solid var(--color-border)",
+              color: "var(--color-text-primary)",
+              boxShadow: "0 12px 30px rgba(15,23,42,.06)",
+            }}
+          />
+
+        </div>
+
+        {/* Filter Button */}
+
+        <button
+          className="flex items-center justify-center gap-3 px-6 py-4 rounded-3xl font-semibold transition-all duration-300 hover:scale-105"
+          style={{
+            background:
+              "linear-gradient(135deg,var(--color-primary),var(--color-secondary))",
+            color: "#fff",
+            boxShadow:
+              "0 12px 25px rgba(59,130,246,.25)",
+          }}
+        >
+          <FaFilter />
+          Filters
+        </button>
+
       </div>
-    </div>
+    </motion.div>
   );
 }
 
