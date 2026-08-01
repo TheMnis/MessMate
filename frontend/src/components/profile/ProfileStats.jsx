@@ -1,95 +1,118 @@
+import { motion } from "framer-motion";
 import {
   FaClipboardCheck,
+  FaWallet,
   FaUtensils,
-  FaBell,
-  FaCrown,
+  FaStar,
 } from "react-icons/fa";
 
-import { motion } from "framer-motion";
-
-function ProfileStats({ profile }) {
+function ProfileStats() {
   const stats = [
     {
-      id: 1,
       title: "Attendance",
-      value: `${profile.attendance}%`,
+      value: "93%",
+      subtitle: "This Month",
       icon: <FaClipboardCheck />,
-      color: "[background:var(--color-primary)]",
+      color: "var(--color-success)",
+      bg: "var(--color-success-subtle)",
     },
     {
-      id: 2,
-      title: "Meals Taken",
-      value: profile.mealsTaken,
-      icon: <FaUtensils />,
-      color: "[background:var(--color-highlight)]",
-    },
-    {
-      id: 3,
-      title: "Notifications",
-      value: profile.notifications,
-      icon: <FaBell />,
-      color: "[background:var(--color-secondary)]",
-    },
-    {
-      id: 4,
       title: "Subscription",
-      value: profile.subscription,
-      icon: <FaCrown />,
-      color: "[background:var(--color-accent)]",
+      value: "Active",
+      subtitle: "Premium Plan",
+      icon: <FaWallet />,
+      color: "var(--color-primary)",
+      bg: "var(--color-primary-subtle)",
+    },
+    {
+      title: "Meals Taken",
+      value: "82",
+      subtitle: "Current Month",
+      icon: <FaUtensils />,
+      color: "var(--color-warning)",
+      bg: "var(--color-warning-subtle)",
+    },
+    {
+      title: "Rating",
+      value: "4.9",
+      subtitle: "Mess Experience",
+      icon: <FaStar />,
+      color: "var(--color-secondary)",
+      bg: "var(--color-secondary-subtle)",
     },
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+    <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
 
-      {stats.map((stat) => (
+      {stats.map((item, index) => (
 
         <motion.div
-          key={stat.id}
+          key={item.title}
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            delay: index * 0.1,
+          }}
           whileHover={{
             y: -5,
-            scale: 1.02,
           }}
-          className="[background:var(--color-surface)] radius-3xl elevation-lg border [border-color:var(--color-border-subtle)] p-6"
+          className="rounded-3xl p-6"
+          style={{
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-border)",
+            boxShadow: "var(--shadow-lg)",
+          }}
         >
 
-          <div className="flex items-center justify-between">
-
-            <div>
-
-              <p className="[color:var(--color-text-muted)] text-sm">
-                {stat.title}
-              </p>
-
-              <h2 className="text-3xl font-bold mt-2">
-                {stat.value}
-              </h2>
-
-            </div>
-
-            <div
-              className={`
-                w-16
-                h-16
-                radius-2xl
-                flex
-                items-center
-                justify-center
-                [color:var(--color-text-inverse)]
-                text-2xl
-                ${stat.color}
-              `}
-            >
-              {stat.icon}
-            </div>
-
+          <div
+            className="flex h-16 w-16 items-center justify-center rounded-2xl text-2xl"
+            style={{
+              background: item.bg,
+              color: item.color,
+            }}
+          >
+            {item.icon}
           </div>
+
+          <h3
+            className="mt-6 text-lg font-semibold"
+            style={{
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            {item.title}
+          </h3>
+
+          <h2
+            className="mt-2 text-4xl font-bold"
+            style={{
+              color: item.color,
+            }}
+          >
+            {item.value}
+          </h2>
+
+          <p
+            className="mt-2"
+            style={{
+              color: "var(--color-text-muted)",
+            }}
+          >
+            {item.subtitle}
+          </p>
 
         </motion.div>
 
       ))}
 
-    </div>
+    </section>
   );
 }
 

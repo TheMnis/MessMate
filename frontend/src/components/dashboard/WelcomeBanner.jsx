@@ -6,8 +6,10 @@ import {
   FaBell,
 } from "react-icons/fa";
 
+import { HiHandRaised } from "react-icons/hi2";
+
 function WelcomeBanner({
-  studentName = "Student",
+  studentName = "DewaYadav",
   attendance = 92,
   todaysMeals = 4,
   notifications = 3,
@@ -37,6 +39,7 @@ function WelcomeBanner({
         boxShadow: "var(--shadow-xl)",
       }}
     >
+
       <div
         style={{
           position: "absolute",
@@ -44,7 +47,7 @@ function WelcomeBanner({
           right: -80,
           width: 240,
           height: 240,
-          borderRadius: "var(--radius-full)",
+          borderRadius: "999px",
           background: "var(--color-surface)",
           opacity: 0.08,
         }}
@@ -57,14 +60,16 @@ function WelcomeBanner({
           left: -90,
           width: 220,
           height: 220,
-          borderRadius: "var(--radius-full)",
+          borderRadius: "999px",
           background: "var(--color-surface)",
           opacity: 0.05,
         }}
       />
 
       <div className="relative flex flex-col gap-8 xl:flex-row xl:items-center xl:justify-between">
+
         <div>
+
           <div
             className="inline-flex items-center gap-2 rounded-full px-4 py-2"
             style={{
@@ -73,24 +78,51 @@ function WelcomeBanner({
             }}
           >
             <FaSun />
+
             {greeting}
+
           </div>
 
-          <h1 className="mt-6 text-5xl font-bold">
-            Welcome back,
-            <br />
-            {studentName} 👋
-          </h1>
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+
+            <div>
+
+              <h1 className="text-5xl font-bold">
+                Welcome Back,
+                <br />
+                {studentName}
+              </h1>
+
+            </div>
+
+            <div
+              className="flex h-16 w-16 items-center justify-center rounded-full"
+              style={{
+                background: "rgba(255,255,255,.15)",
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              <HiHandRaised
+                style={{
+                  fontSize: 36,
+                  color: "#FFD54F",
+                }}
+              />
+            </div>
+
+          </div>
 
           <p
-            className="mt-5 max-w-2xl text-lg"
+            className="mt-5 max-w-2xl text-lg leading-8"
             style={{
-              color: "rgba(255,255,255,.9)",
+              color: "rgba(255,255,255,.92)",
             }}
           >
-            Track your attendance, today's meals,
-            notifications and hostel activities from one
-            beautiful dashboard.
+            Track your attendance,
+            today's meals,
+            notifications and hostel
+            activities from one beautiful
+            dashboard.
           </p>
 
           <div
@@ -101,11 +133,15 @@ function WelcomeBanner({
             }}
           >
             <FaCalendarAlt />
+
             {today}
+
           </div>
+
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">
+
           <div
             className="rounded-3xl p-6"
             style={{
@@ -113,7 +149,9 @@ function WelcomeBanner({
               backdropFilter: "blur(14px)",
             }}
           >
+
             <div className="flex items-center justify-between">
+
               <FaChartLine size={26} />
 
               <span
@@ -124,6 +162,7 @@ function WelcomeBanner({
               >
                 Live
               </span>
+
             </div>
 
             <div className="mt-5 text-5xl font-bold">
@@ -138,6 +177,7 @@ function WelcomeBanner({
             >
               Attendance
             </div>
+
           </div>
 
           <div
@@ -147,7 +187,9 @@ function WelcomeBanner({
               backdropFilter: "blur(14px)",
             }}
           >
+
             <div className="flex items-center justify-between">
+
               <FaUtensils size={26} />
 
               <span
@@ -158,6 +200,7 @@ function WelcomeBanner({
               >
                 Today
               </span>
+
             </div>
 
             <div className="mt-5 text-5xl font-bold">
@@ -172,20 +215,24 @@ function WelcomeBanner({
             >
               Meals Available
             </div>
-          </div>
 
-          <div
+          </div>
+                    <div
             className="rounded-3xl p-6 sm:col-span-2"
             style={{
               background: "rgba(255,255,255,.12)",
               backdropFilter: "blur(14px)",
             }}
           >
+
             <div className="flex items-center justify-between">
+
               <div className="flex items-center gap-3">
+
                 <FaBell size={24} />
 
                 <div>
+
                   <div className="text-xl font-bold">
                     Notifications
                   </div>
@@ -195,10 +242,12 @@ function WelcomeBanner({
                       color: "rgba(255,255,255,.9)",
                     }}
                   >
-                    Stay updated with the latest hostel
-                    announcements.
+                    Stay updated with the latest
+                    hostel announcements.
                   </div>
+
                 </div>
+
               </div>
 
               <div
@@ -209,10 +258,15 @@ function WelcomeBanner({
               >
                 {notifications}
               </div>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
   );
 }

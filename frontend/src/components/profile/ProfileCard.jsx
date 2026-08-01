@@ -1,91 +1,117 @@
-import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   FaUser,
   FaEnvelope,
   FaPhone,
-  FaBuilding,
-  FaGraduationCap,
-  FaLocationDot,
-  FaFloppyDisk,
-} from "react-icons/fa6";
+  FaMapMarkerAlt,
+  FaUniversity,
+  FaDoorOpen,
+} from "react-icons/fa";
 
-import toast from "react-hot-toast";
-
-function ProfileCard({ profile, onSave }) {
-  const [formData, setFormData] = useState(profile);
-
-  const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleSubmit = () => {
-    onSave(formData);
-
-    toast.success("Profile updated successfully");
-  };
-
+function ProfileCard({
+  profile,
+  onChange,
+}) {
   const fields = [
     {
+      key: "name",
       label: "Full Name",
-      name: "name",
       icon: <FaUser />,
+      type: "text",
     },
     {
-      label: "Email",
-      name: "email",
+      key: "email",
+      label: "Email Address",
       icon: <FaEnvelope />,
+      type: "email",
     },
     {
-      label: "Phone",
-      name: "phone",
+      key: "phone",
+      label: "Phone Number",
       icon: <FaPhone />,
+      type: "text",
     },
     {
+      key: "college",
       label: "College",
-      name: "college",
-      icon: <FaBuilding />,
+      icon: <FaUniversity />,
+      type: "text",
     },
     {
-      label: "Branch",
-      name: "branch",
-      icon: <FaGraduationCap />,
+      key: "room",
+      label: "Room Number",
+      icon: <FaDoorOpen />,
+      type: "text",
     },
   ];
 
   return (
-    <div className="[background:var(--color-surface)] radius-3xl elevation-lg border [border-color:var(--color-border-subtle)] p-8">
-
-      <h2 className="text-2xl font-bold mb-8">
+    <motion.section
+      initial={{
+        opacity: 0,
+        y: 20,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      className="rounded-3xl p-8"
+      style={{
+        background: "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
+    >
+      <h2
+        className="mb-8 text-3xl font-bold"
+        style={{
+          color: "var(--color-text-primary)",
+        }}
+      >
         Personal Information
       </h2>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid gap-6 md:grid-cols-2">
 
         {fields.map((field) => (
 
-          <div key={field.name}>
+          <div key={field.key}>
 
-            <label className="block text-sm font-semibold mb-2 [color:var(--color-text-secondary)]">
+            <label
+              className="mb-2 block font-semibold"
+              style={{
+                color: "var(--color-text-secondary)",
+              }}
+            >
               {field.label}
             </label>
 
             <div className="relative">
 
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 [color:var(--color-success)]">
-
+              <div
+                className="absolute left-5 top-1/2 -translate-y-1/2"
+                style={{
+                  color: "var(--color-primary)",
+                }}
+              >
                 {field.icon}
-
-              </span>
+              </div>
 
               <input
-                type="text"
-                name={field.name}
-                value={formData[field.name]}
-                onChange={handleChange}
-                className="w-full border [border-color:var(--color-border)] radius-2xl py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:[--tw-ring-color:var(--color-primary)]"
+                type={field.type}
+                value={profile[field.key]}
+                onChange={(e) =>
+                  onChange(field.key, e.target.value)
+                }
+                className="w-full rounded-2xl py-4 pl-14 pr-5 outline-none"
+                style={{
+                  background:
+                    "var(--color-background)",
+                  border:
+                    "1px solid var(--color-border)",
+                  color:
+                    "var(--color-text-primary)",
+                }}
               />
 
             </div>
@@ -96,24 +122,41 @@ function ProfileCard({ profile, onSave }) {
 
         <div className="md:col-span-2">
 
-          <label className="block text-sm font-semibold mb-2 [color:var(--color-text-secondary)]">
+          <label
+            className="mb-2 block font-semibold"
+            style={{
+              color: "var(--color-text-secondary)",
+            }}
+          >
             Address
           </label>
 
           <div className="relative">
 
-            <span className="absolute left-4 top-5 [color:var(--color-success)]">
-
-              <FaLocationDot />
-
-            </span>
+            <div
+              className="absolute left-5 top-5"
+              style={{
+                color: "var(--color-primary)",
+              }}
+            >
+              <FaMapMarkerAlt />
+            </div>
 
             <textarea
-              rows="4"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              className="w-full border [border-color:var(--color-border)] radius-2xl py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:[--tw-ring-color:var(--color-primary)] resize-none"
+              rows={4}
+              value={profile.address}
+              onChange={(e) =>
+                onChange("address", e.target.value)
+              }
+              className="w-full resize-none rounded-2xl py-4 pl-14 pr-5 outline-none"
+              style={{
+                background:
+                  "var(--color-background)",
+                border:
+                  "1px solid var(--color-border)",
+                color:
+                  "var(--color-text-primary)",
+              }}
             />
 
           </div>
@@ -122,22 +165,7 @@ function ProfileCard({ profile, onSave }) {
 
       </div>
 
-      <div className="flex justify-end mt-8">
-
-        <button
-          onClick={handleSubmit}
-          className="[background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)] px-8 py-3 radius-2xl font-semibold flex items-center gap-3 transition"
-        >
-
-          <FaFloppyDisk />
-
-          Save Changes
-
-        </button>
-
-      </div>
-
-    </div>
+    </motion.section>
   );
 }
 

@@ -1,90 +1,203 @@
+import { motion } from "framer-motion";
 import {
-  FaCheckCircle,
+  FaCrown,
   FaUtensils,
-  FaClipboardCheck,
-  FaBell,
-  FaHeadset,
-  FaUserShield,
+  FaCalendarAlt,
+  FaMoneyBillWave,
+  FaCheckCircle,
 } from "react-icons/fa";
 
-import { motion } from "framer-motion";
-
-import { getPlanFeatures } from "../../services/student/subscription.service";
-
-function getIcon(icon) {
-  switch (icon) {
-    case "meal":
-      return <FaUtensils />;
-
-    case "attendance":
-      return <FaClipboardCheck />;
-
-    case "notification":
-      return <FaBell />;
-
-    case "support":
-      return <FaHeadset />;
-
-    case "security":
-      return <FaUserShield />;
-
-    default:
-      return <FaCheckCircle />;
-  }
-}
-
-function PlanDetails() {
-  const features = getPlanFeatures();
+function PlanDetails({ plan }) {
+  const features = [
+    "Breakfast Included",
+    "Lunch Included",
+    "Dinner Included",
+    "Healthy Weekly Menu",
+    "Unlimited Water",
+    "Monthly Attendance Tracking",
+  ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 25 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      className="[background:var(--color-surface)] radius-3xl elevation-lg border [border-color:var(--color-border-subtle)] p-6"
+    <section
+      className="rounded-3xl p-8"
+      style={{
+        background: "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
     >
-      <h2 className="text-2xl font-bold mb-6">
-        Plan Features
-      </h2>
+      <div className="mb-8 flex items-center gap-4">
 
-      <div className="grid md:grid-cols-2 gap-5">
+        <div
+          className="flex h-16 w-16 items-center justify-center rounded-2xl"
+          style={{
+            background: "var(--color-primary-subtle)",
+            color: "var(--color-primary)",
+          }}
+        >
+          <FaCrown size={28} />
+        </div>
 
-        {features.map((feature) => (
+        <div>
 
-          <div
-            key={feature.id}
-            className="flex items-center gap-4 p-4 radius-2xl [background:var(--color-surface-muted)] hover:[background:var(--color-primary-subtle)] transition-all"
+          <h2
+            className="text-3xl font-bold"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
           >
+            Plan Details
+          </h2>
 
-            <div className="w-12 h-12 radius-2xl [background:var(--color-primary)] [color:var(--color-text-inverse)] flex items-center justify-center text-xl">
+          <p
+            style={{
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            Complete information about your current subscription.
+          </p>
 
-              {getIcon(feature.icon)}
-
-            </div>
-
-            <div className="flex-1">
-
-              <h3 className="font-semibold">
-                {feature.title}
-              </h3>
-
-              <p className="text-sm [color:var(--color-text-muted)]">
-                {feature.description}
-              </p>
-
-            </div>
-
-            {feature.available && (
-              <FaCheckCircle className="[color:var(--color-success)] text-xl" />
-            )}
-
-          </div>
-
-        ))}
+        </div>
 
       </div>
 
-    </motion.div>
+      <div className="grid gap-8 lg:grid-cols-2">
+
+        <div className="space-y-5">
+
+          <div
+            className="flex items-center justify-between rounded-2xl p-5"
+            style={{
+              background: "var(--color-background)",
+              border: "1px solid var(--color-border)",
+            }}
+          >
+            <div className="flex items-center gap-3">
+              <FaCrown
+                style={{
+                  color: "var(--color-primary)",
+                }}
+              />
+              <span>Plan</span>
+            </div>
+
+            <strong>{plan.plan}</strong>
+
+          </div>
+
+          <div
+            className="flex items-center justify-between rounded-2xl p-5"
+            style={{
+              background: "var(--color-background)",
+              border: "1px solid var(--color-border)",
+            }}
+          >
+            <div className="flex items-center gap-3">
+              <FaMoneyBillWave
+                style={{
+                  color: "var(--color-success)",
+                }}
+              />
+              <span>Monthly Fee</span>
+            </div>
+
+            <strong>{plan.amount}</strong>
+
+          </div>
+
+          <div
+            className="flex items-center justify-between rounded-2xl p-5"
+            style={{
+              background: "var(--color-background)",
+              border: "1px solid var(--color-border)",
+            }}
+          >
+            <div className="flex items-center gap-3">
+              <FaUtensils
+                style={{
+                  color: "var(--color-warning)",
+                }}
+              />
+              <span>Meals Per Day</span>
+            </div>
+
+            <strong>{plan.mealsPerDay}</strong>
+
+          </div>
+
+          <div
+            className="flex items-center justify-between rounded-2xl p-5"
+            style={{
+              background: "var(--color-background)",
+              border: "1px solid var(--color-border)",
+            }}
+          >
+            <div className="flex items-center gap-3">
+              <FaCalendarAlt
+                style={{
+                  color: "var(--color-secondary)",
+                }}
+              />
+              <span>Expiry Date</span>
+            </div>
+
+            <strong>{plan.expiryDate}</strong>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <h3
+            className="mb-6 text-2xl font-bold"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
+          >
+            Included Features
+          </h3>
+
+          <div className="space-y-4">
+
+            {features.map((feature) => (
+
+              <motion.div
+                key={feature}
+                whileHover={{
+                  x: 4,
+                }}
+                className="flex items-center gap-4 rounded-2xl p-4"
+                style={{
+                  background: "var(--color-background)",
+                  border: "1px solid var(--color-border)",
+                }}
+              >
+                <FaCheckCircle
+                  style={{
+                    color: "var(--color-success)",
+                  }}
+                />
+
+                <span
+                  style={{
+                    color: "var(--color-text-primary)",
+                  }}
+                >
+                  {feature}
+                </span>
+
+              </motion.div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
   );
 }
 

@@ -1,85 +1,195 @@
+import { motion } from "framer-motion";
 import {
-  FaCalendarAlt,
   FaCheckCircle,
   FaReceipt,
+  FaDownload,
+  FaCalendarAlt,
 } from "react-icons/fa";
 
-import { motion } from "framer-motion";
-
-import {
-  getPaymentHistory,
-} from "../../services/student/subscription.service";
-
 function PaymentHistory() {
-  const payments = getPaymentHistory();
+  const payments = [
+    {
+      id: 1,
+      month: "July 2026",
+      amount: "₹2,500",
+      date: "01 Jul 2026",
+      status: "Paid",
+    },
+    {
+      id: 2,
+      month: "June 2026",
+      amount: "₹2,500",
+      date: "01 Jun 2026",
+      status: "Paid",
+    },
+    {
+      id: 3,
+      month: "May 2026",
+      amount: "₹2,500",
+      date: "01 May 2026",
+      status: "Paid",
+    },
+    {
+      id: 4,
+      month: "April 2026",
+      amount: "₹2,500",
+      date: "01 Apr 2026",
+      status: "Paid",
+    },
+  ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 25 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      className="[background:var(--color-surface)] radius-3xl elevation-lg border [border-color:var(--color-border-subtle)] p-6"
+    <section
+      className="rounded-3xl p-8"
+      style={{
+        background: "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
     >
-      <div className="flex items-center gap-3 mb-6">
+      <div className="mb-8 flex items-center gap-4">
 
-        <FaReceipt className="[color:var(--color-success)] text-2xl" />
+        <div
+          className="flex h-16 w-16 items-center justify-center rounded-2xl"
+          style={{
+            background: "var(--color-primary-subtle)",
+            color: "var(--color-primary)",
+          }}
+        >
+          <FaReceipt size={28} />
+        </div>
 
-        <h2 className="text-2xl font-bold">
-          Payment History
-        </h2>
+        <div>
+
+          <h2
+            className="text-3xl font-bold"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
+          >
+            Payment History
+          </h2>
+
+          <p
+            style={{
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            View all your previous subscription payments.
+          </p>
+
+        </div>
 
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-5">
 
         {payments.map((payment) => (
 
-          <div
+          <motion.div
             key={payment.id}
-            className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 radius-2xl border [border-color:var(--color-border-strong)] p-5 hover:[background:var(--color-surface-muted)] transition"
+            whileHover={{
+              y: -3,
+            }}
+            className="flex flex-col gap-5 rounded-3xl p-6 lg:flex-row lg:items-center lg:justify-between"
+            style={{
+              background: "var(--color-background)",
+              border: "1px solid var(--color-border)",
+            }}
           >
 
-            <div>
+            <div className="flex items-center gap-5">
 
-              <h3 className="font-semibold text-lg">
-                {payment.month}
-              </h3>
-
-              <div className="flex items-center gap-2 mt-2 [color:var(--color-text-muted)] text-sm">
-
-                <FaCalendarAlt />
-
-                {payment.date}
-
-              </div>
-
-            </div>
-
-            <div className="text-right">
-
-              <h3 className="text-xl font-bold [color:var(--color-success)]">
-                ₹{payment.amount}
-              </h3>
-
-              <div className="flex justify-end items-center gap-2 mt-2 [color:var(--color-success)]">
-
+              <div
+                className="flex h-14 w-14 items-center justify-center rounded-2xl"
+                style={{
+                  background: "var(--color-success-subtle)",
+                  color: "var(--color-success)",
+                }}
+              >
                 <FaCheckCircle />
+              </div>
 
-                <span className="font-medium">
-                  {payment.status}
-                </span>
+              <div>
+
+                <h3
+                  className="text-xl font-bold"
+                  style={{
+                    color: "var(--color-text-primary)",
+                  }}
+                >
+                  {payment.month}
+                </h3>
+
+                <div
+                  className="mt-2 flex items-center gap-2"
+                  style={{
+                    color: "var(--color-text-secondary)",
+                  }}
+                >
+                  <FaCalendarAlt />
+
+                  {payment.date}
+
+                </div>
 
               </div>
 
             </div>
 
-          </div>
+            <div className="flex items-center gap-6">
+
+              <div className="text-right">
+
+                <h3
+                  className="text-2xl font-bold"
+                  style={{
+                    color: "var(--color-success)",
+                  }}
+                >
+                  {payment.amount}
+                </h3>
+
+                <div
+                  className="mt-2 inline-flex rounded-full px-3 py-1 text-sm font-semibold"
+                  style={{
+                    background: "var(--color-success-subtle)",
+                    color: "var(--color-success)",
+                  }}
+                >
+                  {payment.status}
+                </div>
+
+              </div>
+
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                }}
+                whileTap={{
+                  scale: 0.96,
+                }}
+                className="flex items-center gap-2 rounded-2xl px-5 py-3 font-semibold"
+                style={{
+                  background: "var(--color-primary)",
+                  color: "var(--color-text-inverse)",
+                }}
+              >
+                <FaDownload />
+
+                Invoice
+
+              </motion.button>
+
+            </div>
+
+          </motion.div>
 
         ))}
 
       </div>
 
-    </motion.div>
+    </section>
   );
 }
 

@@ -1,42 +1,44 @@
 import { useState } from "react";
 
 import ProfileHeader from "../../components/profile/ProfileHeader";
-import ProfileStats from "../../components/profile/ProfileStats";
 import ProfileCard from "../../components/profile/ProfileCard";
+import ProfileStats from "../../components/profile/ProfileStats";
 import SecurityCard from "../../components/profile/SecurityCard";
 
-import {
-  getProfile,
-  updateProfile,
-} from "../../services/student/profile.service";
-
 function Profile() {
-  const [profile, setProfile] = useState(getProfile());
+  const [profile, setProfile] = useState({
+    name: "DewaYadav",
+    email: "dewayadav@messmate.com",
+    phone: "+91 9876543210",
+    college: "BIT Durg",
+    room: "A-203",
+    address: "Bhilai, Chhattisgarh",
 
-  const handleSave = (updatedProfile) => {
-    const response = updateProfile(updatedProfile);
+    image:
+      "https://api.dicebear.com/9.x/adventurer/svg?seed=DewaYadav",
+  });
 
-    if (response.success) {
-      setProfile({
-        ...updatedProfile,
-      });
-    }
+  const handleChange = (field, value) => {
+    setProfile((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
   };
 
   return (
     <div className="space-y-8">
 
       <ProfileHeader
-        profile={profile}
+        name={profile.name}
+        email={profile.email}
+        image={profile.image}
       />
 
-      <ProfileStats
-        profile={profile}
-      />
+      <ProfileStats />
 
       <ProfileCard
         profile={profile}
-        onSave={handleSave}
+        onChange={handleChange}
       />
 
       <SecurityCard />
