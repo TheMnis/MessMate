@@ -1,4 +1,6 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+
+import AdminLayout from "../layouts/AdminLayout";
 
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import Users from "../pages/admin/Users";
@@ -9,11 +11,48 @@ import Settings from "../pages/admin/Settings";
 function AdminRoutes() {
   return (
     <Routes>
-      <Route path="dashboard" element={<AdminDashboard />} />
-      <Route path="users" element={<Users />} />
-      <Route path="messes" element={<Messes />} />
-      <Route path="reports" element={<Reports />} />
-      <Route path="settings" element={<Settings />} />
+
+      <Route
+        element={<AdminLayout />}
+      >
+
+        <Route
+          index
+          element={
+            <Navigate
+              to="/admin/dashboard"
+              replace
+            />
+          }
+        />
+
+        <Route
+          path="dashboard"
+          element={<AdminDashboard />}
+        />
+
+        <Route
+          path="users"
+          element={<Users />}
+        />
+
+        <Route
+          path="messes"
+          element={<Messes />}
+        />
+
+        <Route
+          path="reports"
+          element={<Reports />}
+        />
+
+        <Route
+          path="settings"
+          element={<Settings />}
+        />
+
+      </Route>
+
     </Routes>
   );
 }

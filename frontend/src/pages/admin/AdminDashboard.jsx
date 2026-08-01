@@ -1,13 +1,34 @@
-// ==========================================
-// Admin Dashboard
-// ==========================================
+import AdminHeader from "../../components/admin/AdminHeader";
+import AdminStats from "../../components/admin/AdminStats";
+import RevenueChart from "../../components/admin/RevenueChart";
+import UserAnalytics from "../../components/admin/UserAnalytics";
+import RecentUsers from "../../components/admin/RecentUsers";
+import SystemActivity from "../../components/admin/SystemActivity";
 
 function AdminDashboard() {
   return (
-    <div className="min-h-screen flex items-center justify-center [background:var(--color-danger-subtle)]">
-      <h1 className="text-5xl font-bold [color:var(--color-danger)]">
-        Admin Dashboard
-      </h1>
+    <div className="space-y-8">
+
+      <AdminHeader />
+
+      <AdminStats />
+
+      <div className="grid gap-8 xl:grid-cols-2">
+
+        <RevenueChart />
+
+        <UserAnalytics />
+
+      </div>
+
+      <div className="grid gap-8 xl:grid-cols-2">
+
+        <RecentUsers />
+
+        <SystemActivity />
+
+      </div>
+
     </div>
   );
 }
