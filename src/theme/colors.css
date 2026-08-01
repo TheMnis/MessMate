@@ -1,85 +1,42 @@
-:root{
+:root {
 
-  /* ===========================
-      BRAND
-  ============================ */
+/* BRAND */
 
-  --color-primary:#2563EB;
-  --color-primary-hover:#1D4ED8;
-  --color-primary-subtle:#DBEAFE;
-  --color-primary-muted:#BFDBFE;
+--color-primary:#2563EB;
+--color-primary-hover:#1D4ED8;
+--color-primary-subtle:#DBEAFE;
 
-  --color-secondary:#0EA5E9;
-  --color-secondary-hover:#0284C7;
-  --color-secondary-subtle:#E0F2FE;
+--color-secondary:#06B6D4;
+--color-secondary-hover:#0891B2;
 
-  /* ===========================
-      SUCCESS
-  ============================ */
+/* STATUS */
 
-  --color-success:#22C55E;
-  --color-success-hover:#16A34A;
-  --color-success-subtle:#DCFCE7;
+--color-success:#22C55E;
+--color-success-subtle:#DCFCE7;
 
-  /* ===========================
-      WARNING
-  ============================ */
+--color-warning:#F59E0B;
+--color-warning-subtle:#FEF3C7;
 
-  --color-warning:#F59E0B;
-  --color-warning-hover:#D97706;
-  --color-warning-subtle:#FEF3C7;
+--color-danger:#EF4444;
+--color-danger-subtle:#FEE2E2;
 
-  /* ===========================
-      DANGER
-  ============================ */
+/* BACKGROUND */
 
-  --color-danger:#EF4444;
-  --color-danger-hover:#DC2626;
-  --color-danger-subtle:#FEE2E2;
+--color-background:#F5F7FB;
+--color-surface:#FFFFFF;
+--color-surface-hover:#F8FAFC;
 
-  --color-info:#06B6D4;
-  --color-info-hover:#0891B2;
-  --color-accent:#9333EA;
-  --color-accent-hover:#7E22CE;
-  --color-highlight:#F97316;
-  --color-highlight-hover:#EA580C;
-  --color-highlight-subtle:#FFEDD5;
+/* BORDER */
 
-  /* ===========================
-      BACKGROUND
-  ============================ */
+--color-border:#E2E8F0;
+--color-border-subtle:#EEF2F7;
 
-  --color-background:#F8FAFC;
+/* TEXT */
 
-  --color-surface:#FFFFFF;
-
-  --color-surface-hover:#F1F5F9;
-  --color-surface-muted:#F8FAFC;
-  --color-card:var(--color-surface);
-  --color-overlay:rgb(0 0 0 / 0.5);
-  --color-inverse:#111827;
-
-  /* ===========================
-      BORDER
-  ============================ */
-
-  --color-border:#E2E8F0;
-  --color-border-subtle:#F1F5F9;
-
-  --color-border-strong:#CBD5E1;
-
-  /* ===========================
-      TEXT
-  ============================ */
-
-  --color-text-primary:#0F172A;
-
-  --color-text-secondary:#475569;
-
-  --color-text-muted:#64748B;
-
-  --color-text-disabled:#94A3B8;
-
-  --color-text-inverse:#FFFFFF;
+--color-text-primary:#0F172A;
+--color-text-secondary:#475569;
+--color-text-muted:#64748B;
+--color-text-disabled:#94A3B8;
+--color-text-inverse:#FFFFFF;
 
 }

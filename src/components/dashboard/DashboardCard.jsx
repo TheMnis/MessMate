@@ -1,109 +1,31 @@
+import { motion } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
 
-function DashboardCard({
-  title,
-  value,
-  icon,
-  color = "from-[var(--color-success)] to-[var(--color-primary)]",
-  change = "+12%",
-}) {
+function DashboardCard({ title, value, icon, color = "from-[var(--color-success)] to-[var(--color-primary)]", change = "+12%" }) {
   return (
-    <div
-      className="
-        relative
-        overflow-hidden
-        radius-3xl
-        [background:var(--color-surface)]
-        elevation-md
-        hover:elevation-2xl
-        transition-all
-        duration-300
-        hover:-translate-y-1
-        p-6
-      "
+    <motion.div
+      whileHover={{ y: -5, scale: 1.01 }}
+      transition={{ duration: 0.22 }}
+      className="group relative overflow-hidden radius-3xl border p-6 [background:var(--color-surface)] [border-color:var(--color-border-subtle)] [box-shadow:0_8px_24px_color-mix(in_srgb,var(--color-text-primary)_5%,transparent)]"
     >
-      {/* Background Circle */}
-
-      <div
-        className="
-          absolute
-          -top-10
-          -right-10
-          w-32
-          h-32
-          radius-full
-          [background:var(--color-success-subtle)]
-          opacity-40
-        "
-      />
-
-      {/* Header */}
-
-      <div className="flex justify-between items-center">
-
+      <div className="absolute -right-12 -top-12 h-36 w-36 radius-full [background:color-mix(in_srgb,var(--color-primary)_9%,transparent)] transition-transform duration-300 group-hover:scale-125" />
+      <div className="relative flex items-start justify-between gap-5">
         <div>
-
-          <p className="[color:var(--color-text-muted)] text-sm">
-            {title}
-          </p>
-
-          <h2 className="text-4xl font-bold mt-3 [color:var(--color-text-primary)]">
-            {value}
-          </h2>
-
+          <p className="text-xs font-bold uppercase tracking-[0.14em] [color:var(--color-text-muted)]">{title}</p>
+          <h2 className="mt-3 text-4xl font-extrabold tracking-tight [color:var(--color-text-primary)]">{value}</h2>
         </div>
-
-        <div
-          className={`
-            w-16
-            h-16
-            radius-2xl
-            bg-gradient-to-br
-            ${color}
-            flex
-            items-center
-            justify-center
-            [color:var(--color-text-inverse)]
-            text-2xl
-            elevation-lg
-          `}
-        >
+        <div className={`grid h-14 w-14 place-items-center radius-2xl bg-gradient-to-br ${color} text-2xl [color:var(--color-text-inverse)] [box-shadow:0_12px_26px_color-mix(in_srgb,var(--color-primary)_22%,transparent)]`}>
           {icon}
         </div>
-
       </div>
-
-      {/* Footer */}
-
-      <div className="flex items-center justify-between mt-8">
-
-        <div className="flex items-center gap-2 [color:var(--color-success)] font-semibold">
-
-          <FaArrowUp />
-
-          {change}
-
-        </div>
-
-        <span className="text-sm [color:var(--color-text-disabled)]">
-          This Month
-        </span>
-
+      <div className="relative mt-7 flex items-center justify-between text-sm">
+        <div className="flex items-center gap-2 font-bold [color:var(--color-success)]"><FaArrowUp className="text-xs" />{change}</div>
+        <span className="[color:var(--color-text-disabled)]">This Month</span>
       </div>
-
-      {/* Progress */}
-
-      <div className="mt-4">
-
-        <div className="w-full h-2 radius-full [background:var(--color-border-strong)]">
-
-          <div className="w-3/4 h-2 radius-full [background:var(--color-primary)]" />
-
-        </div>
-
+      <div className="relative mt-4 h-2 overflow-hidden radius-full [background:var(--color-border-strong)]">
+        <motion.div initial={{ width: 0 }} animate={{ width: "75%" }} transition={{ duration: 0.65, ease: "easeOut" }} className="h-full radius-full [background:linear-gradient(90deg,var(--color-success),var(--color-primary))]" />
       </div>
-
-    </div>
+    </motion.div>
   );
 }
 
