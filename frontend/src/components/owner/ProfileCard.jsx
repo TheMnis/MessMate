@@ -1,185 +1,189 @@
-import toast from "react-hot-toast";
-import { useState } from "react";
-import {
-  FaCamera,
-  FaUser,
-  FaEnvelope,
-  FaPhone,
-  FaMapMarkerAlt,
-  FaStore,
-} from "react-icons/fa";
+import { FaCamera, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 
-function ProfileCard({ profile, onSave }) {
-  const [formData, setFormData] = useState(profile);
-
-  const [preview, setPreview] = useState(profile.image);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleImage = (e) => {
-    const file = e.target.files[0];
-
-    if (!file) return;
-
-    setPreview(URL.createObjectURL(file));
-  };
-
-  const handleSave = () => {
-  if (!formData.ownerName.trim()) {
-    toast.error("Owner Name is required");
-    return;
-  }
-
-  if (!formData.email.includes("@")) {
-    toast.error("Enter valid email");
-    return;
-  }
-
-  if (formData.phone.length !== 10) {
-    toast.error("Phone number must be 10 digits");
-    return;
-  }
-
-  onSave({
-    ...formData,
-    image: preview,
-  });
-
-  toast.success("Profile updated successfully");
-};
-
+function ProfileCard() {
   return (
-    <div className="[background:var(--color-surface)] radius-3xl elevation-lg p-8">
-
-      <div className="flex flex-col items-center">
+    <section
+      className="rounded-3xl p-8"
+      style={{
+        background: "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
+    >
+      <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start">
 
         <div className="relative">
 
           <img
-            src={preview}
+            src="https://api.dicebear.com/9.x/adventurer/svg?seed=Owner"
             alt="Owner"
-            className="w-36 h-36 radius-full object-cover border-4 [border-color:var(--color-primary)] elevation-lg"
+            className="h-40 w-40 rounded-full object-cover"
           />
 
-          <label
-            htmlFor="profileImage"
-            className="absolute bottom-2 right-2 [background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)] p-3 radius-full cursor-pointer transition"
+          <button
+            className="absolute bottom-2 right-2 flex h-12 w-12 items-center justify-center rounded-full"
+            style={{
+              background: "var(--color-primary)",
+              color: "var(--color-text-inverse)",
+            }}
           >
             <FaCamera />
-          </label>
-
-          <input
-            id="profileImage"
-            type="file"
-            accept="image/*"
-            hidden
-            onChange={handleImage}
-          />
+          </button>
 
         </div>
 
-        <h2 className="text-2xl font-bold mt-5">
-          {formData.ownerName}
-        </h2>
+        <div className="flex-1">
 
-        <p className="[color:var(--color-text-muted)]">
-          {formData.messName}
-        </p>
+          <h2
+            className="text-4xl font-bold"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
+          >
+            Mess Owner
+          </h2>
+
+          <p
+            className="mt-2"
+            style={{
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            Premium Member
+          </p>
+
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+
+            <div>
+
+              <label
+                className="mb-2 block font-semibold"
+                style={{
+                  color: "var(--color-text-primary)",
+                }}
+              >
+                Full Name
+              </label>
+
+              <input
+                type="text"
+                defaultValue="Mess Owner"
+                className="w-full rounded-2xl px-4 py-3 outline-none"
+                style={{
+                  background: "var(--color-background)",
+                  border: "1px solid var(--color-border)",
+                }}
+              />
+
+            </div>
+
+            <div>
+
+              <label
+                className="mb-2 block font-semibold"
+                style={{
+                  color: "var(--color-text-primary)",
+                }}
+              >
+                Email
+              </label>
+
+              <div
+                className="flex items-center gap-3 rounded-2xl px-4 py-3"
+                style={{
+                  background: "var(--color-background)",
+                  border: "1px solid var(--color-border)",
+                }}
+              >
+                <FaEnvelope />
+
+                <input
+                  type="email"
+                  defaultValue="owner@messmate.com"
+                  className="w-full bg-transparent outline-none"
+                />
+
+              </div>
+
+            </div>
+
+            <div>
+
+              <label
+                className="mb-2 block font-semibold"
+                style={{
+                  color: "var(--color-text-primary)",
+                }}
+              >
+                Phone
+              </label>
+
+              <div
+                className="flex items-center gap-3 rounded-2xl px-4 py-3"
+                style={{
+                  background: "var(--color-background)",
+                  border: "1px solid var(--color-border)",
+                }}
+              >
+                <FaPhone />
+
+                <input
+                  type="text"
+                  defaultValue="+91 9876543210"
+                  className="w-full bg-transparent outline-none"
+                />
+
+              </div>
+
+            </div>
+
+            <div>
+
+              <label
+                className="mb-2 block font-semibold"
+                style={{
+                  color: "var(--color-text-primary)",
+                }}
+              >
+                Address
+              </label>
+
+              <div
+                className="flex items-center gap-3 rounded-2xl px-4 py-3"
+                style={{
+                  background: "var(--color-background)",
+                  border: "1px solid var(--color-border)",
+                }}
+              >
+                <FaMapMarkerAlt />
+
+                <input
+                  type="text"
+                  defaultValue="Bhilai, Chhattisgarh"
+                  className="w-full bg-transparent outline-none"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <button
+            className="mt-8 rounded-2xl px-8 py-4 font-semibold"
+            style={{
+              background: "var(--color-primary)",
+              color: "var(--color-text-inverse)",
+            }}
+          >
+            Save Changes
+          </button>
+
+        </div>
 
       </div>
 
-      <div className="grid md:grid-cols-2 gap-5 mt-10">
-
-        <div className="relative">
-
-          <FaUser className="absolute top-4 left-4 [color:var(--color-success)]" />
-
-          <input
-            name="ownerName"
-            value={formData.ownerName}
-            onChange={handleChange}
-            placeholder="Owner Name"
-            className="w-full border radius-xl py-3 pl-12 pr-4"
-          />
-
-        </div>
-
-        <div className="relative">
-
-          <FaStore className="absolute top-4 left-4 [color:var(--color-success)]" />
-
-          <input
-            name="messName"
-            value={formData.messName}
-            onChange={handleChange}
-            placeholder="Mess Name"
-            className="w-full border radius-xl py-3 pl-12 pr-4"
-          />
-
-        </div>
-
-        <div className="relative">
-
-          <FaEnvelope className="absolute top-4 left-4 [color:var(--color-success)]" />
-
-          <input
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email"
-            className="w-full border radius-xl py-3 pl-12 pr-4"
-          />
-
-        </div>
-
-        <div className="relative">
-
-          <FaPhone className="absolute top-4 left-4 [color:var(--color-success)]" />
-
-          <input
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="Phone"
-            className="w-full border radius-xl py-3 pl-12 pr-4"
-          />
-
-        </div>
-
-        <div className="relative md:col-span-2">
-
-          <FaMapMarkerAlt className="absolute top-4 left-4 [color:var(--color-success)]" />
-
-          <textarea
-            rows="4"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            placeholder="Address"
-            className="w-full border radius-xl py-3 pl-12 pr-4"
-          />
-
-        </div>
-
-      </div>
-
-      <div className="flex justify-end mt-8">
-
-        <button
-          onClick={handleSave}
-          className="[background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)] px-8 py-3 radius-xl elevation-lg transition"
-        >
-          Save Changes
-        </button>
-
-      </div>
-
-    </div>
+    </section>
   );
 }
 

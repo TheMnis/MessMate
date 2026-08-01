@@ -1,79 +1,156 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
+import { FaLock, FaShieldAlt } from "react-icons/fa";
 
 function ChangePasswordCard() {
-  const [passwords, setPasswords] = useState({
-    currentPassword: "",
-    newPassword: "",
-    confirmPassword: "",
-  });
-
-  const handleChange = (e) => {
-    setPasswords({
-      ...passwords,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = () => {
-    if (passwords.newPassword !== passwords.confirmPassword) {
-      toast.error("Passwords do not match");
-      return;
-    }
-
-    toast.success("Password Changed Successfully");
-
-    setPasswords({
-      currentPassword: "",
-      newPassword: "",
-      confirmPassword: "",
-    });
-  };
-
   return (
-    <div className="[background:var(--color-surface)] radius-2xl elevation-lg p-8">
-      <h2 className="text-2xl font-bold mb-6">
-        Change Password
-      </h2>
+    <section
+      className="rounded-3xl p-8"
+      style={{
+        background: "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
+    >
+      <div className="flex items-center gap-4">
 
-      <div className="space-y-5">
-        <input
-          type="password"
-          name="currentPassword"
-          placeholder="Current Password"
-          value={passwords.currentPassword}
-          onChange={handleChange}
-          className="w-full border radius-xl p-3"
-        />
-
-        <input
-          type="password"
-          name="newPassword"
-          placeholder="New Password"
-          value={passwords.newPassword}
-          onChange={handleChange}
-          className="w-full border radius-xl p-3"
-        />
-
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          value={passwords.confirmPassword}
-          onChange={handleChange}
-          className="w-full border radius-xl p-3"
-        />
-      </div>
-
-      <div className="mt-8 flex justify-end">
-        <button
-          onClick={handleSubmit}
-          className="[background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)] px-8 py-3 radius-xl transition"
+        <div
+          className="flex h-16 w-16 items-center justify-center rounded-2xl"
+          style={{
+            background: "var(--color-primary-subtle)",
+            color: "var(--color-primary)",
+          }}
         >
-          Update Password
-        </button>
+          <FaShieldAlt size={28} />
+        </div>
+
+        <div>
+
+          <h2
+            className="text-2xl font-bold"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
+          >
+            Security
+          </h2>
+
+          <p
+            className="mt-1"
+            style={{
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            Change your account password.
+          </p>
+
+        </div>
+
       </div>
-    </div>
+
+      <div className="mt-8 space-y-5">
+
+        <div>
+
+          <label
+            className="mb-2 block font-semibold"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
+          >
+            Current Password
+          </label>
+
+          <div
+            className="flex items-center gap-3 rounded-2xl px-4 py-3"
+            style={{
+              background: "var(--color-background)",
+              border: "1px solid var(--color-border)",
+            }}
+          >
+            <FaLock />
+
+            <input
+              type="password"
+              placeholder="••••••••"
+              className="w-full bg-transparent outline-none"
+            />
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <label
+            className="mb-2 block font-semibold"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
+          >
+            New Password
+          </label>
+
+          <div
+            className="flex items-center gap-3 rounded-2xl px-4 py-3"
+            style={{
+              background: "var(--color-background)",
+              border: "1px solid var(--color-border)",
+            }}
+          >
+            <FaLock />
+
+            <input
+              type="password"
+              placeholder="••••••••"
+              className="w-full bg-transparent outline-none"
+            />
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <label
+            className="mb-2 block font-semibold"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
+          >
+            Confirm Password
+          </label>
+
+          <div
+            className="flex items-center gap-3 rounded-2xl px-4 py-3"
+            style={{
+              background: "var(--color-background)",
+              border: "1px solid var(--color-border)",
+            }}
+          >
+            <FaLock />
+
+            <input
+              type="password"
+              placeholder="••••••••"
+              className="w-full bg-transparent outline-none"
+            />
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <button
+        className="mt-8 w-full rounded-2xl py-4 font-semibold transition-all hover:scale-[1.02]"
+        style={{
+          background: "var(--color-primary)",
+          color: "var(--color-text-inverse)",
+        }}
+      >
+        Update Password
+      </button>
+
+    </section>
   );
 }
 
