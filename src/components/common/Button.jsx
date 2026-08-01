@@ -10,13 +10,13 @@ function Button({
 
   const variants = {
     primary:
-      "bg-primary hover:bg-primary-hover text-text-inverse",
+      "[background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)]",
 
     secondary:
-      "bg-surface-hover hover:bg-border-strong text-text-secondary",
+      "[background:var(--color-surface-hover)] hover:[background:var(--color-border-strong)] [color:var(--color-text-secondary)]",
 
     danger:
-      "bg-danger hover:bg-danger-hover text-text-inverse",
+      "[background:var(--color-danger)] hover:[background:var(--color-danger-hover)] [color:var(--color-text-inverse)]",
   };
 
   return (

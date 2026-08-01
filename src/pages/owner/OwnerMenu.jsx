@@ -90,7 +90,7 @@ function OwnerMenu() {
             Weekly Menu
           </h1>
 
-          <p className="text-text-muted mt-2">
+          <p className="[color:var(--color-text-muted)] mt-2">
             Manage your complete weekly menu.
           </p>
 
@@ -102,7 +102,7 @@ function OwnerMenu() {
 
             setModalOpen(true);
           }}
-          className="bg-primary hover:bg-primary-hover text-text-inverse px-6 py-3 radius-xl flex items-center gap-3"
+          className="[background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)] px-6 py-3 radius-xl flex items-center gap-3"
         >
           <FaPlus />
 

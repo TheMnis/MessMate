@@ -11,7 +11,7 @@ function StudentCard({
   onDelete,
 }) {
   return (
-    <div className="bg-surface radius-2xl elevation-md p-5 space-y-4">
+    <div className="[background:var(--color-surface)] radius-2xl elevation-md p-5 space-y-4">
 
       <div className="flex items-center justify-between">
 
@@ -24,8 +24,8 @@ function StudentCard({
           <span
             className={`inline-block mt-2 px-3 py-1 radius-full text-sm ${
               student.status === "Active"
-                ? "bg-success-subtle text-success-hover"
-                : "bg-danger-subtle text-danger-hover"
+                ? "[background:var(--color-success-subtle)] [color:var(--color-success-hover)]"
+                : "[background:var(--color-danger-subtle)] [color:var(--color-danger-hover)]"
             }`}
           >
             {student.status}
@@ -35,7 +35,7 @@ function StudentCard({
 
       </div>
 
-      <div className="space-y-2 text-text-secondary">
+      <div className="space-y-2 [color:var(--color-text-secondary)]">
 
         <p className="flex items-center gap-2">
           <FaEnvelope />
@@ -59,7 +59,7 @@ function StudentCard({
 
         <button
           onClick={() => onEdit(student)}
-          className="flex-1 bg-secondary hover:bg-secondary-hover text-text-inverse py-2 radius-lg"
+          className="flex-1 [background:var(--color-secondary)] hover:[background:var(--color-secondary-hover)] [color:var(--color-text-inverse)] py-2 radius-lg"
         >
           <FaEdit className="inline mr-2" />
 
@@ -68,7 +68,7 @@ function StudentCard({
 
         <button
           onClick={() => onDelete(student.id)}
-          className="flex-1 bg-danger hover:bg-danger-hover text-text-inverse py-2 radius-lg"
+          className="flex-1 [background:var(--color-danger)] hover:[background:var(--color-danger-hover)] [color:var(--color-text-inverse)] py-2 radius-lg"
         >
           <FaTrash className="inline mr-2" />
 

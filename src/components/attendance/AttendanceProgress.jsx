@@ -32,7 +32,7 @@ function AttendanceProgress() {
   ];
 
   return (
-    <div className="mt-8 bg-surface radius-3xl elevation-lg border border-border-subtle p-6">
+    <div className="mt-8 [background:var(--color-surface)] radius-3xl elevation-lg border [border-color:var(--color-border-subtle)] p-6">
 
       <div className="flex items-center justify-between mb-8">
 
@@ -40,13 +40,13 @@ function AttendanceProgress() {
 
           <h2 className="text-2xl font-bold flex items-center gap-2">
 
-            <FaChartPie className="text-success" />
+            <FaChartPie className="[color:var(--color-success)]" />
 
             Attendance Analytics
 
           </h2>
 
-          <p className="text-text-muted mt-1">
+          <p className="[color:var(--color-text-muted)] mt-1">
             Monthly attendance overview
           </p>
 
@@ -54,11 +54,11 @@ function AttendanceProgress() {
 
         <div className="text-right">
 
-          <h2 className="text-4xl font-bold text-success">
+          <h2 className="text-4xl font-bold [color:var(--color-success)]">
             {summary.percentage}%
           </h2>
 
-          <p className="text-sm text-text-muted">
+          <p className="text-sm [color:var(--color-text-muted)]">
             Overall Attendance
           </p>
 
@@ -107,7 +107,7 @@ function AttendanceProgress() {
 
             <div
               key={item.name}
-              className="flex items-center justify-between bg-surface-muted radius-2xl p-4"
+              className="flex items-center justify-between [background:var(--color-surface-muted)] radius-2xl p-4"
             >
 
               <div className="flex items-center gap-3">

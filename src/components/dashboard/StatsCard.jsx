@@ -27,10 +27,10 @@ function StatsCard({
         relative
         overflow-hidden
         block
-        bg-surface
+        [background:var(--color-surface)]
         rounded-3xl
         border
-        border-border
+        [border-color:var(--color-border)]
         shadow-sm
         hover:shadow-xl
         transition-all
@@ -40,7 +40,7 @@ function StatsCard({
       >
         {/* Accent */}
 
-        <div className="absolute left-0 top-0 h-full w-1 bg-primary opacity-80 group-hover:opacity-100 transition-all"></div>
+        <div className="absolute left-0 top-0 h-full w-1 [background:var(--color-primary)] opacity-80 group-hover:opacity-100 transition-all"></div>
 
         <div className="flex justify-between items-start">
 
@@ -48,23 +48,23 @@ function StatsCard({
 
           <div>
 
-            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide">
+            <p className="text-sm font-semibold [color:var(--color-text-muted)] uppercase tracking-wide">
               {title}
             </p>
 
-            <h2 className="text-4xl font-extrabold mt-4 text-text-primary">
+            <h2 className="text-4xl font-extrabold mt-4 [color:var(--color-text-primary)]">
               {value}
             </h2>
 
             <div className="flex items-center gap-2 mt-6">
 
-              <FaArrowTrendUp className="text-success" />
+              <FaArrowTrendUp className="[color:var(--color-success)]" />
 
-              <span className="font-semibold text-success">
+              <span className="font-semibold [color:var(--color-success)]">
                 {change}
               </span>
 
-              <span className="text-sm text-text-muted">
+              <span className="text-sm [color:var(--color-text-muted)]">
                 vs last month
               </span>
 

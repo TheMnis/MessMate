@@ -23,25 +23,25 @@ function StudentStats({ students }) {
       title: "Total Students",
       value: total,
       icon: <FaUsers />,
-      color: "bg-secondary",
+      color: "[background:var(--color-secondary)]",
     },
     {
       title: "Active",
       value: active,
       icon: <FaUserCheck />,
-      color: "bg-primary",
+      color: "[background:var(--color-primary)]",
     },
     {
       title: "Expired",
       value: expired,
       icon: <FaUserTimes />,
-      color: "bg-danger",
+      color: "[background:var(--color-danger)]",
     },
     {
       title: "Revenue",
       value: `₹${monthlyRevenue}`,
       icon: <FaWallet />,
-      color: "bg-accent",
+      color: "[background:var(--color-accent)]",
     },
   ];
 
@@ -50,10 +50,10 @@ function StudentStats({ students }) {
       {cards.map((card) => (
         <div
           key={card.title}
-          className="bg-surface radius-2xl elevation-md p-6 flex items-center justify-between"
+          className="[background:var(--color-surface)] radius-2xl elevation-md p-6 flex items-center justify-between"
         >
           <div>
-            <p className="text-text-muted">{card.title}</p>
+            <p className="[color:var(--color-text-muted)]">{card.title}</p>
 
             <h2 className="text-3xl font-bold mt-2">
               {card.value}
@@ -61,7 +61,7 @@ function StudentStats({ students }) {
           </div>
 
           <div
-            className={`${card.color} w-14 h-14 radius-xl flex items-center justify-center text-text-inverse text-2xl`}
+            className={`${card.color} w-14 h-14 radius-xl flex items-center justify-center [color:var(--color-text-inverse)] text-2xl`}
           >
             {card.icon}
           </div>

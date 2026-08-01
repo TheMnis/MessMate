@@ -6,11 +6,11 @@ function InventoryHeader({ onAddItem }) {
 
       <div>
 
-        <h1 className="text-4xl font-bold text-text-primary">
+        <h1 className="text-4xl font-bold [color:var(--color-text-primary)]">
           Inventory Management
         </h1>
 
-        <p className="text-text-muted mt-2">
+        <p className="[color:var(--color-text-muted)] mt-2">
           Manage all inventory items and stock levels.
         </p>
 
@@ -18,7 +18,7 @@ function InventoryHeader({ onAddItem }) {
 
       <button
         onClick={onAddItem}
-        className="flex items-center gap-3 bg-primary hover:bg-primary-hover text-text-inverse px-6 py-3 radius-xl elevation-lg transition"
+        className="flex items-center gap-3 [background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)] px-6 py-3 radius-xl elevation-lg transition"
       >
         <FaPlus />
 

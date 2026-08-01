@@ -22,10 +22,10 @@ function DayFilter({
         py-3
         radius-xl
         border
-        border-border
+        [border-color:var(--color-border)]
         outline-none
-        focus:border-primary
-        bg-surface
+        focus:[border-color:var(--color-primary)]
+        [background:var(--color-surface)]
       "
     >
       {days.map((day) => (

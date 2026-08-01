@@ -5,7 +5,7 @@ function MealCard({ meal }) {
   const [favorite, setFavorite] = useState(false);
 
   return (
-    <div className="radius-3xl bg-surface p-6 elevation-md transition-all duration-300 hover:-translate-y-1 hover:elevation-xl">
+    <div className="radius-3xl [background:var(--color-surface)] p-6 elevation-md transition-all duration-300 hover:-translate-y-1 hover:elevation-xl">
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
@@ -13,7 +13,7 @@ function MealCard({ meal }) {
             {meal.icon} {meal.meal}
           </h2>
 
-          <p className="mt-1 text-sm text-text-muted">
+          <p className="mt-1 text-sm [color:var(--color-text-muted)]">
             {meal.time}
           </p>
         </div>
@@ -23,9 +23,9 @@ function MealCard({ meal }) {
           className="text-2xl transition hover:scale-110"
         >
           {favorite ? (
-            <FaHeart className="text-danger" />
+            <FaHeart className="[color:var(--color-danger)]" />
           ) : (
-            <FaRegHeart className="text-text-disabled" />
+            <FaRegHeart className="[color:var(--color-text-disabled)]" />
           )}
         </button>
       </div>
@@ -35,14 +35,14 @@ function MealCard({ meal }) {
         <span
           className={`radius-full px-3 py-1 text-sm font-semibold ${
             meal.available
-              ? "bg-success-subtle text-success-hover"
-              : "bg-danger-subtle text-danger"
+              ? "[background:var(--color-success-subtle)] [color:var(--color-success-hover)]"
+              : "[background:var(--color-danger-subtle)] [color:var(--color-danger)]"
           }`}
         >
           {meal.available ? "Available" : "Closed"}
         </span>
 
-        <span className="radius-full bg-success-subtle px-3 py-1 text-sm font-semibold text-success-hover">
+        <span className="radius-full [background:var(--color-success-subtle)] px-3 py-1 text-sm font-semibold [color:var(--color-success-hover)]">
           {meal.type}
         </span>
       </div>
@@ -57,9 +57,9 @@ function MealCard({ meal }) {
           {meal.items.map((item) => (
             <li
               key={item}
-              className="flex items-center gap-2 text-text-secondary"
+              className="flex items-center gap-2 [color:var(--color-text-secondary)]"
             >
-              <span className="text-success">✔</span>
+              <span className="[color:var(--color-success)]">✔</span>
               {item}
             </li>
           ))}
@@ -69,14 +69,14 @@ function MealCard({ meal }) {
       {/* Footer */}
       <div className="mt-6 flex items-center justify-between border-t pt-4">
         <div className="flex items-center gap-2">
-          <FaFire className="text-highlight" />
+          <FaFire className="[color:var(--color-highlight)]" />
           <span className="font-semibold">
             {meal.calories} kcal
           </span>
         </div>
 
         <div className="flex items-center gap-2">
-          <FaStar className="text-warning" />
+          <FaStar className="[color:var(--color-warning)]" />
           <span className="font-semibold">
             {meal.rating}
           </span>

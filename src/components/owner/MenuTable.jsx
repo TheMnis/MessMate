@@ -9,11 +9,11 @@ function MenuTable({
   onDelete,
 }) {
   return (
-    <div className="bg-surface radius-2xl elevation-md overflow-hidden">
+    <div className="[background:var(--color-surface)] radius-2xl elevation-md overflow-hidden">
 
       <table className="w-full">
 
-        <thead className="bg-primary text-text-inverse">
+        <thead className="[background:var(--color-primary)] [color:var(--color-text-inverse)]">
 
           <tr>
 
@@ -49,7 +49,7 @@ function MenuTable({
 
               <td
                 colSpan="5"
-                className="text-center py-10 text-text-muted"
+                className="text-center py-10 [color:var(--color-text-muted)]"
               >
                 No Meals Found
               </td>
@@ -62,7 +62,7 @@ function MenuTable({
 
               <tr
                 key={meal.id}
-                className="border-b hover:bg-surface-muted transition"
+                className="border-b hover:[background:var(--color-surface-muted)] transition"
               >
 
                 <td className="p-4 font-semibold">
@@ -87,14 +87,14 @@ function MenuTable({
 
                     <button
                       onClick={() => onEdit(meal)}
-                      className="bg-secondary hover:bg-secondary text-text-inverse p-3 radius-lg transition"
+                      className="[background:var(--color-secondary)] hover:[background:var(--color-secondary)] [color:var(--color-text-inverse)] p-3 radius-lg transition"
                     >
                       <FaEdit />
                     </button>
 
                     <button
                       onClick={() => onDelete(meal.id)}
-                      className="bg-danger hover:bg-danger text-text-inverse p-3 radius-lg transition"
+                      className="[background:var(--color-danger)] hover:[background:var(--color-danger)] [color:var(--color-text-inverse)] p-3 radius-lg transition"
                     >
                       <FaTrash />
                     </button>

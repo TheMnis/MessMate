@@ -6,9 +6,9 @@ import {
 
 function getBadge(status) {
   const styles = {
-    Present: "bg-success-subtle text-success-hover",
-    Absent: "bg-danger-subtle text-danger-hover",
-    Leave: "bg-warning-subtle text-warning-hover",
+    Present: "[background:var(--color-success-subtle)] [color:var(--color-success-hover)]",
+    Absent: "[background:var(--color-danger-subtle)] [color:var(--color-danger-hover)]",
+    Leave: "[background:var(--color-warning-subtle)] [color:var(--color-warning-hover)]",
   };
 
   return (
@@ -30,7 +30,7 @@ function AttendanceHistory({ attendance }) {
   }, [attendance, search]);
 
   return (
-    <div className="mt-8 bg-surface radius-3xl elevation-lg border border-border-subtle p-6">
+    <div className="mt-8 [background:var(--color-surface)] radius-3xl elevation-lg border [border-color:var(--color-border-subtle)] p-6">
 
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 mb-6">
 
@@ -40,14 +40,14 @@ function AttendanceHistory({ attendance }) {
 
         <div className="relative w-full md:w-72">
 
-          <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-text-disabled" />
+          <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 [color:var(--color-text-disabled)]" />
 
           <input
             type="text"
             placeholder="Search by date..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full radius-2xl border border-border py-3 pl-12 pr-4 outline-none focus:ring-2 focus:ring-primary"
+            className="w-full radius-2xl border [border-color:var(--color-border)] py-3 pl-12 pr-4 outline-none focus:ring-2 focus:[--tw-ring-color:var(--color-primary)]"
           />
 
         </div>
@@ -58,9 +58,9 @@ function AttendanceHistory({ attendance }) {
 
         <div className="text-center py-12">
 
-          <FaCalendarAlt className="mx-auto text-5xl text-text-disabled" />
+          <FaCalendarAlt className="mx-auto text-5xl [color:var(--color-text-disabled)]" />
 
-          <p className="mt-4 text-text-muted">
+          <p className="mt-4 [color:var(--color-text-muted)]">
             No attendance records found.
           </p>
 
@@ -76,11 +76,11 @@ function AttendanceHistory({ attendance }) {
 
               <tr className="border-b">
 
-                <th className="text-left py-4 text-text-muted">
+                <th className="text-left py-4 [color:var(--color-text-muted)]">
                   Date
                 </th>
 
-                <th className="text-left py-4 text-text-muted">
+                <th className="text-left py-4 [color:var(--color-text-muted)]">
                   Status
                 </th>
 
@@ -94,7 +94,7 @@ function AttendanceHistory({ attendance }) {
 
                 <tr
                   key={item.id}
-                  className="border-b last:border-none hover:bg-surface-muted transition"
+                  className="border-b last:border-none hover:[background:var(--color-surface-muted)] transition"
                 >
 
                   <td className="py-4 font-medium">

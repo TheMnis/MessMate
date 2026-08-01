@@ -5,21 +5,21 @@ import {
 function StatsCard({ stat }) {
 
   const colors = {
-    green: "bg-success",
-    blue: "bg-secondary",
-    orange: "bg-highlight",
-    red: "bg-danger",
+    green: "[background:var(--color-success)]",
+    blue: "[background:var(--color-secondary)]",
+    orange: "[background:var(--color-highlight)]",
+    red: "[background:var(--color-danger)]",
   };
 
   return (
 
-    <div className="bg-surface radius-3xl elevation-lg p-6 hover:elevation-2xl transition-all duration-300">
+    <div className="[background:var(--color-surface)] radius-3xl elevation-lg p-6 hover:elevation-2xl transition-all duration-300">
 
       <div className="flex justify-between items-start">
 
         <div>
 
-          <p className="text-text-muted">
+          <p className="[color:var(--color-text-muted)]">
             {stat.title}
           </p>
 
@@ -30,14 +30,14 @@ function StatsCard({ stat }) {
         </div>
 
         <div
-          className={`w-12 h-12 radius-2xl flex items-center justify-center text-text-inverse ${colors[stat.color]}`}
+          className={`w-12 h-12 radius-2xl flex items-center justify-center [color:var(--color-text-inverse)] ${colors[stat.color]}`}
         >
           <FaArrowTrendUp />
         </div>
 
       </div>
 
-      <p className="text-success font-semibold mt-6">
+      <p className="[color:var(--color-success)] font-semibold mt-6">
         {stat.change}
       </p>
 

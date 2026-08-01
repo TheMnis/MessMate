@@ -5,28 +5,28 @@ function AttendanceFilter({ selected, onChange }) {
   const filters = [
     {
       label: "All",
-      color: "bg-text-secondary",
+      color: "[background:var(--color-text-secondary)]",
     },
     {
       label: "Present",
-      color: "bg-primary",
+      color: "[background:var(--color-primary)]",
     },
     {
       label: "Absent",
-      color: "bg-danger",
+      color: "[background:var(--color-danger)]",
     },
     {
       label: "Leave",
-      color: "bg-warning",
+      color: "[background:var(--color-warning)]",
     },
   ];
 
   return (
-    <div className="mt-8 bg-surface radius-3xl elevation-lg border border-border-subtle p-6">
+    <div className="mt-8 [background:var(--color-surface)] radius-3xl elevation-lg border [border-color:var(--color-border-subtle)] p-6">
 
       <div className="flex items-center gap-3 mb-5">
 
-        <FaFilter className="text-success text-xl" />
+        <FaFilter className="[color:var(--color-success)] text-xl" />
 
         <h2 className="text-xl font-bold">
           Filter Attendance
@@ -56,8 +56,8 @@ function AttendanceFilter({ selected, onChange }) {
               duration-300
               ${
                 selected === filter.label
-                  ? `${filter.color} text-text-inverse elevation-lg`
-                  : "bg-surface-hover text-text-secondary hover:bg-border-strong"
+                  ? `${filter.color} [color:var(--color-text-inverse)] elevation-lg`
+                  : "[background:var(--color-surface-hover)] [color:var(--color-text-secondary)] hover:[background:var(--color-border-strong)]"
               }
             `}
           >

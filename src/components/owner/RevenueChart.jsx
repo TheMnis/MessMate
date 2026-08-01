@@ -10,7 +10,7 @@ import {
 
 function RevenueChart({ data }) {
   return (
-    <div className="bg-surface radius-3xl elevation-lg p-6">
+    <div className="[background:var(--color-surface)] radius-3xl elevation-lg p-6">
 
       <h2 className="text-2xl font-bold mb-6">
         Revenue Overview

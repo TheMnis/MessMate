@@ -29,14 +29,14 @@ const messes = [
 
 function FeaturedMess() {
   return (
-    <section className="py-20 bg-surface">
+    <section className="py-20 [background:var(--color-surface)]">
       <div className="max-w-7xl mx-auto px-6">
 
         <h2 className="text-4xl font-bold text-center">
           Featured Messes
         </h2>
 
-        <p className="text-center text-text-muted mt-3">
+        <p className="text-center [color:var(--color-text-muted)] mt-3">
           Choose from top rated messes near you.
         </p>
 
@@ -53,12 +53,12 @@ function FeaturedMess() {
                 {mess.name}
               </h3>
 
-              <div className="flex items-center gap-2 mt-3 text-warning">
+              <div className="flex items-center gap-2 mt-3 [color:var(--color-warning)]">
                 <FaStar />
                 {mess.rating}
               </div>
 
-              <div className="flex items-center gap-2 mt-2 text-text-muted">
+              <div className="flex items-center gap-2 mt-2 [color:var(--color-text-muted)]">
                 <FaMapMarkerAlt />
                 {mess.location}
               </div>
@@ -67,11 +67,11 @@ function FeaturedMess() {
                 {mess.type}
               </p>
 
-              <p className="text-success font-bold mt-2">
+              <p className="[color:var(--color-success)] font-bold mt-2">
                 {mess.price}
               </p>
 
-              <button className="w-full bg-primary text-text-inverse py-3 radius-xl mt-6 hover:bg-primary-hover">
+              <button className="w-full [background:var(--color-primary)] [color:var(--color-text-inverse)] py-3 radius-xl mt-6 hover:[background:var(--color-primary-hover)]">
                 View Details
               </button>
 

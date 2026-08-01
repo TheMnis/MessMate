@@ -24,7 +24,7 @@ function Input({
     <div className="space-y-2">
 
       {label && (
-        <label className="font-semibold text-text-secondary">
+        <label className="font-semibold [color:var(--color-text-secondary)]">
           {label}
         </label>
       )}
@@ -32,7 +32,7 @@ function Input({
       <div className="relative">
 
         {Icon && (
-          <Icon className="absolute left-4 top-1/2 -translate-y-1/2 text-text-disabled" />
+          <Icon className="absolute left-4 top-1/2 -translate-y-1/2 [color:var(--color-text-disabled)]" />
         )}
 
         {textarea ? (
@@ -41,15 +41,15 @@ function Input({
               w-full
               radius-2xl
               border
-              border-border
-              bg-surface
+              [border-color:var(--color-border)]
+              [background:var(--color-surface)]
               px-4
               py-3
               ${Icon ? "pl-12" : ""}
               outline-none
               focus:ring-4
-              focus:ring-primary-muted
-              focus:border-primary
+              focus:[--tw-ring-color:var(--color-primary-muted)]
+              focus:[border-color:var(--color-primary)]
               transition-all
               resize-none
               ${className}
@@ -63,16 +63,16 @@ function Input({
               w-full
               radius-2xl
               border
-              border-border
-              bg-surface
+              [border-color:var(--color-border)]
+              [background:var(--color-surface)]
               px-4
               py-3
               ${Icon ? "pl-12" : ""}
               ${type === "password" ? "pr-12" : ""}
               outline-none
               focus:ring-4
-              focus:ring-primary-muted
-              focus:border-primary
+              focus:[--tw-ring-color:var(--color-primary-muted)]
+              focus:[border-color:var(--color-primary)]
               transition-all
               ${className}
             `}
@@ -86,7 +86,7 @@ function Input({
             onClick={() =>
               setShowPassword(!showPassword)
             }
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted"
+            className="absolute right-4 top-1/2 -translate-y-1/2 [color:var(--color-text-muted)]"
           >
             {showPassword ? (
               <FaEyeSlash />
@@ -99,13 +99,13 @@ function Input({
       </div>
 
       {helperText && (
-        <p className="text-sm text-text-muted">
+        <p className="text-sm [color:var(--color-text-muted)]">
           {helperText}
         </p>
       )}
 
       {error && (
-        <p className="text-sm text-danger">
+        <p className="text-sm [color:var(--color-danger)]">
           {error}
         </p>
       )}

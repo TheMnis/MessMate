@@ -35,8 +35,8 @@ function MealTabs({ selectedMeal, onSelectMeal }) {
           onClick={() => onSelectMeal(meal.label)}
           className={`radius-2xl px-5 py-3 font-medium transition-all duration-300 ${
             selectedMeal === meal.label
-              ? "bg-primary text-text-inverse elevation-lg"
-              : "bg-surface text-text-secondary elevation-base hover:bg-primary-subtle"
+              ? "[background:var(--color-primary)] [color:var(--color-text-inverse)] elevation-lg"
+              : "[background:var(--color-surface)] [color:var(--color-text-secondary)] elevation-base hover:[background:var(--color-primary-subtle)]"
           }`}
         >
           <span className="mr-2">{meal.icon}</span>

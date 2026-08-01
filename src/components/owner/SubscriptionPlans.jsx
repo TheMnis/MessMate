@@ -25,8 +25,8 @@ function SubscriptionPlans() {
           key={plan.name}
           className={`radius-2xl border-2 p-6 ${
             plan.active
-              ? "border-primary elevation-xl"
-              : "border-border-strong"
+              ? "[border-color:var(--color-primary)] elevation-xl"
+              : "[border-color:var(--color-border-strong)]"
           }`}
         >
 
@@ -41,8 +41,8 @@ function SubscriptionPlans() {
           <button
             className={`w-full py-3 radius-xl ${
               plan.active
-                ? "bg-primary text-text-inverse"
-                : "bg-surface-hover"
+                ? "[background:var(--color-primary)] [color:var(--color-text-inverse)]"
+                : "[background:var(--color-surface-hover)]"
             }`}
           >
             {plan.active

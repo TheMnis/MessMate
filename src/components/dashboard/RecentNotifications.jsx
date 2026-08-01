@@ -14,7 +14,7 @@ function RecentNotifications() {
       description: "Breakfast and lunch menu changed for today.",
       time: "10 min ago",
       icon: <FaBell />,
-      color: "bg-secondary",
+      color: "[background:var(--color-secondary)]",
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ function RecentNotifications() {
       description: "Your attendance has been recorded.",
       time: "1 hour ago",
       icon: <FaCheckCircle />,
-      color: "bg-success",
+      color: "[background:var(--color-success)]",
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ function RecentNotifications() {
       description: "Your subscription will expire in 5 days.",
       time: "Yesterday",
       icon: <FaExclamationTriangle />,
-      color: "bg-danger",
+      color: "[background:var(--color-danger)]",
     },
   ];
 
@@ -39,7 +39,7 @@ function RecentNotifications() {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.4 }}
-      className="bg-surface radius-3xl elevation-lg border border-border-subtle p-6"
+      className="[background:var(--color-surface)] radius-3xl elevation-lg border [border-color:var(--color-border-subtle)] p-6"
     >
       <div className="flex items-center justify-between mb-6">
 
@@ -47,7 +47,7 @@ function RecentNotifications() {
           🔔 Recent Notifications
         </h2>
 
-        <button className="text-success flex items-center gap-2 text-sm font-semibold hover:text-success-hover transition">
+        <button className="[color:var(--color-success)] flex items-center gap-2 text-sm font-semibold hover:[color:var(--color-success-hover)] transition">
           View All
           <FaArrowRight />
         </button>
@@ -63,7 +63,7 @@ function RecentNotifications() {
             whileHover={{
               x: 5,
             }}
-            className="flex items-start gap-4 p-4 radius-2xl hover:bg-primary-subtle transition-all"
+            className="flex items-start gap-4 p-4 radius-2xl hover:[background:var(--color-primary-subtle)] transition-all"
           >
 
             <div
@@ -74,7 +74,7 @@ function RecentNotifications() {
                 flex
                 items-center
                 justify-center
-                text-text-inverse
+                [color:var(--color-text-inverse)]
                 text-xl
                 elevation-md
                 ${item.color}
@@ -85,15 +85,15 @@ function RecentNotifications() {
 
             <div className="flex-1">
 
-              <h3 className="font-semibold text-text-primary">
+              <h3 className="font-semibold [color:var(--color-text-primary)]">
                 {item.title}
               </h3>
 
-              <p className="text-text-muted text-sm mt-1">
+              <p className="[color:var(--color-text-muted)] text-sm mt-1">
                 {item.description}
               </p>
 
-              <p className="text-xs text-text-disabled mt-2">
+              <p className="text-xs [color:var(--color-text-disabled)] mt-2">
                 {item.time}
               </p>
 

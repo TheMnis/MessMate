@@ -31,7 +31,7 @@ function ChangePasswordCard() {
   };
 
   return (
-    <div className="bg-surface radius-2xl elevation-lg p-8">
+    <div className="[background:var(--color-surface)] radius-2xl elevation-lg p-8">
       <h2 className="text-2xl font-bold mb-6">
         Change Password
       </h2>
@@ -68,7 +68,7 @@ function ChangePasswordCard() {
       <div className="mt-8 flex justify-end">
         <button
           onClick={handleSubmit}
-          className="bg-primary hover:bg-primary-hover text-text-inverse px-8 py-3 radius-xl transition"
+          className="[background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)] px-8 py-3 radius-xl transition"
         >
           Update Password
         </button>

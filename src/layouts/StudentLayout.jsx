@@ -7,7 +7,7 @@ function StudentLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex bg-background">
+    <div className="min-h-screen flex [background:var(--color-background)]">
       <Sidebar
         isOpen={isSidebarOpen}
         closeSidebar={() => setIsSidebarOpen(false)}

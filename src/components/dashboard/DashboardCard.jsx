@@ -4,7 +4,7 @@ function DashboardCard({
   title,
   value,
   icon,
-  color = "from-success to-primary",
+  color = "from-[var(--color-success)] to-[var(--color-primary)]",
   change = "+12%",
 }) {
   return (
@@ -13,7 +13,7 @@ function DashboardCard({
         relative
         overflow-hidden
         radius-3xl
-        bg-surface
+        [background:var(--color-surface)]
         elevation-md
         hover:elevation-2xl
         transition-all
@@ -32,7 +32,7 @@ function DashboardCard({
           w-32
           h-32
           radius-full
-          bg-success-subtle
+          [background:var(--color-success-subtle)]
           opacity-40
         "
       />
@@ -43,11 +43,11 @@ function DashboardCard({
 
         <div>
 
-          <p className="text-text-muted text-sm">
+          <p className="[color:var(--color-text-muted)] text-sm">
             {title}
           </p>
 
-          <h2 className="text-4xl font-bold mt-3 text-text-primary">
+          <h2 className="text-4xl font-bold mt-3 [color:var(--color-text-primary)]">
             {value}
           </h2>
 
@@ -63,7 +63,7 @@ function DashboardCard({
             flex
             items-center
             justify-center
-            text-text-inverse
+            [color:var(--color-text-inverse)]
             text-2xl
             elevation-lg
           `}
@@ -77,7 +77,7 @@ function DashboardCard({
 
       <div className="flex items-center justify-between mt-8">
 
-        <div className="flex items-center gap-2 text-success font-semibold">
+        <div className="flex items-center gap-2 [color:var(--color-success)] font-semibold">
 
           <FaArrowUp />
 
@@ -85,7 +85,7 @@ function DashboardCard({
 
         </div>
 
-        <span className="text-sm text-text-disabled">
+        <span className="text-sm [color:var(--color-text-disabled)]">
           This Month
         </span>
 
@@ -95,9 +95,9 @@ function DashboardCard({
 
       <div className="mt-4">
 
-        <div className="w-full h-2 radius-full bg-border-strong">
+        <div className="w-full h-2 radius-full [background:var(--color-border-strong)]">
 
-          <div className="w-3/4 h-2 radius-full bg-primary" />
+          <div className="w-3/4 h-2 radius-full [background:var(--color-primary)]" />
 
         </div>
 

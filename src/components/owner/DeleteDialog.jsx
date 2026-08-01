@@ -7,15 +7,15 @@ function DeleteDialog({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-overlay flex items-center justify-center z-50">
+    <div className="fixed inset-0 [background:var(--color-overlay)] flex items-center justify-center z-50">
 
-      <div className="bg-surface radius-2xl elevation-xl w-full max-w-md p-6">
+      <div className="[background:var(--color-surface)] radius-2xl elevation-xl w-full max-w-md p-6">
 
-        <h2 className="text-2xl font-bold text-danger">
+        <h2 className="text-2xl font-bold [color:var(--color-danger)]">
           Delete Meal
         </h2>
 
-        <p className="mt-4 text-text-secondary">
+        <p className="mt-4 [color:var(--color-text-secondary)]">
           Are you sure you want to delete
           <span className="font-semibold">
             {" "}
@@ -28,14 +28,14 @@ function DeleteDialog({
 
           <button
             onClick={onClose}
-            className="px-5 py-2 radius-xl border border-border hover:bg-surface-hover transition"
+            className="px-5 py-2 radius-xl border [border-color:var(--color-border)] hover:[background:var(--color-surface-hover)] transition"
           >
             Cancel
           </button>
 
           <button
             onClick={onConfirm}
-            className="px-5 py-2 radius-xl bg-danger text-text-inverse hover:bg-danger-hover transition"
+            className="px-5 py-2 radius-xl [background:var(--color-danger)] [color:var(--color-text-inverse)] hover:[background:var(--color-danger-hover)] transition"
           >
             Delete
           </button>

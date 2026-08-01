@@ -2,10 +2,10 @@ import MealEditor from "./MealEditor";
 
 const DayMenuCard = ({ menu }) => {
   return (
-    <div className="bg-surface border border-border-strong radius-xl elevation-sm p-6">
+    <div className="[background:var(--color-surface)] border [border-color:var(--color-border-strong)] radius-xl elevation-sm p-6">
       {/* Day Header */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-secondary-hover">
+        <h2 className="text-2xl font-bold [color:var(--color-secondary-hover)]">
           {menu.day}
         </h2>
       </div>
@@ -23,7 +23,7 @@ const DayMenuCard = ({ menu }) => {
 
       {/* Save Button */}
       <div className="mt-6 flex justify-end">
-        <button className="bg-secondary hover:bg-secondary-hover text-text-inverse font-medium px-6 py-2 radius-lg transition">
+        <button className="[background:var(--color-secondary)] hover:[background:var(--color-secondary-hover)] [color:var(--color-text-inverse)] font-medium px-6 py-2 radius-lg transition">
           Save Changes
         </button>
       </div>

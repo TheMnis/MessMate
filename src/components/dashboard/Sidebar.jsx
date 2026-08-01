@@ -60,9 +60,9 @@ function Sidebar({ isOpen, closeSidebar }) {
           left-0
           h-screen
           w-72
-          bg-surface
+          [background:var(--color-surface)]
           border-r
-          border-border
+          [border-color:var(--color-border)]
           flex
           flex-col
           z-50
@@ -73,21 +73,21 @@ function Sidebar({ isOpen, closeSidebar }) {
       >
         {/* Logo */}
 
-        <div className="px-7 py-8 border-b border-border">
+        <div className="px-7 py-8 border-b [border-color:var(--color-border)]">
 
           <div className="flex items-center gap-4">
 
-            <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+            <div className="w-14 h-14 rounded-2xl [background:var(--color-primary)] flex items-center justify-center text-white text-2xl font-bold shadow-lg">
               M
             </div>
 
             <div>
 
-              <h1 className="text-2xl font-extrabold tracking-tight text-text-primary">
+              <h1 className="text-2xl font-extrabold tracking-tight [color:var(--color-text-primary)]">
                 MessMate
               </h1>
 
-              <p className="text-sm text-text-muted">
+              <p className="text-sm [color:var(--color-text-muted)]">
                 Student Portal
               </p>
 
@@ -95,7 +95,7 @@ function Sidebar({ isOpen, closeSidebar }) {
 
             <button
               onClick={closeSidebar}
-              className="ml-auto lg:hidden text-xl text-text-secondary"
+              className="ml-auto lg:hidden text-xl [color:var(--color-text-secondary)]"
             >
               <FaTimes />
             </button>
@@ -108,7 +108,7 @@ function Sidebar({ isOpen, closeSidebar }) {
 
         <div className="flex-1 px-5 py-7">
 
-          <p className="text-xs uppercase tracking-[0.25em] text-text-muted px-4 mb-5">
+          <p className="text-xs uppercase tracking-[0.25em] [color:var(--color-text-muted)] px-4 mb-5">
             Navigation
           </p>
 
@@ -133,8 +133,8 @@ function Sidebar({ isOpen, closeSidebar }) {
                     duration-300
                     ${
                       isActive
-                        ? "bg-primary text-white shadow-xl"
-                        : "text-text-secondary hover:bg-primary-subtle hover:text-primary"
+                        ? "[background:var(--color-primary)] text-white shadow-xl"
+                        : "[color:var(--color-text-secondary)] hover:[background:var(--color-primary-subtle)] hover:[color:var(--color-primary)]"
                     }
                     `
                   }
@@ -157,7 +157,7 @@ function Sidebar({ isOpen, closeSidebar }) {
 
         {/* Logout */}
 
-        <div className="border-t border-border p-5">
+        <div className="border-t [border-color:var(--color-border)] p-5">
 
           <button
             className="
@@ -167,9 +167,9 @@ function Sidebar({ isOpen, closeSidebar }) {
               justify-center
               gap-3
               rounded-2xl
-              bg-danger/10
-              hover:bg-danger/20
-              text-danger
+              [background:color-mix(in_srgb,var(--color-danger) 10%,transparent)]
+              hover:[background:color-mix(in_srgb,var(--color-danger) 20%,transparent)]
+              [color:var(--color-danger)]
               py-4
               font-semibold
               transition-all

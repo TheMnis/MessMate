@@ -54,7 +54,7 @@ function ProfileCard({ profile, onSave }) {
 };
 
   return (
-    <div className="bg-surface radius-3xl elevation-lg p-8">
+    <div className="[background:var(--color-surface)] radius-3xl elevation-lg p-8">
 
       <div className="flex flex-col items-center">
 
@@ -63,12 +63,12 @@ function ProfileCard({ profile, onSave }) {
           <img
             src={preview}
             alt="Owner"
-            className="w-36 h-36 radius-full object-cover border-4 border-primary elevation-lg"
+            className="w-36 h-36 radius-full object-cover border-4 [border-color:var(--color-primary)] elevation-lg"
           />
 
           <label
             htmlFor="profileImage"
-            className="absolute bottom-2 right-2 bg-primary hover:bg-primary-hover text-text-inverse p-3 radius-full cursor-pointer transition"
+            className="absolute bottom-2 right-2 [background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)] p-3 radius-full cursor-pointer transition"
           >
             <FaCamera />
           </label>
@@ -87,7 +87,7 @@ function ProfileCard({ profile, onSave }) {
           {formData.ownerName}
         </h2>
 
-        <p className="text-text-muted">
+        <p className="[color:var(--color-text-muted)]">
           {formData.messName}
         </p>
 
@@ -97,7 +97,7 @@ function ProfileCard({ profile, onSave }) {
 
         <div className="relative">
 
-          <FaUser className="absolute top-4 left-4 text-success" />
+          <FaUser className="absolute top-4 left-4 [color:var(--color-success)]" />
 
           <input
             name="ownerName"
@@ -111,7 +111,7 @@ function ProfileCard({ profile, onSave }) {
 
         <div className="relative">
 
-          <FaStore className="absolute top-4 left-4 text-success" />
+          <FaStore className="absolute top-4 left-4 [color:var(--color-success)]" />
 
           <input
             name="messName"
@@ -125,7 +125,7 @@ function ProfileCard({ profile, onSave }) {
 
         <div className="relative">
 
-          <FaEnvelope className="absolute top-4 left-4 text-success" />
+          <FaEnvelope className="absolute top-4 left-4 [color:var(--color-success)]" />
 
           <input
             name="email"
@@ -139,7 +139,7 @@ function ProfileCard({ profile, onSave }) {
 
         <div className="relative">
 
-          <FaPhone className="absolute top-4 left-4 text-success" />
+          <FaPhone className="absolute top-4 left-4 [color:var(--color-success)]" />
 
           <input
             name="phone"
@@ -153,7 +153,7 @@ function ProfileCard({ profile, onSave }) {
 
         <div className="relative md:col-span-2">
 
-          <FaMapMarkerAlt className="absolute top-4 left-4 text-success" />
+          <FaMapMarkerAlt className="absolute top-4 left-4 [color:var(--color-success)]" />
 
           <textarea
             rows="4"
@@ -172,7 +172,7 @@ function ProfileCard({ profile, onSave }) {
 
         <button
           onClick={handleSave}
-          className="bg-primary hover:bg-primary-hover text-text-inverse px-8 py-3 radius-xl elevation-lg transition"
+          className="[background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)] px-8 py-3 radius-xl elevation-lg transition"
         >
           Save Changes
         </button>

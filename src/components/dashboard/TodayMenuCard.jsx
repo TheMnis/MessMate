@@ -34,7 +34,7 @@ function TodayMenuCard() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="bg-surface radius-3xl elevation-lg border border-border-subtle p-6"
+      className="[background:var(--color-surface)] radius-3xl elevation-lg border [border-color:var(--color-border-subtle)] p-6"
     >
       <div className="flex items-center justify-between mb-6">
 
@@ -42,7 +42,7 @@ function TodayMenuCard() {
           🍽 Today's Menu
         </h2>
 
-        <span className="text-success text-sm font-semibold">
+        <span className="[color:var(--color-success)] text-sm font-semibold">
           3 Meals
         </span>
 
@@ -55,12 +55,12 @@ function TodayMenuCard() {
           <motion.div
             key={item.meal}
             whileHover={{ scale: 1.02 }}
-            className="flex items-center justify-between p-5 radius-2xl bg-surface-muted hover:bg-primary-subtle transition-all"
+            className="flex items-center justify-between p-5 radius-2xl [background:var(--color-surface-muted)] hover:[background:var(--color-primary-subtle)] transition-all"
           >
 
             <div className="flex items-center gap-4">
 
-              <div className="w-14 h-14 radius-2xl bg-primary text-text-inverse flex items-center justify-center text-xl elevation-lg">
+              <div className="w-14 h-14 radius-2xl [background:var(--color-primary)] [color:var(--color-text-inverse)] flex items-center justify-center text-xl elevation-lg">
                 {item.icon}
               </div>
 
@@ -70,11 +70,11 @@ function TodayMenuCard() {
                   {item.meal}
                 </h3>
 
-                <p className="text-text-muted text-sm">
+                <p className="[color:var(--color-text-muted)] text-sm">
                   {item.items}
                 </p>
 
-                <p className="text-success text-xs mt-1">
+                <p className="[color:var(--color-success)] text-xs mt-1">
                   {item.time}
                 </p>
 
@@ -82,7 +82,7 @@ function TodayMenuCard() {
 
             </div>
 
-            <FaCircleCheck className="text-success text-2xl" />
+            <FaCircleCheck className="[color:var(--color-success)] text-2xl" />
 
           </motion.div>
 

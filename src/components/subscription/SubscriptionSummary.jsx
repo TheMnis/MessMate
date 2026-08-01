@@ -13,7 +13,7 @@ function SubscriptionSummary({ subscription }) {
       initial={{ opacity: 0, y: 25 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="bg-gradient-to-r from-primary to-success radius-3xl p-8 text-text-inverse elevation-xl"
+      className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-success)] radius-3xl p-8 [color:var(--color-text-inverse)] elevation-xl"
     >
       <div className="flex flex-col lg:flex-row justify-between gap-8">
 
@@ -21,7 +21,7 @@ function SubscriptionSummary({ subscription }) {
 
           <div className="flex items-center gap-3">
 
-            <FaCrown className="text-4xl text-warning" />
+            <FaCrown className="text-4xl [color:var(--color-warning)]" />
 
             <div>
 
@@ -29,7 +29,7 @@ function SubscriptionSummary({ subscription }) {
                 {subscription.plan}
               </h2>
 
-              <p className="text-primary-muted mt-1">
+              <p className="[color:var(--color-primary-muted)] mt-1">
                 Your current subscription plan
               </p>
 
@@ -41,7 +41,7 @@ function SubscriptionSummary({ subscription }) {
 
             <div>
 
-              <p className="text-primary-muted text-sm">
+              <p className="[color:var(--color-primary-muted)] text-sm">
                 Monthly Fee
               </p>
 
@@ -53,7 +53,7 @@ function SubscriptionSummary({ subscription }) {
 
             <div>
 
-              <p className="text-primary-muted text-sm">
+              <p className="[color:var(--color-primary-muted)] text-sm">
                 Remaining Days
               </p>
 
@@ -67,7 +67,7 @@ function SubscriptionSummary({ subscription }) {
 
         </div>
 
-        <div className="bg-surface/10 backdrop-blur-lg radius-3xl p-6 min-w-[280px]">
+        <div className="[background:color-mix(in_srgb,var(--color-surface) 10%,transparent)] backdrop-blur-lg radius-3xl p-6 min-w-[280px]">
 
           <div className="flex items-center gap-3 mb-5">
 
@@ -99,10 +99,10 @@ function SubscriptionSummary({ subscription }) {
 
             </div>
 
-            <div className="w-full bg-surface/20 radius-full h-3">
+            <div className="w-full [background:color-mix(in_srgb,var(--color-surface) 20%,transparent)] radius-full h-3">
 
               <div
-                className="bg-surface radius-full h-3 transition-all"
+                className="[background:var(--color-surface)] radius-full h-3 transition-all"
                 style={{
                   width: `${subscription.progress}%`,
                 }}

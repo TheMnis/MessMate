@@ -1,6 +1,6 @@
 function PaymentHistory({ payments }) {
   return (
-    <div className="bg-surface radius-2xl elevation-lg p-6">
+    <div className="[background:var(--color-surface)] radius-2xl elevation-lg p-6">
 
       <h2 className="text-2xl font-bold mb-5">
         Payment History
@@ -12,7 +12,7 @@ function PaymentHistory({ payments }) {
 
           <div
             key={payment.id}
-            className="flex justify-between items-center border radius-xl p-4 hover:bg-surface-muted transition"
+            className="flex justify-between items-center border radius-xl p-4 hover:[background:var(--color-surface-muted)] transition"
           >
 
             <div>
@@ -21,7 +21,7 @@ function PaymentHistory({ payments }) {
                 {payment.invoice}
               </h3>
 
-              <p className="text-text-muted text-sm">
+              <p className="[color:var(--color-text-muted)] text-sm">
                 {payment.date}
               </p>
 
@@ -33,7 +33,7 @@ function PaymentHistory({ payments }) {
                 ₹{payment.amount}
               </h3>
 
-              <span className="text-success text-sm font-medium">
+              <span className="[color:var(--color-success)] text-sm font-medium">
                 {payment.status}
               </span>
 

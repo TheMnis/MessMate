@@ -14,7 +14,7 @@ function Card({
         duration: 0.25,
       }}
       className={`
-        bg-surface
+        [background:var(--color-surface)]
         radius-3xl
         elevation-lg
         hover:elevation-2xl
@@ -22,7 +22,7 @@ function Card({
         duration-300
         p-6
         border
-        border-border-subtle
+        [border-color:var(--color-border-subtle)]
         ${className}
       `}
     >

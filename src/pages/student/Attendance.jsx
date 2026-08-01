@@ -36,25 +36,25 @@ function Attendance() {
         <AttendanceSummaryCard
           title="Present"
           value={summary.present}
-          icon={<FaCheckCircle className="text-success" />}
-          bgColor="bg-primary-subtle"
-          textColor="text-success-hover"
+          icon={<FaCheckCircle className="[color:var(--color-success)]" />}
+          bgColor="[background:var(--color-primary-subtle)]"
+          textColor="[color:var(--color-success-hover)]"
         />
 
         <AttendanceSummaryCard
           title="Absent"
           value={summary.absent}
-          icon={<FaTimesCircle className="text-danger" />}
-          bgColor="bg-danger-subtle"
-          textColor="text-danger-hover"
+          icon={<FaTimesCircle className="[color:var(--color-danger)]" />}
+          bgColor="[background:var(--color-danger-subtle)]"
+          textColor="[color:var(--color-danger-hover)]"
         />
 
         <AttendanceSummaryCard
           title="Leave"
           value={summary.leave}
-          icon={<MdOutlineEventAvailable className="text-warning-hover" />}
-          bgColor="bg-warning-subtle"
-          textColor="text-warning-hover"
+          icon={<MdOutlineEventAvailable className="[color:var(--color-warning-hover)]" />}
+          bgColor="[background:var(--color-warning-subtle)]"
+          textColor="[color:var(--color-warning-hover)]"
         />
 
       </div>

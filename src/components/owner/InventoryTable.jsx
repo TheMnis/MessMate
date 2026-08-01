@@ -9,11 +9,11 @@ function InventoryTable({
   onDelete,
 }) {
   return (
-    <div className="bg-surface radius-2xl elevation-md overflow-hidden">
+    <div className="[background:var(--color-surface)] radius-2xl elevation-md overflow-hidden">
 
       <table className="w-full">
 
-        <thead className="bg-primary text-text-inverse">
+        <thead className="[background:var(--color-primary)] [color:var(--color-text-inverse)]">
 
           <tr>
 
@@ -51,7 +51,7 @@ function InventoryTable({
 
             <tr
               key={item.id}
-              className="border-b hover:bg-surface-muted"
+              className="border-b hover:[background:var(--color-surface-muted)]"
             >
 
               <td className="p-4 font-semibold">
@@ -75,8 +75,8 @@ function InventoryTable({
                 <span
                   className={`px-3 py-1 radius-full text-sm ${
                     item.quantity <= item.minimumStock
-                      ? "bg-danger-subtle text-danger-hover"
-                      : "bg-success-subtle text-success-hover"
+                      ? "[background:var(--color-danger-subtle)] [color:var(--color-danger-hover)]"
+                      : "[background:var(--color-success-subtle)] [color:var(--color-success-hover)]"
                   }`}
                 >
                   {item.quantity <= item.minimumStock
@@ -92,14 +92,14 @@ function InventoryTable({
 
                   <button
                     onClick={() => onEdit(item)}
-                    className="bg-secondary text-text-inverse p-3 radius-lg"
+                    className="[background:var(--color-secondary)] [color:var(--color-text-inverse)] p-3 radius-lg"
                   >
                     <FaEdit />
                   </button>
 
                   <button
                     onClick={() => onDelete(item.id)}
-                    className="bg-danger text-text-inverse p-3 radius-lg"
+                    className="[background:var(--color-danger)] [color:var(--color-text-inverse)] p-3 radius-lg"
                   >
                     <FaTrash />
                   </button>

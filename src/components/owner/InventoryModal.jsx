@@ -23,9 +23,9 @@ function InventoryModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-overlay flex items-center justify-center z-50">
+    <div className="fixed inset-0 [background:var(--color-overlay)] flex items-center justify-center z-50">
 
-      <div className="bg-surface radius-2xl elevation-xl p-6 w-full max-w-lg">
+      <div className="[background:var(--color-surface)] radius-2xl elevation-xl p-6 w-full max-w-lg">
 
         <h2 className="text-2xl font-bold mb-6">
           Add Inventory Item
@@ -64,7 +64,7 @@ function InventoryModal({
             </button>
 
             <button
-              className="px-5 py-2 bg-primary text-text-inverse radius-xl"
+              className="px-5 py-2 [background:var(--color-primary)] [color:var(--color-text-inverse)] radius-xl"
             >
               Save
             </button>

@@ -22,19 +22,19 @@ function AttendanceSummaryCard({
         radius-3xl
         elevation-lg
         border
-        border-border-subtle
+        [border-color:var(--color-border-subtle)]
         p-6
         overflow-hidden
         relative
       `}
     >
-      <div className="absolute -right-6 -top-6 w-24 h-24 radius-full bg-surface/20"></div>
+      <div className="absolute -right-6 -top-6 w-24 h-24 radius-full [background:color-mix(in_srgb,var(--color-surface) 20%,transparent)]"></div>
 
       <div className="relative flex items-center justify-between">
 
         <div>
 
-          <p className="text-text-secondary text-sm font-semibold uppercase tracking-wide">
+          <p className="[color:var(--color-text-secondary)] text-sm font-semibold uppercase tracking-wide">
             {title}
           </p>
 
@@ -44,13 +44,13 @@ function AttendanceSummaryCard({
 
           <div className="flex items-center gap-2 mt-4">
 
-            <FaArrowTrendUp className="text-success text-sm" />
+            <FaArrowTrendUp className="[color:var(--color-success)] text-sm" />
 
-            <span className="text-success text-sm font-semibold">
+            <span className="[color:var(--color-success)] text-sm font-semibold">
               +5%
             </span>
 
-            <span className="text-text-muted text-sm">
+            <span className="[color:var(--color-text-muted)] text-sm">
               This Month
             </span>
 
@@ -63,7 +63,7 @@ function AttendanceSummaryCard({
             w-16
             h-16
             radius-2xl
-            bg-surface
+            [background:var(--color-surface)]
             elevation-md
             flex
             items-center

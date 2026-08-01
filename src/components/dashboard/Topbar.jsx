@@ -8,7 +8,7 @@ import {
 
 function Topbar({ toggleSidebar }) {
   return (
-    <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-xl border-b border-border h-20 flex items-center justify-between px-6 lg:px-10">
+    <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-xl border-b [border-color:var(--color-border)] h-20 flex items-center justify-between px-6 lg:px-10">
 
       {/* LEFT */}
 
@@ -16,18 +16,18 @@ function Topbar({ toggleSidebar }) {
 
         <button
           onClick={toggleSidebar}
-          className="lg:hidden w-11 h-11 rounded-2xl bg-surface-hover hover:bg-primary-subtle transition-all duration-300 flex items-center justify-center"
+          className="lg:hidden w-11 h-11 rounded-2xl [background:var(--color-surface-hover)] hover:[background:var(--color-primary-subtle)] transition-all duration-300 flex items-center justify-center"
         >
           <FaBars />
         </button>
 
         <div>
 
-          <h1 className="text-3xl font-bold tracking-tight text-text-primary">
+          <h1 className="text-3xl font-bold tracking-tight [color:var(--color-text-primary)]">
             Student Dashboard
           </h1>
 
-          <p className="text-sm text-text-muted mt-1">
+          <p className="text-sm [color:var(--color-text-muted)] mt-1">
             Welcome back 👋 Have a great day.
           </p>
 
@@ -43,7 +43,7 @@ function Topbar({ toggleSidebar }) {
 
         <div className="hidden lg:block relative">
 
-          <FaSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-text-muted" />
+          <FaSearch className="absolute left-5 top-1/2 -translate-y-1/2 [color:var(--color-text-muted)]" />
 
           <input
             placeholder="Search anything..."
@@ -51,14 +51,14 @@ function Topbar({ toggleSidebar }) {
               w-80
               h-12
               rounded-2xl
-              bg-surface-hover
+              [background:var(--color-surface-hover)]
               border
-              border-border
+              [border-color:var(--color-border)]
               pl-12
               pr-5
               outline-none
               transition-all
-              focus:border-primary
+              focus:[border-color:var(--color-primary)]
               focus:bg-white
             "
           />
@@ -73,15 +73,15 @@ function Topbar({ toggleSidebar }) {
           w-12
           h-12
           rounded-2xl
-          bg-surface-hover
-          hover:bg-primary-subtle
+          [background:var(--color-surface-hover)]
+          hover:[background:var(--color-primary-subtle)]
           transition-all
           "
         >
 
           <FaBell className="mx-auto text-lg" />
 
-          <span className="absolute top-2 right-2 w-2.5 h-2.5 rounded-full bg-danger"></span>
+          <span className="absolute top-2 right-2 w-2.5 h-2.5 rounded-full [background:var(--color-danger)]"></span>
 
         </button>
 
@@ -94,8 +94,8 @@ function Topbar({ toggleSidebar }) {
           w-12
           h-12
           rounded-2xl
-          bg-surface-hover
-          hover:bg-primary-subtle
+          [background:var(--color-surface-hover)]
+          hover:[background:var(--color-primary-subtle)]
           transition-all
           items-center
           justify-center
@@ -113,9 +113,9 @@ function Topbar({ toggleSidebar }) {
           flex
           items-center
           gap-3
-          bg-surface
+          [background:var(--color-surface)]
           border
-          border-border
+          [border-color:var(--color-border)]
           rounded-2xl
           px-3
           py-2
@@ -123,15 +123,15 @@ function Topbar({ toggleSidebar }) {
           "
         >
 
-          <FaUserCircle className="text-4xl text-primary" />
+          <FaUserCircle className="text-4xl [color:var(--color-primary)]" />
 
           <div className="hidden xl:block">
 
-            <h4 className="font-semibold text-text-primary">
+            <h4 className="font-semibold [color:var(--color-text-primary)]">
               Student
             </h4>
 
-            <p className="text-xs text-text-muted">
+            <p className="text-xs [color:var(--color-text-muted)]">
               Active Subscription
             </p>
 
