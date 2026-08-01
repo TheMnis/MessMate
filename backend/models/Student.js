@@ -18,8 +18,7 @@ const studentSchema = new mongoose.Schema(
 
     phone: {
       type: String,
-      required: true,
-      trim: true,
+      default: "",
     },
 
     password: {
@@ -78,4 +77,7 @@ const studentSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Student", studentSchema);
+module.exports = mongoose.model(
+  "Student",
+  studentSchema
+);

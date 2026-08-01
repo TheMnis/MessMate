@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
+const authRoutes = require("./routes/auth.routes");
 const studentRoutes = require("./routes/student.routes");
 
 const notFoundMiddleware = require("./middlewares/notFound.middleware");
@@ -11,13 +12,16 @@ dotenv.config();
 
 const app = express();
 
+/* ----------------------------- Middlewares ----------------------------- */
+
 app.use(cors());
 
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-// Health Check
+/* ----------------------------- Health Check ---------------------------- */
+
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
@@ -25,13 +29,16 @@ app.get("/", (req, res) => {
   });
 });
 
-// Routes
+/* -------------------------------- Routes ------------------------------- */
+
+app.use("/api/auth", authRoutes);
+
 app.use("/api/students", studentRoutes);
 
-// 404 Handler
+/* --------------------------- Error Handlers ---------------------------- */
+
 app.use(notFoundMiddleware);
 
-// Global Error Handler
 app.use(errorMiddleware);
 
 module.exports = app;
