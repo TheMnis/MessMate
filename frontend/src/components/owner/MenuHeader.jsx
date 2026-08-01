@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
-import { FaUsers } from "react-icons/fa";
+import {
+  FaUtensils,
+  FaCalendarWeek,
+  FaClipboardList,
+} from "react-icons/fa";
 
-function StudentHeader() {
+function MenuHeader() {
   return (
     <motion.section
       initial={{
@@ -11,6 +15,9 @@ function StudentHeader() {
       animate={{
         opacity: 1,
         y: 0,
+      }}
+      transition={{
+        duration: 0.3,
       }}
       className="relative overflow-hidden rounded-3xl p-8"
       style={{
@@ -22,8 +29,8 @@ function StudentHeader() {
       <div
         style={{
           position: "absolute",
-          top: -80,
-          right: -80,
+          top: -90,
+          right: -90,
           width: 240,
           height: 240,
           borderRadius: "999px",
@@ -53,48 +60,77 @@ function StudentHeader() {
               background: "rgba(255,255,255,.15)",
             }}
           >
-            <FaUsers />
+            <FaClipboardList />
 
-            Student Management
+            Weekly Menu Management
 
           </div>
 
           <h1 className="mt-6 text-5xl font-bold">
-            Students
+            Menu Management
           </h1>
 
           <p
             className="mt-4 max-w-2xl text-lg"
             style={{
-              color: "rgba(255,255,255,.9)",
+              color: "rgba(255,255,255,.92)",
             }}
           >
-            Manage student records,
-            attendance,
-            subscriptions and profile
-            information from one place.
+            Create, edit and manage the weekly mess menu.
+            Assign meals for breakfast, lunch and dinner
+            for every day of the week.
           </p>
 
         </div>
 
         <div
-          className="rounded-3xl p-7 text-center"
-          style={{
-            background: "rgba(255,255,255,.12)",
-          }}
+          className="grid gap-4 sm:grid-cols-2"
         >
 
-          <div className="text-5xl font-bold">
-            248
+          <div
+            className="rounded-3xl p-6"
+            style={{
+              background: "rgba(255,255,255,.12)",
+            }}
+          >
+            <FaCalendarWeek size={28} />
+
+            <div className="mt-5 text-5xl font-bold">
+              7
+            </div>
+
+            <div
+              className="mt-2"
+              style={{
+                color: "rgba(255,255,255,.9)",
+              }}
+            >
+              Days Managed
+            </div>
+
           </div>
 
           <div
-            className="mt-2"
+            className="rounded-3xl p-6"
             style={{
-              color: "rgba(255,255,255,.9)",
+              background: "rgba(255,255,255,.12)",
             }}
           >
-            Total Students
+            <FaUtensils size={28} />
+
+            <div className="mt-5 text-5xl font-bold">
+              21
+            </div>
+
+            <div
+              className="mt-2"
+              style={{
+                color: "rgba(255,255,255,.9)",
+              }}
+            >
+              Meals Scheduled
+            </div>
+
           </div>
 
         </div>
@@ -105,4 +141,4 @@ function StudentHeader() {
   );
 }
 
-export default StudentHeader;
+export default MenuHeader;

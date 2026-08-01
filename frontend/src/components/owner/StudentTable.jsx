@@ -1,144 +1,216 @@
+import { motion } from "framer-motion";
 import {
   FaEdit,
   FaTrash,
-  FaEye,
+  FaPhoneAlt,
+  FaClipboardCheck,
 } from "react-icons/fa";
 
-function StudentTable({
-  students,
-  onEdit,
-  onDelete,
-}) {
+function StudentTable({ students }) {
   return (
-    <div className="[background:var(--color-surface)] radius-2xl elevation-md overflow-hidden">
+    <section
+      className="overflow-hidden rounded-3xl"
+      style={{
+        background: "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
+    >
+      <div className="overflow-x-auto">
 
-      <table className="w-full">
+        <table className="w-full">
 
-        <thead className="[background:var(--color-primary)] [color:var(--color-text-inverse)]">
-
-          <tr>
-
-            <th className="p-4 text-left">
-              Name
-            </th>
-
-            <th className="p-4 text-left">
-              Email
-            </th>
-
-            <th className="p-4 text-left">
-              Phone
-            </th>
-
-            <th className="p-4 text-left">
-              Plan
-            </th>
-
-            <th className="p-4 text-left">
-              Status
-            </th>
-
-            <th className="p-4 text-center">
-              Actions
-            </th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          {students.length === 0 ? (
-
+          <thead
+            style={{
+              background: "var(--color-background)",
+            }}
+          >
             <tr>
 
-              <td
-                colSpan="6"
-                className="text-center py-10 [color:var(--color-text-muted)]"
-              >
-                No Students Found
-              </td>
+              <th className="px-6 py-5 text-left">
+                Student
+              </th>
+
+              <th className="px-6 py-5 text-left">
+                Room
+              </th>
+
+              <th className="px-6 py-5 text-left">
+                Phone
+              </th>
+
+              <th className="px-6 py-5 text-left">
+                Attendance
+              </th>
+
+              <th className="px-6 py-5 text-left">
+                Status
+              </th>
+
+              <th className="px-6 py-5 text-center">
+                Actions
+              </th>
 
             </tr>
+          </thead>
 
-          ) : (
+          <tbody>
 
-            students.map((student) => (
+            {students.map((student) => (
 
-              <tr
+              <motion.tr
                 key={student.id}
-                className="border-b hover:[background:var(--color-surface-muted)]"
+                whileHover={{
+                  backgroundColor:
+                    "rgba(0,0,0,.02)",
+                }}
+                style={{
+                  borderTop:
+                    "1px solid var(--color-border)",
+                }}
               >
 
-                <td className="p-4 font-semibold">
-                  {student.name}
+                <td className="px-6 py-5">
+
+                  <div className="flex items-center gap-4">
+
+                    <img
+                      src={`https://api.dicebear.com/9.x/adventurer/svg?seed=${student.name}`}
+                      alt={student.name}
+                      className="h-14 w-14 rounded-full object-cover"
+                    />
+
+                    <div>
+
+                      <div
+                        className="font-bold"
+                        style={{
+                          color:
+                            "var(--color-text-primary)",
+                        }}
+                      >
+                        {student.name}
+                      </div>
+
+                    </div>
+
+                  </div>
+
                 </td>
 
-                <td className="p-4">
-                  {student.email}
+                <td className="px-6 py-5">
+                  {student.room}
                 </td>
 
-                <td className="p-4">
-                  {student.phone}
+                <td className="px-6 py-5">
+
+                  <div className="flex items-center gap-2">
+
+                    <FaPhoneAlt
+                      style={{
+                        color:
+                          "var(--color-success)",
+                      }}
+                    />
+
+                    {student.phone}
+
+                  </div>
+
                 </td>
 
-                <td className="p-4">
-                  {student.plan}
+                <td className="px-6 py-5">
+
+                  <div className="flex items-center gap-2">
+
+                    <FaClipboardCheck
+                      style={{
+                        color:
+                          "var(--color-warning)",
+                      }}
+                    />
+
+                    {student.attendance}%
+
+                  </div>
+
                 </td>
 
-                <td className="p-4">
+                <td className="px-6 py-5">
 
                   <span
-                    className={`px-3 py-1 radius-full text-sm font-semibold ${
-                      student.status === "Active"
-                        ? "[background:var(--color-success-subtle)] [color:var(--color-success-hover)]"
-                        : "[background:var(--color-danger-subtle)] [color:var(--color-danger-hover)]"
-                    }`}
+                    className="rounded-full px-3 py-1 text-sm font-semibold"
+                    style={{
+                      background:
+                        student.status === "Active"
+                          ? "var(--color-success-subtle)"
+                          : "var(--color-warning-subtle)",
+                      color:
+                        student.status === "Active"
+                          ? "var(--color-success)"
+                          : "var(--color-warning)",
+                    }}
                   >
                     {student.status}
                   </span>
 
                 </td>
 
-                <td className="p-4">
+                <td className="px-6 py-5">
 
                   <div className="flex justify-center gap-3">
 
-                    <button
-                      className="[background:var(--color-info)] hover:[background:var(--color-info-hover)] [color:var(--color-text-inverse)] p-3 radius-lg transition"
-                    >
-                      <FaEye />
-                    </button>
-
-                    <button
-                      onClick={() => onEdit(student)}
-                      className="[background:var(--color-secondary)] hover:[background:var(--color-secondary)] [color:var(--color-text-inverse)] p-3 radius-lg transition"
+                    <motion.button
+                      whileHover={{
+                        scale: 1.08,
+                      }}
+                      whileTap={{
+                        scale: 0.96,
+                      }}
+                      className="flex h-10 w-10 items-center justify-center rounded-xl"
+                      style={{
+                        background:
+                          "var(--color-primary-subtle)",
+                        color:
+                          "var(--color-primary)",
+                      }}
                     >
                       <FaEdit />
-                    </button>
+                    </motion.button>
 
-                    <button
-                      onClick={() => onDelete(student.id)}
-                      className="[background:var(--color-danger)] hover:[background:var(--color-danger)] [color:var(--color-text-inverse)] p-3 radius-lg transition"
+                    <motion.button
+                      whileHover={{
+                        scale: 1.08,
+                      }}
+                      whileTap={{
+                        scale: 0.96,
+                      }}
+                      className="flex h-10 w-10 items-center justify-center rounded-xl"
+                      style={{
+                        background:
+                          "var(--color-danger-subtle)",
+                        color:
+                          "var(--color-danger)",
+                      }}
                     >
                       <FaTrash />
-                    </button>
+                    </motion.button>
 
                   </div>
 
                 </td>
 
-              </tr>
+              </motion.tr>
 
-            ))
+            ))}
 
-          )}
+          </tbody>
 
-        </tbody>
+        </table>
 
-      </table>
+      </div>
 
-    </div>
+    </section>
   );
 }
 

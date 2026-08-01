@@ -1,140 +1,223 @@
-import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaTimes, FaUserPlus } from "react-icons/fa";
 
 function StudentModal({
-  isOpen,
+  open,
   onClose,
-  onSave,
-  initialData,
 }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    plan: "Monthly",
-    status: "Active",
-  });
-
-  useEffect(() => {
-    if (initialData) {
-      setFormData(initialData);
-    } else {
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        plan: "Monthly",
-        status: "Active",
-      });
-    }
-  }, [initialData]);
-
-  if (!isOpen) return null;
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    onSave(formData);
-
-    onClose();
-  };
-
   return (
-    <div className="fixed inset-0 [background:var(--color-overlay)] flex items-center justify-center z-50">
-
-      <div className="[background:var(--color-surface)] radius-2xl elevation-xl w-full max-w-lg p-6">
-
-        <h2 className="text-2xl font-bold mb-6">
-          {initialData ? "✏️ Edit Student" : "➕ Add Student"}
-        </h2>
-
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4"
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+          exit={{
+            opacity: 0,
+          }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-5"
+          style={{
+            background: "rgba(0,0,0,.45)",
+            backdropFilter: "blur(8px)",
+          }}
         >
-
-          <input
-            type="text"
-            name="name"
-            placeholder="Student Name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full border radius-xl p-3 outline-none focus:[border-color:var(--color-primary)]"
-            required
-          />
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full border radius-xl p-3 outline-none focus:[border-color:var(--color-primary)]"
-            required
-          />
-
-          <input
-            type="text"
-            name="phone"
-            placeholder="Phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full border radius-xl p-3 outline-none focus:[border-color:var(--color-primary)]"
-            required
-          />
-
-          <select
-            name="plan"
-            value={formData.plan}
-            onChange={handleChange}
-            className="w-full border radius-xl p-3 outline-none focus:[border-color:var(--color-primary)]"
+          <motion.div
+            initial={{
+              scale: 0.9,
+              opacity: 0,
+            }}
+            animate={{
+              scale: 1,
+              opacity: 1,
+            }}
+            exit={{
+              scale: 0.9,
+              opacity: 0,
+            }}
+            className="w-full max-w-2xl rounded-3xl p-8"
+            style={{
+              background: "var(--color-surface)",
+              border: "1px solid var(--color-border)",
+              boxShadow: "var(--shadow-xl)",
+            }}
           >
-            <option>Monthly</option>
-            <option>Quarterly</option>
-            <option>Half Yearly</option>
-            <option>Yearly</option>
-          </select>
+            <div className="mb-8 flex items-center justify-between">
 
-          <select
-            name="status"
-            value={formData.status}
-            onChange={handleChange}
-            className="w-full border radius-xl p-3 outline-none focus:[border-color:var(--color-primary)]"
-          >
-            <option>Active</option>
-            <option>Expired</option>
-          </select>
+              <div className="flex items-center gap-4">
 
-          <div className="flex justify-end gap-3 pt-4">
+                <div
+                  className="flex h-14 w-14 items-center justify-center rounded-2xl"
+                  style={{
+                    background:
+                      "var(--color-primary-subtle)",
+                    color:
+                      "var(--color-primary)",
+                  }}
+                >
+                  <FaUserPlus size={24} />
+                </div>
 
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-5 py-2 border radius-xl hover:[background:var(--color-surface-hover)]"
-            >
-              Cancel
-            </button>
+                <div>
 
-            <button
-              type="submit"
-              className="px-5 py-2 [background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)] radius-xl"
-            >
-              Save
-            </button>
+                  <h2
+                    className="text-3xl font-bold"
+                    style={{
+                      color:
+                        "var(--color-text-primary)",
+                    }}
+                  >
+                    Add Student
+                  </h2>
 
-          </div>
+                  <p
+                    style={{
+                      color:
+                        "var(--color-text-secondary)",
+                    }}
+                  >
+                    Fill the student information.
+                  </p>
 
-        </form>
+                </div>
 
-      </div>
+              </div>
 
-    </div>
+              <button
+                onClick={onClose}
+                className="flex h-11 w-11 items-center justify-center rounded-2xl"
+                style={{
+                  background:
+                    "var(--color-danger-subtle)",
+                  color:
+                    "var(--color-danger)",
+                }}
+              >
+                <FaTimes />
+              </button>
+
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-2">
+
+              <input
+                type="text"
+                placeholder="Student Name"
+                className="rounded-2xl px-4 py-3 outline-none"
+                style={{
+                  background:
+                    "var(--color-background)",
+                  border:
+                    "1px solid var(--color-border)",
+                }}
+              />
+
+              <input
+                type="text"
+                placeholder="Room Number"
+                className="rounded-2xl px-4 py-3 outline-none"
+                style={{
+                  background:
+                    "var(--color-background)",
+                  border:
+                    "1px solid var(--color-border)",
+                }}
+              />
+
+              <input
+                type="email"
+                placeholder="Email Address"
+                className="rounded-2xl px-4 py-3 outline-none"
+                style={{
+                  background:
+                    "var(--color-background)",
+                  border:
+                    "1px solid var(--color-border)",
+                }}
+              />
+
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                className="rounded-2xl px-4 py-3 outline-none"
+                style={{
+                  background:
+                    "var(--color-background)",
+                  border:
+                    "1px solid var(--color-border)",
+                }}
+              />
+
+              <select
+                className="rounded-2xl px-4 py-3 outline-none"
+                style={{
+                  background:
+                    "var(--color-background)",
+                  border:
+                    "1px solid var(--color-border)",
+                }}
+              >
+                <option>
+                  Active
+                </option>
+
+                <option>
+                  Inactive
+                </option>
+
+              </select>
+
+              <input
+                type="number"
+                placeholder="Attendance %"
+                className="rounded-2xl px-4 py-3 outline-none"
+                style={{
+                  background:
+                    "var(--color-background)",
+                  border:
+                    "1px solid var(--color-border)",
+                }}
+              />
+
+            </div>
+
+            <div className="mt-8 flex justify-end gap-4">
+
+              <button
+                onClick={onClose}
+                className="rounded-2xl px-6 py-3 font-semibold"
+                style={{
+                  background:
+                    "var(--color-background)",
+                  border:
+                    "1px solid var(--color-border)",
+                  color:
+                    "var(--color-text-primary)",
+                }}
+              >
+                Cancel
+              </button>
+
+              <button
+                className="rounded-2xl px-6 py-3 font-semibold"
+                style={{
+                  background:
+                    "var(--color-primary)",
+                  color:
+                    "var(--color-text-inverse)",
+                }}
+              >
+                Save Student
+              </button>
+
+            </div>
+
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 

@@ -1,119 +1,215 @@
+import { motion } from "framer-motion";
 import {
   FaEdit,
   FaTrash,
+  FaEye,
 } from "react-icons/fa";
 
 function MenuTable({
-  menu,
-  onEdit,
-  onDelete,
+  menu = [],
+  onEdit = () => {},
+  onDelete = () => {},
+  onView = () => {},
 }) {
   return (
-    <div className="[background:var(--color-surface)] radius-2xl elevation-md overflow-hidden">
+    <section
+      className="overflow-hidden rounded-3xl"
+      style={{
+        background: "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
+    >
+      <div className="overflow-x-auto">
 
-      <table className="w-full">
+        <table className="min-w-full">
 
-        <thead className="[background:var(--color-primary)] [color:var(--color-text-inverse)]">
-
-          <tr>
-
-            <th className="p-4 text-left">
-              Day
-            </th>
-
-            <th className="p-4 text-left">
-              Breakfast
-            </th>
-
-            <th className="p-4 text-left">
-              Lunch
-            </th>
-
-            <th className="p-4 text-left">
-              Dinner
-            </th>
-
-            <th className="p-4 text-center">
-              Actions
-            </th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          {menu.length === 0 ? (
-
+          <thead
+            style={{
+              background: "var(--color-background)",
+            }}
+          >
             <tr>
 
-              <td
-                colSpan="5"
-                className="text-center py-10 [color:var(--color-text-muted)]"
-              >
-                No Meals Found
-              </td>
+              <th className="px-6 py-5 text-left">
+                Day
+              </th>
+
+              <th className="px-6 py-5 text-left">
+                Meal Type
+              </th>
+
+              <th className="px-6 py-5 text-left">
+                Meal Name
+              </th>
+
+              <th className="px-6 py-5 text-left">
+                Items
+              </th>
+
+              <th className="px-6 py-5 text-center">
+                Status
+              </th>
+
+              <th className="px-6 py-5 text-center">
+                Actions
+              </th>
 
             </tr>
+          </thead>
 
-          ) : (
+          <tbody>
 
-            menu.map((meal) => (
+            {menu.map((item) => (
 
-              <tr
-                key={meal.id}
-                className="border-b hover:[background:var(--color-surface-muted)] transition"
+              <motion.tr
+                key={item.id}
+                whileHover={{
+                  backgroundColor:
+                    "rgba(0,0,0,.02)",
+                }}
+                style={{
+                  borderTop:
+                    "1px solid var(--color-border)",
+                }}
               >
 
-                <td className="p-4 font-semibold">
-                  {meal.day}
+                <td className="px-6 py-5 font-semibold">
+                  {item.day}
                 </td>
 
-                <td className="p-4">
-                  {meal.breakfast}
+                <td className="px-6 py-5">
+                  {item.type}
                 </td>
 
-                <td className="p-4">
-                  {meal.lunch}
+                <td className="px-6 py-5 font-medium">
+                  {item.meal}
                 </td>
 
-                <td className="p-4">
-                  {meal.dinner}
-                </td>
+                <td className="px-6 py-5">
 
-                <td className="p-4">
+                  <div className="flex flex-wrap gap-2">
 
-                  <div className="flex justify-center gap-3">
-
-                    <button
-                      onClick={() => onEdit(meal)}
-                      className="[background:var(--color-secondary)] hover:[background:var(--color-secondary)] [color:var(--color-text-inverse)] p-3 radius-lg transition"
-                    >
-                      <FaEdit />
-                    </button>
-
-                    <button
-                      onClick={() => onDelete(meal.id)}
-                      className="[background:var(--color-danger)] hover:[background:var(--color-danger)] [color:var(--color-text-inverse)] p-3 radius-lg transition"
-                    >
-                      <FaTrash />
-                    </button>
+                    {item.items?.map((food) => (
+                      <span
+                        key={food}
+                        className="rounded-full px-3 py-1 text-sm"
+                        style={{
+                          background:
+                            "var(--color-primary-subtle)",
+                          color:
+                            "var(--color-primary)",
+                        }}
+                      >
+                        {food}
+                      </span>
+                    ))}
 
                   </div>
 
                 </td>
 
-              </tr>
+                <td className="px-6 py-5 text-center">
 
-            ))
+                  <span
+                    className="rounded-full px-3 py-1 text-sm font-semibold"
+                    style={{
+                      background:
+                        item.status === "Active"
+                          ? "var(--color-success-subtle)"
+                          : "var(--color-danger-subtle)",
+                      color:
+                        item.status === "Active"
+                          ? "var(--color-success)"
+                          : "var(--color-danger)",
+                    }}
+                  >
+                    {item.status}
+                  </span>
 
-          )}
+                </td>
 
-        </tbody>
+                <td className="px-6 py-5">
 
-      </table>
+                  <div className="flex justify-center gap-3">
 
-    </div>
+                    <motion.button
+                      whileHover={{
+                        scale: 1.08,
+                      }}
+                      whileTap={{
+                        scale: 0.96,
+                      }}
+                      onClick={() =>
+                        onView(item)
+                      }
+                      className="flex h-10 w-10 items-center justify-center rounded-xl"
+                      style={{
+                        background:
+                          "var(--color-secondary-subtle)",
+                        color:
+                          "var(--color-secondary)",
+                      }}
+                    >
+                      <FaEye />
+                    </motion.button>
+
+                    <motion.button
+                      whileHover={{
+                        scale: 1.08,
+                      }}
+                      whileTap={{
+                        scale: 0.96,
+                      }}
+                      onClick={() =>
+                        onEdit(item)
+                      }
+                      className="flex h-10 w-10 items-center justify-center rounded-xl"
+                      style={{
+                        background:
+                          "var(--color-primary-subtle)",
+                        color:
+                          "var(--color-primary)",
+                      }}
+                    >
+                      <FaEdit />
+                    </motion.button>
+
+                    <motion.button
+                      whileHover={{
+                        scale: 1.08,
+                      }}
+                      whileTap={{
+                        scale: 0.96,
+                      }}
+                      onClick={() =>
+                        onDelete(item)
+                      }
+                      className="flex h-10 w-10 items-center justify-center rounded-xl"
+                      style={{
+                        background:
+                          "var(--color-danger-subtle)",
+                        color:
+                          "var(--color-danger)",
+                      }}
+                    >
+                      <FaTrash />
+                    </motion.button>
+
+                  </div>
+
+                </td>
+
+              </motion.tr>
+
+            ))}
+
+          </tbody>
+
+        </table>
+
+      </div>
+    </section>
   );
 }
 

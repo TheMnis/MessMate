@@ -1,47 +1,51 @@
 import { motion } from "framer-motion";
 import {
-  FaUsers,
-  FaUserCheck,
-  FaUserClock,
+  FaCalendarWeek,
+  FaUtensils,
+  FaConciergeBell,
   FaClipboardCheck,
 } from "react-icons/fa";
 
 const stats = [
   {
     id: 1,
-    title: "Total Students",
-    value: "248",
-    icon: <FaUsers />,
+    title: "Weekly Menus",
+    value: "7",
+    icon: <FaCalendarWeek />,
     color: "var(--color-primary)",
     bg: "var(--color-primary-subtle)",
+    progress: "100%",
   },
   {
     id: 2,
-    title: "Active",
-    value: "221",
-    icon: <FaUserCheck />,
+    title: "Total Meals",
+    value: "21",
+    icon: <FaUtensils />,
     color: "var(--color-success)",
     bg: "var(--color-success-subtle)",
+    progress: "86%",
   },
   {
     id: 3,
-    title: "Inactive",
-    value: "27",
-    icon: <FaUserClock />,
+    title: "Today's Meals",
+    value: "3",
+    icon: <FaConciergeBell />,
     color: "var(--color-warning)",
     bg: "var(--color-warning-subtle)",
+    progress: "72%",
   },
   {
     id: 4,
-    title: "Attendance",
-    value: "91%",
+    title: "Menu Completion",
+    value: "98%",
     icon: <FaClipboardCheck />,
     color: "var(--color-secondary)",
     bg: "var(--color-secondary-subtle)",
+    progress: "98%",
   },
 ];
 
-function StudentStats() {
+function MenuStats() {
   return (
     <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
       {stats.map((item) => (
@@ -79,7 +83,7 @@ function StudentStats() {
                 color: "var(--color-success)",
               }}
             >
-              +8%
+              +6%
             </div>
 
           </div>
@@ -110,7 +114,7 @@ function StudentStats() {
           >
             <div
               style={{
-                width: "80%",
+                width: item.progress,
                 height: "100%",
                 background: item.color,
                 borderRadius: "999px",
@@ -124,4 +128,4 @@ function StudentStats() {
   );
 }
 
-export default StudentStats;
+export default MenuStats;

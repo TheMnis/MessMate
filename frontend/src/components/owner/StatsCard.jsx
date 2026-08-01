@@ -1,50 +1,91 @@
-import {
-  FaArrowTrendUp,
-} from "react-icons/fa6";
+import { motion } from "framer-motion";
 
-function StatsCard({ stat }) {
-
-  const colors = {
-    green: "[background:var(--color-success)]",
-    blue: "[background:var(--color-secondary)]",
-    orange: "[background:var(--color-highlight)]",
-    red: "[background:var(--color-danger)]",
-  };
-
+function StatsCard({
+  title,
+  value,
+  icon,
+  color,
+  bg,
+}) {
   return (
-
-    <div className="[background:var(--color-surface)] radius-3xl elevation-lg p-6 hover:elevation-2xl transition-all duration-300">
-
-      <div className="flex justify-between items-start">
+    <motion.div
+      whileHover={{
+        y: -6,
+      }}
+      transition={{
+        duration: 0.25,
+      }}
+      className="rounded-3xl p-6"
+      style={{
+        background: "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
+    >
+      <div className="flex items-start justify-between">
 
         <div>
 
-          <p className="[color:var(--color-text-muted)]">
-            {stat.title}
-          </p>
+          <div
+            className="flex h-16 w-16 items-center justify-center rounded-2xl text-2xl"
+            style={{
+              background: bg,
+              color,
+            }}
+          >
+            {icon}
+          </div>
 
-          <h2 className="text-3xl font-bold mt-3">
-            {stat.value}
+          <h3
+            className="mt-6 text-lg font-semibold"
+            style={{
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            {title}
+          </h3>
+
+          <h2
+            className="mt-2 text-4xl font-bold"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
+          >
+            {value}
           </h2>
 
         </div>
 
         <div
-          className={`w-12 h-12 radius-2xl flex items-center justify-center [color:var(--color-text-inverse)] ${colors[stat.color]}`}
+          className="rounded-full px-3 py-1 text-sm font-semibold"
+          style={{
+            background: "var(--color-success-subtle)",
+            color: "var(--color-success)",
+          }}
         >
-          <FaArrowTrendUp />
+          +12%
         </div>
 
       </div>
 
-      <p className="[color:var(--color-success)] font-semibold mt-6">
-        {stat.change}
-      </p>
+      <div
+        className="mt-6 h-2 overflow-hidden rounded-full"
+        style={{
+          background: "var(--color-border)",
+        }}
+      >
+        <div
+          style={{
+            width: "75%",
+            height: "100%",
+            background: color,
+            borderRadius: "999px",
+          }}
+        />
+      </div>
 
-    </div>
-
+    </motion.div>
   );
-
 }
 
 export default StatsCard;

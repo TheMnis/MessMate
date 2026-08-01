@@ -1,153 +1,235 @@
-import { useState } from "react";
-
-import {
-  getWeeklyMenu,
-  addMeal,
-  updateMeal,
-  deleteMeal,
-} from "../../services/owner/menu.service";
-
-import SearchBar from "../../components/owner/SearchBar";
-import DayFilter from "../../components/owner/DayFilter";
-import MenuTable from "../../components/owner/MenuTable";
-import MealModal from "../../components/owner/MealModal";
-import DeleteDialog from "../../components/owner/DeleteDialog";
-
+import { useMemo, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 
+import MenuHeader from "../../components/owner/MenuHeader";
+import MenuStats from "../../components/owner/MenuStats";
+import MenuFilter from "../../components/owner/MenuFilter";
+import MenuDayTabs from "../../components/owner/MenuDayTabs";
+import MenuSearch from "../../components/owner/MenuSearch";
+import MenuTable from "../../components/owner/MenuTable";
+import MenuCard from "../../components/owner/MenuCard";
+import MenuFormModal from "../../components/owner/MenuFormModal";
+import MenuDetailsDrawer from "../../components/owner/MenuDetailsDrawer";
+import MenuDeleteDialog from "../../components/owner/MenuDeleteDialog";
+
+import ownerMenuData from "../../data/ownerMenuData";
+
 function OwnerMenu() {
-  const [menu, setMenu] = useState(getWeeklyMenu());
+  const [menu] = useState(ownerMenuData);
 
   const [search, setSearch] = useState("");
 
-  const [dayFilter, setDayFilter] = useState("All");
+  const [selectedDay, setSelectedDay] =
+    useState("Monday");
 
-  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedMeal, setSelectedMeal] =
+    useState("All");
 
-  const [editingMeal, setEditingMeal] = useState(null);
+  const [view, setView] =
+    useState("table");
 
-  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [selectedMenu, setSelectedMenu] =
+    useState(null);
 
-  const [selectedMeal, setSelectedMeal] = useState(null);
+  const [openForm, setOpenForm] =
+    useState(false);
 
-  const filteredMenu = menu.filter((meal) => {
-    const matchesSearch =
-      meal.day.toLowerCase().includes(search.toLowerCase()) ||
-      meal.breakfast.toLowerCase().includes(search.toLowerCase()) ||
-      meal.lunch.toLowerCase().includes(search.toLowerCase()) ||
-      meal.dinner.toLowerCase().includes(search.toLowerCase());
+  const [openDrawer, setOpenDrawer] =
+    useState(false);
 
-    const matchesDay =
-      dayFilter === "All" || meal.day === dayFilter;
+  const [openDelete, setOpenDelete] =
+    useState(false);
 
-    return matchesSearch && matchesDay;
-  });
+  const filteredMenu = useMemo(() => {
+    return menu.filter((item) => {
+      const dayMatch =
+        selectedDay === "All"
+          ? true
+          : item.day === selectedDay;
 
-  const handleSave = (meal) => {
-    if (editingMeal) {
-      const updated = updateMeal(editingMeal.id, meal);
-      setMenu([...updated]);
-    } else {
-      const updated = addMeal(meal);
-      setMenu([...updated]);
-    }
+      const mealMatch =
+        selectedMeal === "All"
+          ? true
+          : item.type === selectedMeal;
 
-    setEditingMeal(null);
-  };
+      const searchMatch =
+        item.meal
+          .toLowerCase()
+          .includes(search.toLowerCase());
 
-  const handleEdit = (meal) => {
-    setEditingMeal(meal);
-
-    setModalOpen(true);
-  };
-
-  const handleDelete = (id) => {
-    const meal = menu.find((m) => m.id === id);
-
-    setSelectedMeal(meal);
-
-    setDeleteOpen(true);
-  };
-
-  const confirmDelete = () => {
-    const updated = deleteMeal(selectedMeal.id);
-
-    setMenu([...updated]);
-
-    setDeleteOpen(false);
-
-    setSelectedMeal(null);
-  };
+      return (
+        dayMatch &&
+        mealMatch &&
+        searchMatch
+      );
+    });
+  }, [
+    menu,
+    search,
+    selectedDay,
+    selectedMeal,
+  ]);
 
   return (
     <div className="space-y-8">
 
-      <div className="flex flex-col lg:flex-row justify-between gap-4">
+      <MenuHeader />
 
-        <div>
+      <MenuStats />
 
-          <h1 className="text-4xl font-bold">
-            Weekly Menu
-          </h1>
+      <MenuFilter
+        search={search}
+        setSearch={setSearch}
+        selectedDay={selectedDay}
+        setSelectedDay={setSelectedDay}
+        selectedMeal={selectedMeal}
+        setSelectedMeal={setSelectedMeal}
+      />
 
-          <p className="[color:var(--color-text-muted)] mt-2">
-            Manage your complete weekly menu.
-          </p>
+      <MenuDayTabs
+        selectedDay={selectedDay}
+        setSelectedDay={setSelectedDay}
+      />
+
+      <MenuSearch
+        search={search}
+        setSearch={setSearch}
+      />
+
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+
+        <div
+          className="flex overflow-hidden rounded-2xl"
+          style={{
+            border:
+              "1px solid var(--color-border)",
+          }}
+        >
+          <button
+            onClick={() =>
+              setView("table")
+            }
+            className="px-5 py-3 font-semibold"
+            style={{
+              background:
+                view === "table"
+                  ? "var(--color-primary)"
+                  : "var(--color-surface)",
+              color:
+                view === "table"
+                  ? "var(--color-text-inverse)"
+                  : "var(--color-text-primary)",
+            }}
+          >
+            Table
+          </button>
+
+          <button
+            onClick={() =>
+              setView("grid")
+            }
+            className="px-5 py-3 font-semibold"
+            style={{
+              background:
+                view === "grid"
+                  ? "var(--color-primary)"
+                  : "var(--color-surface)",
+              color:
+                view === "grid"
+                  ? "var(--color-text-inverse)"
+                  : "var(--color-text-primary)",
+            }}
+          >
+            Grid
+          </button>
 
         </div>
 
         <button
-          onClick={() => {
-            setEditingMeal(null);
-
-            setModalOpen(true);
+          onClick={() =>
+            setOpenForm(true)
+          }
+          className="flex items-center gap-3 rounded-2xl px-6 py-3 font-semibold"
+          style={{
+            background:
+              "var(--color-primary)",
+            color:
+              "var(--color-text-inverse)",
           }}
-          className="[background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)] px-6 py-3 radius-xl flex items-center gap-3"
         >
           <FaPlus />
 
-          Add Meal
+          Add Menu
 
         </button>
 
       </div>
 
-      <div className="flex flex-col md:flex-row gap-4 justify-between">
-
-        <SearchBar
-          value={search}
-          onChange={setSearch}
+      {view === "table" ? (
+        <MenuTable
+          menu={filteredMenu}
+          onView={(item) => {
+            setSelectedMenu(item);
+            setOpenDrawer(true);
+          }}
+          onEdit={(item) => {
+            setSelectedMenu(item);
+            setOpenForm(true);
+          }}
+          onDelete={(item) => {
+            setSelectedMenu(item);
+            setOpenDelete(true);
+          }}
         />
+      ) : (
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 
-        <DayFilter
-          value={dayFilter}
-          onChange={setDayFilter}
-        />
+          {filteredMenu.map((item) => (
+            <MenuCard
+              key={item.id}
+              menu={item}
+              onView={(menu) => {
+                setSelectedMenu(menu);
+                setOpenDrawer(true);
+              }}
+              onEdit={(menu) => {
+                setSelectedMenu(menu);
+                setOpenForm(true);
+              }}
+              onDelete={(menu) => {
+                setSelectedMenu(menu);
+                setOpenDelete(true);
+              }}
+            />
+          ))}
 
-      </div>
+        </div>
+      )}
 
-      <MenuTable
-        menu={filteredMenu}
-        onEdit={handleEdit}
-        onDelete={handleDelete}
+      <MenuFormModal
+        open={openForm}
+        onClose={() =>
+          setOpenForm(false)
+        }
       />
 
-      <MealModal
-        isOpen={modalOpen}
-        onClose={() => {
-          setModalOpen(false);
-
-          setEditingMeal(null);
-        }}
-        onSave={handleSave}
-        initialData={editingMeal}
+      <MenuDetailsDrawer
+        open={openDrawer}
+        menu={selectedMenu}
+        onClose={() =>
+          setOpenDrawer(false)
+        }
       />
 
-      <DeleteDialog
-        isOpen={deleteOpen}
-        meal={selectedMeal}
-        onClose={() => setDeleteOpen(false)}
-        onConfirm={confirmDelete}
+      <MenuDeleteDialog
+        open={openDelete}
+        menu={selectedMenu}
+        onClose={() =>
+          setOpenDelete(false)
+        }
+        onConfirm={() =>
+          setOpenDelete(false)
+        }
       />
 
     </div>

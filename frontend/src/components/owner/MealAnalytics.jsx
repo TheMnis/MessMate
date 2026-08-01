@@ -1,58 +1,106 @@
+import { motion } from "framer-motion";
 import {
   ResponsiveContainer,
   PieChart,
   Pie,
   Cell,
   Tooltip,
+  Legend,
 } from "recharts";
 
-const mealData = [
-  { name: "Breakfast", value: 35 },
-  { name: "Lunch", value: 40 },
-  { name: "Dinner", value: 25 },
+const data = [
+  {
+    name: "Breakfast",
+    value: 32,
+  },
+  {
+    name: "Lunch",
+    value: 38,
+  },
+  {
+    name: "Dinner",
+    value: 30,
+  },
 ];
 
 const COLORS = [
-  "var(--chart-success)",
-  "var(--chart-secondary)",
-  "var(--color-highlight)",
+  "var(--color-primary)",
+  "var(--color-success)",
+  "var(--color-warning)",
 ];
 
 function MealAnalytics() {
-
   return (
+    <motion.section
+      initial={{
+        opacity: 0,
+        y: 20,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      className="rounded-3xl p-6"
+      style={{
+        background: "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
+    >
+      <div className="mb-6">
 
-    <div className="[background:var(--color-surface)] radius-3xl elevation-lg p-6">
+        <h2
+          className="text-2xl font-bold"
+          style={{
+            color: "var(--color-text-primary)",
+          }}
+        >
+          Meal Analytics
+        </h2>
 
-      <h2 className="text-2xl font-bold mb-6">
-        Meal Analytics
-      </h2>
+        <p
+          className="mt-2"
+          style={{
+            color: "var(--color-text-secondary)",
+          }}
+        >
+          Distribution of meals served today.
+        </p>
 
-      <div className="h-[320px]">
+      </div>
+
+      <div
+        style={{
+          width: "100%",
+          height: 340,
+        }}
+      >
 
         <ResponsiveContainer>
 
           <PieChart>
 
             <Pie
-              data={mealData}
+              data={data}
               dataKey="value"
-              outerRadius={100}
-              label
+              nameKey="name"
+              innerRadius={70}
+              outerRadius={115}
+              paddingAngle={4}
             >
 
-              {mealData.map((entry,index)=>(
-
+              {data.map((entry, index) => (
                 <Cell
-                  key={index}
+                  key={entry.name}
                   fill={COLORS[index]}
                 />
-
               ))}
 
             </Pie>
 
             <Tooltip />
+
+            <Legend />
 
           </PieChart>
 
@@ -60,11 +108,8 @@ function MealAnalytics() {
 
       </div>
 
-    </div>
-
+    </motion.section>
   );
-
 }
 
 export default MealAnalytics;
-

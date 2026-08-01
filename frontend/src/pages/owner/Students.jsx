@@ -1,32 +1,64 @@
 import { useState } from "react";
-import { getStudents } from "../../services/owner/student.service";
+import { FaUserPlus } from "react-icons/fa";
 
 import StudentHeader from "../../components/owner/StudentHeader";
 import StudentStats from "../../components/owner/StudentStats";
-import StudentTable from "../../components/owner/StudentTable";
 import StudentFilter from "../../components/owner/StudentFilter";
+import StudentTable from "../../components/owner/StudentTable";
+import StudentCard from "../../components/owner/StudentCard";
 import StudentModal from "../../components/owner/StudentModal";
-import SearchBar from "../../components/owner/SearchBar";
 
 function Students() {
-  const [students, setStudents] = useState(getStudents());
-
   const [search, setSearch] = useState("");
-
   const [filter, setFilter] = useState("All");
+  const [view, setView] = useState("table");
+  const [openModal, setOpenModal] = useState(false);
 
-  const [modalOpen, setModalOpen] = useState(false);
+  const students = [
+    {
+      id: 1,
+      name: "Rahul Verma",
+      room: "A-101",
+      phone: "9876543210",
+      attendance: 93,
+      status: "Active",
+    },
+    {
+      id: 2,
+      name: "Aman Singh",
+      room: "A-102",
+      phone: "9876543211",
+      attendance: 88,
+      status: "Active",
+    },
+    {
+      id: 3,
+      name: "Riya Sharma",
+      room: "B-204",
+      phone: "9876543212",
+      attendance: 95,
+      status: "Active",
+    },
+    {
+      id: 4,
+      name: "Neha Patel",
+      room: "B-305",
+      phone: "9876543213",
+      attendance: 76,
+      status: "Inactive",
+    },
+  ];
 
   const filteredStudents = students.filter((student) => {
     const matchSearch =
-      student.name.toLowerCase().includes(search.toLowerCase()) ||
-      student.email.toLowerCase().includes(search.toLowerCase()) ||
-      student.phone.includes(search);
+      student.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
 
     const matchFilter =
-      filter === "All" ||
-      student.status === filter ||
-      student.plan === filter;
+      filter === "All"
+        ? true
+        : student.status === filter;
 
     return matchSearch && matchFilter;
   });
@@ -34,39 +66,55 @@ function Students() {
   return (
     <div className="space-y-8">
 
-      <StudentHeader
-        onAddStudent={() => setModalOpen(true)}
+      <StudentHeader />
+
+      <StudentStats />
+
+      <StudentFilter
+        search={search}
+        setSearch={setSearch}
+        filter={filter}
+        setFilter={setFilter}
       />
 
-      <StudentStats students={students} />
+      <div className="flex justify-end">
 
-      <div className="flex flex-col md:flex-row gap-4 justify-between">
+        <button
+          onClick={() => setOpenModal(true)}
+          className="flex items-center gap-3 rounded-2xl px-6 py-3 font-semibold"
+          style={{
+            background: "var(--color-primary)",
+            color: "var(--color-text-inverse)",
+          }}
+        >
+          <FaUserPlus />
 
-        <SearchBar
-          value={search}
-          onChange={setSearch}
-        />
+          Add Student
 
-        <StudentFilter
-          value={filter}
-          onChange={setFilter}
-        />
+        </button>
 
       </div>
 
-      <StudentTable
-        students={filteredStudents}
-        onEdit={(student) => console.log(student)}
-        onDelete={(id) => console.log(id)}
-      />
+      {view === "table" ? (
+        <StudentTable
+          students={filteredStudents}
+        />
+      ) : (
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+
+          {filteredStudents.map((student) => (
+            <StudentCard
+              key={student.id}
+              student={student}
+            />
+          ))}
+
+        </div>
+      )}
 
       <StudentModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        onSave={(student) => {
-          console.log(student);
-          setModalOpen(false);
-        }}
+        open={openModal}
+        onClose={() => setOpenModal(false)}
       />
 
     </div>

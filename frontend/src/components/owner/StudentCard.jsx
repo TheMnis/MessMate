@@ -1,83 +1,200 @@
+import { motion } from "framer-motion";
 import {
-  FaPhone,
-  FaEnvelope,
+  FaPhoneAlt,
+  FaDoorOpen,
+  FaClipboardCheck,
   FaEdit,
   FaTrash,
 } from "react-icons/fa";
 
-function StudentCard({
-  student,
-  onEdit,
-  onDelete,
-}) {
+function StudentCard({ student }) {
   return (
-    <div className="[background:var(--color-surface)] radius-2xl elevation-md p-5 space-y-4">
+    <motion.div
+      whileHover={{
+        y: -6,
+      }}
+      transition={{
+        duration: 0.25,
+      }}
+      className="overflow-hidden rounded-3xl"
+      style={{
+        background: "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
+    >
+      <div
+        className="p-8"
+        style={{
+          background: "var(--gradient-primary)",
+          color: "var(--color-text-inverse)",
+        }}
+      >
+        <div className="flex items-center gap-5">
 
-      <div className="flex items-center justify-between">
+          <img
+            src={`https://api.dicebear.com/9.x/adventurer/svg?seed=${student.name}`}
+            alt={student.name}
+            className="h-20 w-20 rounded-full object-cover"
+            style={{
+              border: "4px solid rgba(255,255,255,.25)",
+            }}
+          />
 
-        <div>
+          <div>
 
-          <h2 className="text-xl font-bold">
-            {student.name}
-          </h2>
+            <h2 className="text-2xl font-bold">
+              {student.name}
+            </h2>
 
-          <span
-            className={`inline-block mt-2 px-3 py-1 radius-full text-sm ${
-              student.status === "Active"
-                ? "[background:var(--color-success-subtle)] [color:var(--color-success-hover)]"
-                : "[background:var(--color-danger-subtle)] [color:var(--color-danger-hover)]"
-            }`}
-          >
-            {student.status}
-          </span>
+            <div
+              className="mt-2 inline-flex rounded-full px-3 py-1 text-sm font-semibold"
+              style={{
+                background:
+                  student.status === "Active"
+                    ? "rgba(34,197,94,.18)"
+                    : "rgba(245,158,11,.18)",
+              }}
+            >
+              {student.status}
+            </div>
+
+          </div>
 
         </div>
 
       </div>
 
-      <div className="space-y-2 [color:var(--color-text-secondary)]">
+      <div className="space-y-5 p-6">
 
-        <p className="flex items-center gap-2">
-          <FaEnvelope />
+        <div className="flex items-center gap-3">
 
-          {student.email}
-        </p>
+          <FaDoorOpen
+            style={{
+              color: "var(--color-primary)",
+            }}
+          />
 
-        <p className="flex items-center gap-2">
-          <FaPhone />
+          <span
+            style={{
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            Room
+          </span>
 
-          {student.phone}
-        </p>
+          <strong
+            className="ml-auto"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
+          >
+            {student.room}
+          </strong>
 
-        <p>
-          <strong>Plan :</strong> {student.plan}
-        </p>
+        </div>
+
+        <div className="flex items-center gap-3">
+
+          <FaPhoneAlt
+            style={{
+              color: "var(--color-success)",
+            }}
+          />
+
+          <span
+            style={{
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            Phone
+          </span>
+
+          <strong
+            className="ml-auto"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
+          >
+            {student.phone}
+          </strong>
+
+        </div>
+
+        <div className="flex items-center gap-3">
+
+          <FaClipboardCheck
+            style={{
+              color: "var(--color-warning)",
+            }}
+          />
+
+          <span
+            style={{
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            Attendance
+          </span>
+
+          <strong
+            className="ml-auto"
+            style={{
+              color: "var(--color-primary)",
+            }}
+          >
+            {student.attendance}%
+          </strong>
+
+        </div>
+
+        <div
+          className="mt-6 flex gap-4"
+        >
+
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+            }}
+            whileTap={{
+              scale: 0.97,
+            }}
+            className="flex flex-1 items-center justify-center gap-2 rounded-2xl py-3 font-semibold"
+            style={{
+              background: "var(--color-primary)",
+              color: "var(--color-text-inverse)",
+            }}
+          >
+            <FaEdit />
+
+            Edit
+
+          </motion.button>
+
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+            }}
+            whileTap={{
+              scale: 0.97,
+            }}
+            className="flex flex-1 items-center justify-center gap-2 rounded-2xl py-3 font-semibold"
+            style={{
+              background: "var(--color-danger-subtle)",
+              color: "var(--color-danger)",
+            }}
+          >
+            <FaTrash />
+
+            Delete
+
+          </motion.button>
+
+        </div>
 
       </div>
 
-      <div className="flex gap-3 pt-3">
-
-        <button
-          onClick={() => onEdit(student)}
-          className="flex-1 [background:var(--color-secondary)] hover:[background:var(--color-secondary-hover)] [color:var(--color-text-inverse)] py-2 radius-lg"
-        >
-          <FaEdit className="inline mr-2" />
-
-          Edit
-        </button>
-
-        <button
-          onClick={() => onDelete(student.id)}
-          className="flex-1 [background:var(--color-danger)] hover:[background:var(--color-danger-hover)] [color:var(--color-text-inverse)] py-2 radius-lg"
-        >
-          <FaTrash className="inline mr-2" />
-
-          Delete
-        </button>
-
-      </div>
-
-    </div>
+    </motion.div>
   );
 }
 

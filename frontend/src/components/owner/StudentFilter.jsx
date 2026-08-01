@@ -1,37 +1,152 @@
+import {
+  FaSearch,
+  FaFilter,
+  FaTable,
+  FaThLarge,
+} from "react-icons/fa";
+
 function StudentFilter({
-  value,
-  onChange,
+  search,
+  setSearch,
+  filter,
+  setFilter,
+  view = "table",
+  setView = () => {},
 }) {
   return (
-    <select
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className="px-4 py-3 radius-xl border [border-color:var(--color-border)] [background:var(--color-surface)] outline-none focus:[border-color:var(--color-primary)]"
+    <section
+      className="rounded-3xl p-6"
+      style={{
+        background: "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
     >
-      <option value="All">
-        All Students
-      </option>
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
 
-      <option value="Active">
-        Active
-      </option>
+        <div className="flex flex-1 items-center gap-4">
 
-      <option value="Expired">
-        Expired
-      </option>
+          <div
+            className="flex flex-1 items-center gap-3 rounded-2xl px-4 py-3"
+            style={{
+              background: "var(--color-background)",
+              border: "1px solid var(--color-border)",
+            }}
+          >
+            <FaSearch
+              style={{
+                color: "var(--color-text-muted)",
+              }}
+            />
 
-      <option value="Monthly">
-        Monthly Plan
-      </option>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) =>
+                setSearch(e.target.value)
+              }
+              placeholder="Search student..."
+              className="w-full bg-transparent outline-none"
+              style={{
+                color: "var(--color-text-primary)",
+              }}
+            />
 
-      <option value="Quarterly">
-        Quarterly Plan
-      </option>
+          </div>
 
-      <option value="Yearly">
-        Yearly Plan
-      </option>
-    </select>
+          <div
+            className="flex items-center gap-3 rounded-2xl px-4 py-3"
+            style={{
+              background: "var(--color-background)",
+              border: "1px solid var(--color-border)",
+            }}
+          >
+            <FaFilter
+              style={{
+                color: "var(--color-text-muted)",
+              }}
+            />
+
+            <select
+              value={filter}
+              onChange={(e) =>
+                setFilter(e.target.value)
+              }
+              className="bg-transparent outline-none"
+              style={{
+                color: "var(--color-text-primary)",
+              }}
+            >
+              <option value="All">
+                All Students
+              </option>
+
+              <option value="Active">
+                Active
+              </option>
+
+              <option value="Inactive">
+                Inactive
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+        <div
+          className="flex overflow-hidden rounded-2xl"
+          style={{
+            border: "1px solid var(--color-border)",
+          }}
+        >
+
+          <button
+            onClick={() => setView("table")}
+            className="flex items-center gap-2 px-5 py-3 font-semibold"
+            style={{
+              background:
+                view === "table"
+                  ? "var(--color-primary)"
+                  : "var(--color-surface)",
+              color:
+                view === "table"
+                  ? "var(--color-text-inverse)"
+                  : "var(--color-text-primary)",
+            }}
+          >
+            <FaTable />
+
+            Table
+
+          </button>
+
+          <button
+            onClick={() => setView("grid")}
+            className="flex items-center gap-2 px-5 py-3 font-semibold"
+            style={{
+              background:
+                view === "grid"
+                  ? "var(--color-primary)"
+                  : "var(--color-surface)",
+              color:
+                view === "grid"
+                  ? "var(--color-text-inverse)"
+                  : "var(--color-text-primary)",
+            }}
+          >
+            <FaThLarge />
+
+            Grid
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
   );
 }
 
