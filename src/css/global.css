@@ -13,8 +13,8 @@ html{
 
 body{
     font-family:'Poppins',sans-serif;
-    background:#f8fafc;
-    color:#1e293b;
+    background:var(--color-surface-muted);
+    color:var(--color-text-primary);
 }
 
 a{

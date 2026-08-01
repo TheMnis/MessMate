@@ -34,7 +34,7 @@ function TodayMenuCard() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6"
+      className="bg-surface radius-3xl elevation-lg border border-border-subtle p-6"
     >
       <div className="flex items-center justify-between mb-6">
 
@@ -42,7 +42,7 @@ function TodayMenuCard() {
           🍽 Today's Menu
         </h2>
 
-        <span className="text-green-600 text-sm font-semibold">
+        <span className="text-success text-sm font-semibold">
           3 Meals
         </span>
 
@@ -55,12 +55,12 @@ function TodayMenuCard() {
           <motion.div
             key={item.meal}
             whileHover={{ scale: 1.02 }}
-            className="flex items-center justify-between p-5 rounded-2xl bg-gray-50 hover:bg-green-50 transition-all"
+            className="flex items-center justify-between p-5 radius-2xl bg-surface-muted hover:bg-primary-subtle transition-all"
           >
 
             <div className="flex items-center gap-4">
 
-              <div className="w-14 h-14 rounded-2xl bg-green-600 text-white flex items-center justify-center text-xl shadow-lg">
+              <div className="w-14 h-14 radius-2xl bg-primary text-text-inverse flex items-center justify-center text-xl elevation-lg">
                 {item.icon}
               </div>
 
@@ -70,11 +70,11 @@ function TodayMenuCard() {
                   {item.meal}
                 </h3>
 
-                <p className="text-gray-500 text-sm">
+                <p className="text-text-muted text-sm">
                   {item.items}
                 </p>
 
-                <p className="text-green-600 text-xs mt-1">
+                <p className="text-success text-xs mt-1">
                   {item.time}
                 </p>
 
@@ -82,7 +82,7 @@ function TodayMenuCard() {
 
             </div>
 
-            <FaCircleCheck className="text-green-600 text-2xl" />
+            <FaCircleCheck className="text-success text-2xl" />
 
           </motion.div>
 

@@ -23,25 +23,25 @@ function StudentStats({ students }) {
       title: "Total Students",
       value: total,
       icon: <FaUsers />,
-      color: "bg-blue-600",
+      color: "bg-secondary",
     },
     {
       title: "Active",
       value: active,
       icon: <FaUserCheck />,
-      color: "bg-green-600",
+      color: "bg-primary",
     },
     {
       title: "Expired",
       value: expired,
       icon: <FaUserTimes />,
-      color: "bg-red-600",
+      color: "bg-danger",
     },
     {
       title: "Revenue",
       value: `₹${monthlyRevenue}`,
       icon: <FaWallet />,
-      color: "bg-purple-600",
+      color: "bg-accent",
     },
   ];
 
@@ -50,10 +50,10 @@ function StudentStats({ students }) {
       {cards.map((card) => (
         <div
           key={card.title}
-          className="bg-white rounded-2xl shadow-md p-6 flex items-center justify-between"
+          className="bg-surface radius-2xl elevation-md p-6 flex items-center justify-between"
         >
           <div>
-            <p className="text-gray-500">{card.title}</p>
+            <p className="text-text-muted">{card.title}</p>
 
             <h2 className="text-3xl font-bold mt-2">
               {card.value}
@@ -61,7 +61,7 @@ function StudentStats({ students }) {
           </div>
 
           <div
-            className={`${card.color} w-14 h-14 rounded-xl flex items-center justify-center text-white text-2xl`}
+            className={`${card.color} w-14 h-14 radius-xl flex items-center justify-center text-text-inverse text-2xl`}
           >
             {card.icon}
           </div>

@@ -11,7 +11,7 @@ function StudentCard({
   onDelete,
 }) {
   return (
-    <div className="bg-white rounded-2xl shadow-md p-5 space-y-4">
+    <div className="bg-surface radius-2xl elevation-md p-5 space-y-4">
 
       <div className="flex items-center justify-between">
 
@@ -22,10 +22,10 @@ function StudentCard({
           </h2>
 
           <span
-            className={`inline-block mt-2 px-3 py-1 rounded-full text-sm ${
+            className={`inline-block mt-2 px-3 py-1 radius-full text-sm ${
               student.status === "Active"
-                ? "bg-green-100 text-green-700"
-                : "bg-red-100 text-red-700"
+                ? "bg-success-subtle text-success-hover"
+                : "bg-danger-subtle text-danger-hover"
             }`}
           >
             {student.status}
@@ -35,7 +35,7 @@ function StudentCard({
 
       </div>
 
-      <div className="space-y-2 text-gray-600">
+      <div className="space-y-2 text-text-secondary">
 
         <p className="flex items-center gap-2">
           <FaEnvelope />
@@ -59,7 +59,7 @@ function StudentCard({
 
         <button
           onClick={() => onEdit(student)}
-          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg"
+          className="flex-1 bg-secondary hover:bg-secondary-hover text-text-inverse py-2 radius-lg"
         >
           <FaEdit className="inline mr-2" />
 
@@ -68,7 +68,7 @@ function StudentCard({
 
         <button
           onClick={() => onDelete(student.id)}
-          className="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg"
+          className="flex-1 bg-danger hover:bg-danger-hover text-text-inverse py-2 radius-lg"
         >
           <FaTrash className="inline mr-2" />
 

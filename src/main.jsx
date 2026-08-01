@@ -19,21 +19,21 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         toastOptions={{
           duration: 3000,
           style: {
-            borderRadius: "16px",
-            background: "#fff",
-            color: "#111827",
+            borderRadius: "var(--radius-xl)",
+            background: "var(--color-surface)",
+            color: "var(--color-inverse)",
             fontWeight: "500",
           },
           success: {
             iconTheme: {
-              primary: "#16a34a",
-              secondary: "#fff",
+              primary: "var(--color-success)",
+              secondary: "var(--color-surface)",
             },
           },
           error: {
             iconTheme: {
-              primary: "#dc2626",
-              secondary: "#fff",
+              primary: "var(--color-danger)",
+              secondary: "var(--color-surface)",
             },
           },
         }}

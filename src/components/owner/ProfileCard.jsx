@@ -54,7 +54,7 @@ function ProfileCard({ profile, onSave }) {
 };
 
   return (
-    <div className="bg-white rounded-3xl shadow-lg p-8">
+    <div className="bg-surface radius-3xl elevation-lg p-8">
 
       <div className="flex flex-col items-center">
 
@@ -63,12 +63,12 @@ function ProfileCard({ profile, onSave }) {
           <img
             src={preview}
             alt="Owner"
-            className="w-36 h-36 rounded-full object-cover border-4 border-green-600 shadow-lg"
+            className="w-36 h-36 radius-full object-cover border-4 border-primary elevation-lg"
           />
 
           <label
             htmlFor="profileImage"
-            className="absolute bottom-2 right-2 bg-green-600 hover:bg-green-700 text-white p-3 rounded-full cursor-pointer transition"
+            className="absolute bottom-2 right-2 bg-primary hover:bg-primary-hover text-text-inverse p-3 radius-full cursor-pointer transition"
           >
             <FaCamera />
           </label>
@@ -87,7 +87,7 @@ function ProfileCard({ profile, onSave }) {
           {formData.ownerName}
         </h2>
 
-        <p className="text-gray-500">
+        <p className="text-text-muted">
           {formData.messName}
         </p>
 
@@ -97,63 +97,63 @@ function ProfileCard({ profile, onSave }) {
 
         <div className="relative">
 
-          <FaUser className="absolute top-4 left-4 text-green-600" />
+          <FaUser className="absolute top-4 left-4 text-success" />
 
           <input
             name="ownerName"
             value={formData.ownerName}
             onChange={handleChange}
             placeholder="Owner Name"
-            className="w-full border rounded-xl py-3 pl-12 pr-4"
+            className="w-full border radius-xl py-3 pl-12 pr-4"
           />
 
         </div>
 
         <div className="relative">
 
-          <FaStore className="absolute top-4 left-4 text-green-600" />
+          <FaStore className="absolute top-4 left-4 text-success" />
 
           <input
             name="messName"
             value={formData.messName}
             onChange={handleChange}
             placeholder="Mess Name"
-            className="w-full border rounded-xl py-3 pl-12 pr-4"
+            className="w-full border radius-xl py-3 pl-12 pr-4"
           />
 
         </div>
 
         <div className="relative">
 
-          <FaEnvelope className="absolute top-4 left-4 text-green-600" />
+          <FaEnvelope className="absolute top-4 left-4 text-success" />
 
           <input
             name="email"
             value={formData.email}
             onChange={handleChange}
             placeholder="Email"
-            className="w-full border rounded-xl py-3 pl-12 pr-4"
+            className="w-full border radius-xl py-3 pl-12 pr-4"
           />
 
         </div>
 
         <div className="relative">
 
-          <FaPhone className="absolute top-4 left-4 text-green-600" />
+          <FaPhone className="absolute top-4 left-4 text-success" />
 
           <input
             name="phone"
             value={formData.phone}
             onChange={handleChange}
             placeholder="Phone"
-            className="w-full border rounded-xl py-3 pl-12 pr-4"
+            className="w-full border radius-xl py-3 pl-12 pr-4"
           />
 
         </div>
 
         <div className="relative md:col-span-2">
 
-          <FaMapMarkerAlt className="absolute top-4 left-4 text-green-600" />
+          <FaMapMarkerAlt className="absolute top-4 left-4 text-success" />
 
           <textarea
             rows="4"
@@ -161,7 +161,7 @@ function ProfileCard({ profile, onSave }) {
             value={formData.address}
             onChange={handleChange}
             placeholder="Address"
-            className="w-full border rounded-xl py-3 pl-12 pr-4"
+            className="w-full border radius-xl py-3 pl-12 pr-4"
           />
 
         </div>
@@ -172,7 +172,7 @@ function ProfileCard({ profile, onSave }) {
 
         <button
           onClick={handleSave}
-          className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl shadow-lg transition"
+          className="bg-primary hover:bg-primary-hover text-text-inverse px-8 py-3 radius-xl elevation-lg transition"
         >
           Save Changes
         </button>

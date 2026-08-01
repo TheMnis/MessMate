@@ -17,22 +17,22 @@ function AttendanceProgress() {
     {
       name: "Present",
       value: summary.present,
-      color: "#16a34a",
+      color: "var(--chart-success)",
     },
     {
       name: "Absent",
       value: summary.absent,
-      color: "#dc2626",
+      color: "var(--chart-danger)",
     },
     {
       name: "Leave",
       value: summary.leave,
-      color: "#eab308",
+      color: "var(--chart-warning)",
     },
   ];
 
   return (
-    <div className="mt-8 bg-white rounded-3xl shadow-lg border border-gray-100 p-6">
+    <div className="mt-8 bg-surface radius-3xl elevation-lg border border-border-subtle p-6">
 
       <div className="flex items-center justify-between mb-8">
 
@@ -40,13 +40,13 @@ function AttendanceProgress() {
 
           <h2 className="text-2xl font-bold flex items-center gap-2">
 
-            <FaChartPie className="text-green-600" />
+            <FaChartPie className="text-success" />
 
             Attendance Analytics
 
           </h2>
 
-          <p className="text-gray-500 mt-1">
+          <p className="text-text-muted mt-1">
             Monthly attendance overview
           </p>
 
@@ -54,11 +54,11 @@ function AttendanceProgress() {
 
         <div className="text-right">
 
-          <h2 className="text-4xl font-bold text-green-600">
+          <h2 className="text-4xl font-bold text-success">
             {summary.percentage}%
           </h2>
 
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-text-muted">
             Overall Attendance
           </p>
 
@@ -107,13 +107,13 @@ function AttendanceProgress() {
 
             <div
               key={item.name}
-              className="flex items-center justify-between bg-gray-50 rounded-2xl p-4"
+              className="flex items-center justify-between bg-surface-muted radius-2xl p-4"
             >
 
               <div className="flex items-center gap-3">
 
                 <div
-                  className="w-4 h-4 rounded-full"
+                  className="w-4 h-4 radius-full"
                   style={{
                     background: item.color,
                   }}

@@ -10,7 +10,7 @@ function RecentActivity() {
 
   return (
 
-    <div className="bg-white rounded-3xl shadow-lg p-6">
+    <div className="bg-surface radius-3xl elevation-lg p-6">
 
       <h2 className="text-2xl font-bold mb-6">
         Recent Activity
@@ -22,7 +22,7 @@ function RecentActivity() {
 
           <div
             key={index}
-            className="border-l-4 border-green-600 pl-4 py-2"
+            className="border-l-4 border-primary pl-4 py-2"
           >
 
             {activity}

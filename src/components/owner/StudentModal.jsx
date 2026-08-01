@@ -46,9 +46,9 @@ function StudentModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-overlay flex items-center justify-center z-50">
 
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg p-6">
+      <div className="bg-surface radius-2xl elevation-xl w-full max-w-lg p-6">
 
         <h2 className="text-2xl font-bold mb-6">
           {initialData ? "✏️ Edit Student" : "➕ Add Student"}
@@ -65,7 +65,7 @@ function StudentModal({
             placeholder="Student Name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full border rounded-xl p-3 outline-none focus:border-green-600"
+            className="w-full border radius-xl p-3 outline-none focus:border-primary"
             required
           />
 
@@ -75,7 +75,7 @@ function StudentModal({
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full border rounded-xl p-3 outline-none focus:border-green-600"
+            className="w-full border radius-xl p-3 outline-none focus:border-primary"
             required
           />
 
@@ -85,7 +85,7 @@ function StudentModal({
             placeholder="Phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full border rounded-xl p-3 outline-none focus:border-green-600"
+            className="w-full border radius-xl p-3 outline-none focus:border-primary"
             required
           />
 
@@ -93,7 +93,7 @@ function StudentModal({
             name="plan"
             value={formData.plan}
             onChange={handleChange}
-            className="w-full border rounded-xl p-3 outline-none focus:border-green-600"
+            className="w-full border radius-xl p-3 outline-none focus:border-primary"
           >
             <option>Monthly</option>
             <option>Quarterly</option>
@@ -105,7 +105,7 @@ function StudentModal({
             name="status"
             value={formData.status}
             onChange={handleChange}
-            className="w-full border rounded-xl p-3 outline-none focus:border-green-600"
+            className="w-full border radius-xl p-3 outline-none focus:border-primary"
           >
             <option>Active</option>
             <option>Expired</option>
@@ -116,14 +116,14 @@ function StudentModal({
             <button
               type="button"
               onClick={onClose}
-              className="px-5 py-2 border rounded-xl hover:bg-gray-100"
+              className="px-5 py-2 border radius-xl hover:bg-surface-hover"
             >
               Cancel
             </button>
 
             <button
               type="submit"
-              className="px-5 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl"
+              className="px-5 py-2 bg-primary hover:bg-primary-hover text-text-inverse radius-xl"
             >
               Save
             </button>

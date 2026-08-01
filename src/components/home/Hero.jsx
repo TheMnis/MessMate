@@ -14,22 +14,22 @@ import {
 
 function Hero() {
   return (
-    <section className="bg-gradient-to-br from-green-50 via-white to-green-100">
+    <section className="bg-gradient-to-br from-primary-subtle via-surface to-success-subtle">
       <div className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-16 items-center">
 
         {/* ================= LEFT ================= */}
 
         <div>
 
-          <span className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-5 py-2 rounded-full font-semibold">
+          <span className="inline-flex items-center gap-2 bg-success-subtle text-success-hover px-5 py-2 radius-full font-semibold">
             🍽️ India's Smart Mess Platform
           </span>
 
-          <h1 className="mt-8 text-5xl lg:text-7xl font-extrabold leading-tight text-gray-900">
+          <h1 className="mt-8 text-5xl lg:text-7xl font-extrabold leading-tight text-text-primary">
             Smart
             <br />
 
-            <span className="text-green-600">
+            <span className="text-success">
               Mess Management
             </span>
 
@@ -38,7 +38,7 @@ function Hero() {
             Made Easy
           </h1>
 
-          <p className="mt-8 text-xl text-gray-600 leading-9">
+          <p className="mt-8 text-xl text-text-secondary leading-9">
             Find nearby messes, subscribe to meal plans,
             track breakfast, lunch & dinner attendance,
             reduce food waste and enjoy hassle-free dining.
@@ -48,7 +48,7 @@ function Hero() {
 
           <div className="flex flex-wrap gap-5 mt-10">
 
-            <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl flex items-center gap-3 text-lg font-semibold transition">
+            <button className="bg-primary hover:bg-primary-hover text-text-inverse px-8 py-4 radius-xl flex items-center gap-3 text-lg font-semibold transition">
 
               Find a Mess
 
@@ -56,7 +56,7 @@ function Hero() {
 
             </button>
 
-            <button className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 rounded-xl text-lg font-semibold transition">
+            <button className="border-2 border-primary text-success hover:bg-primary hover:text-text-inverse px-8 py-4 radius-xl text-lg font-semibold transition">
 
               Register Your Mess
 
@@ -69,22 +69,22 @@ function Hero() {
           <div className="grid grid-cols-2 gap-4 mt-12">
 
             <div className="flex items-center gap-3">
-              <FaCheckCircle className="text-green-600" />
+              <FaCheckCircle className="text-success" />
               Attendance Tracking
             </div>
 
             <div className="flex items-center gap-3">
-              <FaCheckCircle className="text-green-600" />
+              <FaCheckCircle className="text-success" />
               Subscription Plans
             </div>
 
             <div className="flex items-center gap-3">
-              <FaCheckCircle className="text-green-600" />
+              <FaCheckCircle className="text-success" />
               Food Delivery
             </div>
 
             <div className="flex items-center gap-3">
-              <FaCheckCircle className="text-green-600" />
+              <FaCheckCircle className="text-success" />
               Waste Reduction
             </div>
 
@@ -96,7 +96,7 @@ function Hero() {
 
         <div className="relative">
 
-          <div className="bg-white rounded-3xl shadow-2xl p-8">
+          <div className="bg-surface radius-3xl elevation-2xl p-8">
 
             <div className="flex justify-between items-center mb-6">
 
@@ -104,7 +104,7 @@ function Hero() {
                 Today's Menu
               </h2>
 
-              <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">
+              <span className="bg-success-subtle text-success-hover px-4 py-2 radius-full text-sm font-semibold">
                 LIVE
               </span>
 
@@ -113,7 +113,7 @@ function Hero() {
             <div className="space-y-5">
 
               <div className="flex items-center gap-3 text-lg">
-                <FaUtensils className="text-green-600" />
+                <FaUtensils className="text-success" />
                 Paneer Butter Masala
               </div>
 
@@ -141,7 +141,7 @@ function Hero() {
 
               <div className="flex items-center gap-3">
 
-                <FaClock className="text-orange-500" />
+                <FaClock className="text-highlight" />
 
                 Attendance Till 1:00 PM
 
@@ -149,7 +149,7 @@ function Hero() {
 
               <div className="flex items-center gap-3">
 
-                <FaMapMarkerAlt className="text-red-500" />
+                <FaMapMarkerAlt className="text-danger" />
 
                 Delivery Available
 
@@ -157,7 +157,7 @@ function Hero() {
 
               <div className="flex items-center gap-3">
 
-                <FaStar className="text-yellow-500" />
+                <FaStar className="text-warning" />
 
                 4.9 Rating (2,450 Reviews)
 
@@ -169,17 +169,17 @@ function Hero() {
 
           {/* Floating Card */}
 
-          <div className="hidden lg:block absolute -bottom-8 -left-8 bg-white shadow-xl rounded-2xl p-5">
+          <div className="hidden lg:block absolute -bottom-8 -left-8 bg-surface elevation-xl radius-2xl p-5">
 
-            <p className="text-gray-500">
+            <p className="text-text-muted">
               Remaining Meals
             </p>
 
-            <h2 className="text-4xl font-bold text-green-600">
+            <h2 className="text-4xl font-bold text-success">
               18
             </h2>
 
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-text-muted">
               Monthly Subscription
             </p>
 

@@ -31,7 +31,7 @@ function ChangePasswordCard() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8">
+    <div className="bg-surface radius-2xl elevation-lg p-8">
       <h2 className="text-2xl font-bold mb-6">
         Change Password
       </h2>
@@ -43,7 +43,7 @@ function ChangePasswordCard() {
           placeholder="Current Password"
           value={passwords.currentPassword}
           onChange={handleChange}
-          className="w-full border rounded-xl p-3"
+          className="w-full border radius-xl p-3"
         />
 
         <input
@@ -52,7 +52,7 @@ function ChangePasswordCard() {
           placeholder="New Password"
           value={passwords.newPassword}
           onChange={handleChange}
-          className="w-full border rounded-xl p-3"
+          className="w-full border radius-xl p-3"
         />
 
         <input
@@ -61,14 +61,14 @@ function ChangePasswordCard() {
           placeholder="Confirm Password"
           value={passwords.confirmPassword}
           onChange={handleChange}
-          className="w-full border rounded-xl p-3"
+          className="w-full border radius-xl p-3"
         />
       </div>
 
       <div className="mt-8 flex justify-end">
         <button
           onClick={handleSubmit}
-          className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl transition"
+          className="bg-primary hover:bg-primary-hover text-text-inverse px-8 py-3 radius-xl transition"
         >
           Update Password
         </button>

@@ -23,10 +23,10 @@ function SubscriptionPlans() {
 
         <div
           key={plan.name}
-          className={`rounded-2xl border-2 p-6 ${
+          className={`radius-2xl border-2 p-6 ${
             plan.active
-              ? "border-green-600 shadow-xl"
-              : "border-gray-200"
+              ? "border-primary elevation-xl"
+              : "border-border-strong"
           }`}
         >
 
@@ -39,10 +39,10 @@ function SubscriptionPlans() {
           </h1>
 
           <button
-            className={`w-full py-3 rounded-xl ${
+            className={`w-full py-3 radius-xl ${
               plan.active
-                ? "bg-green-600 text-white"
-                : "bg-gray-100"
+                ? "bg-primary text-text-inverse"
+                : "bg-surface-hover"
             }`}
           >
             {plan.active

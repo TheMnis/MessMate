@@ -27,7 +27,7 @@ function RenewSubscription() {
       initial={{ opacity: 0, y: 25 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl shadow-xl p-8 text-white"
+      className="bg-gradient-to-r from-secondary to-secondary-hover radius-3xl elevation-xl p-8 text-text-inverse"
     >
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
 
@@ -35,7 +35,7 @@ function RenewSubscription() {
 
           <div className="flex items-center gap-3 mb-4">
 
-            <FaBolt className="text-yellow-300 text-3xl" />
+            <FaBolt className="text-warning text-3xl" />
 
             <h2 className="text-3xl font-bold">
               Renew Your Subscription
@@ -43,7 +43,7 @@ function RenewSubscription() {
 
           </div>
 
-          <p className="text-blue-100 leading-7 max-w-xl">
+          <p className="text-secondary-subtle leading-7 max-w-xl">
             Renew your mess subscription before it expires to
             continue enjoying uninterrupted meals,
             attendance tracking and all premium features.
@@ -62,7 +62,7 @@ function RenewSubscription() {
 
         </div>
 
-        <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 min-w-[280px]">
+        <div className="bg-surface/10 backdrop-blur-lg radius-3xl p-6 min-w-[280px]">
 
           <div className="flex items-center justify-between mb-6">
 
@@ -70,7 +70,7 @@ function RenewSubscription() {
               Renewal Offer
             </span>
 
-            <span className="bg-yellow-300 text-black px-3 py-1 rounded-full text-sm font-bold">
+            <span className="bg-warning text-black px-3 py-1 radius-full text-sm font-bold">
               {renewInfo.discount}% OFF
             </span>
 
@@ -80,12 +80,12 @@ function RenewSubscription() {
             onClick={handleRenew}
             className="
               w-full
-              bg-white
-              text-blue-700
+              bg-surface
+              text-secondary-hover
               font-bold
               py-4
-              rounded-2xl
-              hover:bg-gray-100
+              radius-2xl
+              hover:bg-surface-hover
               transition
               flex
               items-center
@@ -99,7 +99,7 @@ function RenewSubscription() {
 
           </button>
 
-          <p className="text-center text-sm text-blue-100 mt-4">
+          <p className="text-center text-sm text-secondary-subtle mt-4">
             {renewInfo.offerText}
           </p>
 

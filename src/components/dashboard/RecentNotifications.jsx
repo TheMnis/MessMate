@@ -14,7 +14,7 @@ function RecentNotifications() {
       description: "Breakfast and lunch menu changed for today.",
       time: "10 min ago",
       icon: <FaBell />,
-      color: "bg-blue-500",
+      color: "bg-secondary",
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ function RecentNotifications() {
       description: "Your attendance has been recorded.",
       time: "1 hour ago",
       icon: <FaCheckCircle />,
-      color: "bg-green-500",
+      color: "bg-success",
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ function RecentNotifications() {
       description: "Your subscription will expire in 5 days.",
       time: "Yesterday",
       icon: <FaExclamationTriangle />,
-      color: "bg-red-500",
+      color: "bg-danger",
     },
   ];
 
@@ -39,7 +39,7 @@ function RecentNotifications() {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.4 }}
-      className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6"
+      className="bg-surface radius-3xl elevation-lg border border-border-subtle p-6"
     >
       <div className="flex items-center justify-between mb-6">
 
@@ -47,7 +47,7 @@ function RecentNotifications() {
           🔔 Recent Notifications
         </h2>
 
-        <button className="text-green-600 flex items-center gap-2 text-sm font-semibold hover:text-green-700 transition">
+        <button className="text-success flex items-center gap-2 text-sm font-semibold hover:text-success-hover transition">
           View All
           <FaArrowRight />
         </button>
@@ -63,20 +63,20 @@ function RecentNotifications() {
             whileHover={{
               x: 5,
             }}
-            className="flex items-start gap-4 p-4 rounded-2xl hover:bg-green-50 transition-all"
+            className="flex items-start gap-4 p-4 radius-2xl hover:bg-primary-subtle transition-all"
           >
 
             <div
               className={`
                 w-14
                 h-14
-                rounded-2xl
+                radius-2xl
                 flex
                 items-center
                 justify-center
-                text-white
+                text-text-inverse
                 text-xl
-                shadow-md
+                elevation-md
                 ${item.color}
               `}
             >
@@ -85,15 +85,15 @@ function RecentNotifications() {
 
             <div className="flex-1">
 
-              <h3 className="font-semibold text-gray-800">
+              <h3 className="font-semibold text-text-primary">
                 {item.title}
               </h3>
 
-              <p className="text-gray-500 text-sm mt-1">
+              <p className="text-text-muted text-sm mt-1">
                 {item.description}
               </p>
 
-              <p className="text-xs text-gray-400 mt-2">
+              <p className="text-xs text-text-disabled mt-2">
                 {item.time}
               </p>
 

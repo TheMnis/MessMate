@@ -7,7 +7,7 @@ function ProfileHeader({ profile }) {
       initial={{ opacity: 0, y: 25 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="bg-gradient-to-r from-green-600 to-emerald-500 rounded-3xl shadow-xl p-8 text-white"
+      className="bg-gradient-to-r from-primary to-success radius-3xl elevation-xl p-8 text-text-inverse"
     >
       <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
 
@@ -16,7 +16,7 @@ function ProfileHeader({ profile }) {
           <img
             src={profile.image}
             alt={profile.name}
-            className="w-32 h-32 rounded-full border-4 border-white object-cover shadow-lg"
+            className="w-32 h-32 radius-full border-4 border-text-inverse object-cover elevation-lg"
           />
 
           <div>
@@ -25,13 +25,13 @@ function ProfileHeader({ profile }) {
               {profile.name}
             </h1>
 
-            <p className="text-green-100 mt-2">
+            <p className="text-primary-muted mt-2">
               {profile.email}
             </p>
 
             <div className="flex flex-wrap items-center gap-4 mt-5">
 
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+              <div className="flex items-center gap-2 bg-surface/10 px-4 py-2 radius-full">
 
                 <FaUserGraduate />
 
@@ -41,9 +41,9 @@ function ProfileHeader({ profile }) {
 
               </div>
 
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+              <div className="flex items-center gap-2 bg-surface/10 px-4 py-2 radius-full">
 
-                <FaCircleCheck className="text-green-200" />
+                <FaCircleCheck className="text-primary-muted" />
 
                 <span>
                   {profile.status}
@@ -57,9 +57,9 @@ function ProfileHeader({ profile }) {
 
         </div>
 
-        <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 min-w-[260px]">
+        <div className="bg-surface/10 backdrop-blur-lg radius-3xl p-6 min-w-[260px]">
 
-          <p className="text-green-100">
+          <p className="text-primary-muted">
             Member Since
           </p>
 
@@ -69,7 +69,7 @@ function ProfileHeader({ profile }) {
 
           <div className="mt-6">
 
-            <p className="text-green-100 text-sm">
+            <p className="text-primary-muted text-sm">
               Subscription
             </p>
 

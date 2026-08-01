@@ -5,7 +5,7 @@ function MenuSearch({ searchTerm, onSearch }) {
     <div className="mb-8">
       <div className="relative">
         <FiSearch
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-text-disabled"
           size={20}
         />
 
@@ -14,7 +14,7 @@ function MenuSearch({ searchTerm, onSearch }) {
           value={searchTerm}
           onChange={(e) => onSearch(e.target.value)}
           placeholder="Search meals or food items..."
-          className="w-full rounded-2xl border border-gray-200 bg-white py-4 pl-12 pr-4 shadow-sm outline-none transition-all duration-300 focus:border-green-500 focus:ring-2 focus:ring-green-200"
+          className="w-full radius-2xl border border-border-strong bg-surface py-4 pl-12 pr-4 elevation-sm outline-none transition-all duration-300 focus:border-success focus:ring-2 focus:ring-primary-muted"
         />
       </div>
     </div>

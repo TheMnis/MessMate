@@ -33,10 +33,10 @@ function MealTabs({ selectedMeal, onSelectMeal }) {
         <button
           key={meal.id}
           onClick={() => onSelectMeal(meal.label)}
-          className={`rounded-2xl px-5 py-3 font-medium transition-all duration-300 ${
+          className={`radius-2xl px-5 py-3 font-medium transition-all duration-300 ${
             selectedMeal === meal.label
-              ? "bg-green-600 text-white shadow-lg"
-              : "bg-white text-gray-700 shadow hover:bg-green-50"
+              ? "bg-primary text-text-inverse elevation-lg"
+              : "bg-surface text-text-secondary elevation-base hover:bg-primary-subtle"
           }`}
         >
           <span className="mr-2">{meal.icon}</span>

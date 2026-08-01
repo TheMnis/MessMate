@@ -61,8 +61,8 @@ function Sidebar({ isOpen, closeSidebar }) {
           top-0 left-0
           h-screen
           w-72
-          bg-white
-          shadow-xl
+          bg-surface
+          elevation-xl
           border-r
           z-50
           transition-transform
@@ -73,11 +73,11 @@ function Sidebar({ isOpen, closeSidebar }) {
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b">
           <div>
-            <h1 className="text-3xl font-bold text-green-600">
+            <h1 className="text-3xl font-bold text-success">
               MessMate
             </h1>
 
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-text-muted mt-1">
               Student Dashboard
             </p>
           </div>
@@ -99,10 +99,10 @@ function Sidebar({ isOpen, closeSidebar }) {
                   to={item.path}
                   onClick={closeSidebar}
                   className={({ isActive }) =>
-                    `flex items-center gap-4 px-5 py-4 rounded-xl font-medium transition-all duration-300 ${
+                    `flex items-center gap-4 px-5 py-4 radius-xl font-medium transition-all duration-300 ${
                       isActive
-                        ? "bg-green-600 text-white shadow-lg"
-                        : "text-gray-700 hover:bg-green-50 hover:text-green-600"
+                        ? "bg-primary text-text-inverse elevation-lg"
+                        : "text-text-secondary hover:bg-primary-subtle hover:text-success"
                     }`
                   }
                 >
@@ -126,11 +126,11 @@ function Sidebar({ isOpen, closeSidebar }) {
               items-center
               justify-center
               gap-3
-              bg-red-500
-              hover:bg-red-600
-              text-white
+              bg-danger
+              hover:bg-danger
+              text-text-inverse
               py-3
-              rounded-xl
+              radius-xl
               transition
             "
           >

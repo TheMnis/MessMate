@@ -10,11 +10,11 @@ function StudentTable({
   onDelete,
 }) {
   return (
-    <div className="bg-white rounded-2xl shadow-md overflow-hidden">
+    <div className="bg-surface radius-2xl elevation-md overflow-hidden">
 
       <table className="w-full">
 
-        <thead className="bg-green-600 text-white">
+        <thead className="bg-primary text-text-inverse">
 
           <tr>
 
@@ -54,7 +54,7 @@ function StudentTable({
 
               <td
                 colSpan="6"
-                className="text-center py-10 text-gray-500"
+                className="text-center py-10 text-text-muted"
               >
                 No Students Found
               </td>
@@ -67,7 +67,7 @@ function StudentTable({
 
               <tr
                 key={student.id}
-                className="border-b hover:bg-gray-50"
+                className="border-b hover:bg-surface-muted"
               >
 
                 <td className="p-4 font-semibold">
@@ -89,10 +89,10 @@ function StudentTable({
                 <td className="p-4">
 
                   <span
-                    className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                    className={`px-3 py-1 radius-full text-sm font-semibold ${
                       student.status === "Active"
-                        ? "bg-green-100 text-green-700"
-                        : "bg-red-100 text-red-700"
+                        ? "bg-success-subtle text-success-hover"
+                        : "bg-danger-subtle text-danger-hover"
                     }`}
                   >
                     {student.status}
@@ -105,21 +105,21 @@ function StudentTable({
                   <div className="flex justify-center gap-3">
 
                     <button
-                      className="bg-cyan-500 hover:bg-cyan-600 text-white p-3 rounded-lg transition"
+                      className="bg-info hover:bg-info-hover text-text-inverse p-3 radius-lg transition"
                     >
                       <FaEye />
                     </button>
 
                     <button
                       onClick={() => onEdit(student)}
-                      className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg transition"
+                      className="bg-secondary hover:bg-secondary text-text-inverse p-3 radius-lg transition"
                     >
                       <FaEdit />
                     </button>
 
                     <button
                       onClick={() => onDelete(student.id)}
-                      className="bg-red-500 hover:bg-red-600 text-white p-3 rounded-lg transition"
+                      className="bg-danger hover:bg-danger text-text-inverse p-3 radius-lg transition"
                     >
                       <FaTrash />
                     </button>

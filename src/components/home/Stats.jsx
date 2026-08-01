@@ -13,25 +13,25 @@ import {
 function Stats() {
   const stats = [
     {
-      icon: <FaUsers className="text-5xl text-green-600" />,
+      icon: <FaUsers className="text-5xl text-success" />,
       number: "20,000+",
       title: "Happy Students",
       description: "Students using MessMate every month",
     },
     {
-      icon: <FaStore className="text-5xl text-blue-600" />,
+      icon: <FaStore className="text-5xl text-secondary" />,
       number: "500+",
       title: "Registered Mess",
       description: "Verified mess owners on the platform",
     },
     {
-      icon: <FaUtensils className="text-5xl text-orange-500" />,
+      icon: <FaUtensils className="text-5xl text-highlight" />,
       number: "10 Lakh+",
       title: "Meals Served",
       description: "Healthy meals delivered and served",
     },
     {
-      icon: <FaLeaf className="text-5xl text-emerald-600" />,
+      icon: <FaLeaf className="text-5xl text-success" />,
       number: "35%",
       title: "Food Waste Reduced",
       description: "Using attendance & smart prediction",
@@ -39,18 +39,18 @@ function Stats() {
   ];
 
   return (
-    <section className="bg-white py-24">
+    <section className="bg-surface py-24">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
 
         <div className="text-center mb-16">
 
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-bold text-text-primary">
             Trusted Across India
           </h2>
 
-          <p className="text-gray-600 mt-5 text-lg max-w-2xl mx-auto">
+          <p className="text-text-secondary mt-5 text-lg max-w-2xl mx-auto">
             Thousands of students and hundreds of mess owners
             trust MessMate for managing meals efficiently.
           </p>
@@ -65,22 +65,22 @@ function Stats() {
 
             <div
               key={index}
-              className="bg-gradient-to-br from-white to-green-50 border border-gray-100 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 p-8 text-center"
+              className="bg-gradient-to-br from-surface to-primary-subtle border border-border-subtle radius-3xl elevation-lg hover:elevation-2xl hover:-translate-y-2 transition-all duration-300 p-8 text-center"
             >
 
               <div className="flex justify-center mb-6">
                 {item.icon}
               </div>
 
-              <h3 className="text-4xl font-extrabold text-gray-900">
+              <h3 className="text-4xl font-extrabold text-text-primary">
                 {item.number}
               </h3>
 
-              <h4 className="text-xl font-semibold mt-3 text-gray-800">
+              <h4 className="text-xl font-semibold mt-3 text-text-primary">
                 {item.title}
               </h4>
 
-              <p className="text-gray-500 mt-4 leading-7">
+              <p className="text-text-muted mt-4 leading-7">
                 {item.description}
               </p>
 

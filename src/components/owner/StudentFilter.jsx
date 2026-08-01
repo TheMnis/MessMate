@@ -6,7 +6,7 @@ function StudentFilter({
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="px-4 py-3 rounded-xl border border-gray-300 bg-white outline-none focus:border-green-600"
+      className="px-4 py-3 radius-xl border border-border bg-surface outline-none focus:border-primary"
     >
       <option value="All">
         All Students

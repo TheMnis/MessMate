@@ -8,7 +8,7 @@ import {
 
 function Topbar({ toggleSidebar }) {
   return (
-    <header className="sticky top-0 z-30 bg-white border-b shadow-sm h-20 flex items-center justify-between px-4 md:px-8">
+    <header className="sticky top-0 z-30 bg-surface border-b elevation-sm h-20 flex items-center justify-between px-4 md:px-8">
 
       {/* Left */}
 
@@ -18,18 +18,18 @@ function Topbar({ toggleSidebar }) {
 
         <button
           onClick={toggleSidebar}
-          className="lg:hidden w-11 h-11 rounded-xl bg-gray-100 hover:bg-green-100 transition flex items-center justify-center"
+          className="lg:hidden w-11 h-11 radius-xl bg-surface-hover hover:bg-success-subtle transition flex items-center justify-center"
         >
           <FaBars className="text-lg" />
         </button>
 
         <div>
 
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
+          <h1 className="text-2xl md:text-3xl font-bold text-text-primary">
             Student Dashboard
           </h1>
 
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-text-muted">
             Welcome back 👋
           </p>
 
@@ -45,7 +45,7 @@ function Topbar({ toggleSidebar }) {
 
         <div className="relative hidden md:block">
 
-          <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+          <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-text-disabled" />
 
           <input
             type="text"
@@ -55,10 +55,10 @@ function Topbar({ toggleSidebar }) {
               pl-11
               pr-4
               py-3
-              rounded-xl
+              radius-xl
               border
               outline-none
-              focus:border-green-600
+              focus:border-primary
               transition
             "
           />
@@ -67,11 +67,11 @@ function Topbar({ toggleSidebar }) {
 
         {/* Notification */}
 
-        <button className="relative w-11 h-11 rounded-xl bg-gray-100 hover:bg-green-100 transition flex items-center justify-center">
+        <button className="relative w-11 h-11 radius-xl bg-surface-hover hover:bg-success-subtle transition flex items-center justify-center">
 
           <FaBell />
 
-          <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-500 text-white text-[10px] flex items-center justify-center">
+          <span className="absolute -top-1 -right-1 w-5 h-5 radius-full bg-danger text-text-inverse text-[10px] flex items-center justify-center">
             3
           </span>
 
@@ -79,7 +79,7 @@ function Topbar({ toggleSidebar }) {
 
         {/* Dark */}
 
-        <button className="hidden sm:flex w-11 h-11 rounded-xl bg-gray-100 hover:bg-green-100 transition items-center justify-center">
+        <button className="hidden sm:flex w-11 h-11 radius-xl bg-surface-hover hover:bg-success-subtle transition items-center justify-center">
 
           <FaMoon />
 
@@ -87,7 +87,7 @@ function Topbar({ toggleSidebar }) {
 
         {/* Profile */}
 
-        <button className="flex items-center gap-3 bg-green-600 hover:bg-green-700 transition text-white rounded-xl px-3 py-2">
+        <button className="flex items-center gap-3 bg-primary hover:bg-primary-hover transition text-text-inverse radius-xl px-3 py-2">
 
           <FaUserCircle className="text-3xl" />
 

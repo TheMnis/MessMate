@@ -3,19 +3,19 @@ import { FaCheckCircle, FaExclamationTriangle, FaInfoCircle } from "react-icons/
 function NotificationCard({ notification }) {
   const icon =
     notification.type === "success" ? (
-      <FaCheckCircle className="text-green-500 text-xl" />
+      <FaCheckCircle className="text-success text-xl" />
     ) : notification.type === "warning" ? (
-      <FaExclamationTriangle className="text-yellow-500 text-xl" />
+      <FaExclamationTriangle className="text-warning text-xl" />
     ) : (
-      <FaInfoCircle className="text-blue-500 text-xl" />
+      <FaInfoCircle className="text-secondary text-xl" />
     );
 
   return (
     <div
-      className={`bg-white rounded-xl shadow-md p-4 border-l-4 transition hover:shadow-lg ${
+      className={`bg-surface radius-xl elevation-md p-4 border-l-4 transition hover:elevation-lg ${
         notification.read
-          ? "border-gray-300"
-          : "border-blue-500 bg-blue-50"
+          ? "border-border"
+          : "border-secondary bg-secondary-subtle"
       }`}
     >
       <div className="flex gap-4">
@@ -23,22 +23,22 @@ function NotificationCard({ notification }) {
 
         <div className="flex-1">
           <div className="flex justify-between items-start">
-            <h3 className="font-semibold text-gray-800">
+            <h3 className="font-semibold text-text-primary">
               {notification.title}
             </h3>
 
             {!notification.read && (
-              <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+              <span className="bg-secondary text-text-inverse text-xs px-2 py-1 radius-full">
                 New
               </span>
             )}
           </div>
 
-          <p className="text-gray-600 mt-1">
+          <p className="text-text-secondary mt-1">
             {notification.message}
           </p>
 
-          <p className="text-xs text-gray-400 mt-3">
+          <p className="text-xs text-text-disabled mt-3">
             {notification.time}
           </p>
         </div>

@@ -4,7 +4,7 @@ function DashboardCard({
   title,
   value,
   icon,
-  color = "from-green-500 to-green-600",
+  color = "from-success to-primary",
   change = "+12%",
 }) {
   return (
@@ -12,10 +12,10 @@ function DashboardCard({
       className="
         relative
         overflow-hidden
-        rounded-3xl
-        bg-white
-        shadow-md
-        hover:shadow-2xl
+        radius-3xl
+        bg-surface
+        elevation-md
+        hover:elevation-2xl
         transition-all
         duration-300
         hover:-translate-y-1
@@ -31,8 +31,8 @@ function DashboardCard({
           -right-10
           w-32
           h-32
-          rounded-full
-          bg-green-100
+          radius-full
+          bg-success-subtle
           opacity-40
         "
       />
@@ -43,11 +43,11 @@ function DashboardCard({
 
         <div>
 
-          <p className="text-gray-500 text-sm">
+          <p className="text-text-muted text-sm">
             {title}
           </p>
 
-          <h2 className="text-4xl font-bold mt-3 text-gray-800">
+          <h2 className="text-4xl font-bold mt-3 text-text-primary">
             {value}
           </h2>
 
@@ -57,15 +57,15 @@ function DashboardCard({
           className={`
             w-16
             h-16
-            rounded-2xl
+            radius-2xl
             bg-gradient-to-br
             ${color}
             flex
             items-center
             justify-center
-            text-white
+            text-text-inverse
             text-2xl
-            shadow-lg
+            elevation-lg
           `}
         >
           {icon}
@@ -77,7 +77,7 @@ function DashboardCard({
 
       <div className="flex items-center justify-between mt-8">
 
-        <div className="flex items-center gap-2 text-green-600 font-semibold">
+        <div className="flex items-center gap-2 text-success font-semibold">
 
           <FaArrowUp />
 
@@ -85,7 +85,7 @@ function DashboardCard({
 
         </div>
 
-        <span className="text-sm text-gray-400">
+        <span className="text-sm text-text-disabled">
           This Month
         </span>
 
@@ -95,9 +95,9 @@ function DashboardCard({
 
       <div className="mt-4">
 
-        <div className="w-full h-2 rounded-full bg-gray-200">
+        <div className="w-full h-2 radius-full bg-border-strong">
 
-          <div className="w-3/4 h-2 rounded-full bg-green-600" />
+          <div className="w-3/4 h-2 radius-full bg-primary" />
 
         </div>
 

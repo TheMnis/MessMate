@@ -5,7 +5,7 @@ import {
 
 function CurrentPlanCard({ plan }) {
   return (
-    <div className="bg-gradient-to-r from-green-600 to-green-700 text-white rounded-3xl p-8 shadow-xl">
+    <div className="bg-gradient-to-r from-primary to-primary-hover text-text-inverse radius-3xl p-8 elevation-xl">
 
       <div className="flex justify-between items-center">
 

@@ -42,7 +42,7 @@ function WelcomeBanner() {
       transition={{
         duration: 0.5,
       }}
-      className="bg-gradient-to-r from-green-600 via-emerald-500 to-green-700 rounded-3xl shadow-xl text-white p-8"
+      className="bg-gradient-to-r from-primary via-success to-primary-hover radius-3xl elevation-xl text-text-inverse p-8"
     >
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
 
@@ -52,14 +52,14 @@ function WelcomeBanner() {
             👋 {greeting}, Deva Yadav
           </h1>
 
-          <p className="mt-3 text-green-100 text-lg">
+          <p className="mt-3 text-primary-muted text-lg">
             Welcome back to MessMate.
             Manage your meals, attendance and subscription from one place.
           </p>
 
         </div>
 
-        <div className="bg-white/15 backdrop-blur-md rounded-2xl px-6 py-4 space-y-3">
+        <div className="bg-surface/15 backdrop-blur-md radius-2xl px-6 py-4 space-y-3">
 
           <div className="flex items-center gap-3">
 

@@ -7,7 +7,7 @@ function SearchBar({
   return (
     <div className="relative w-full md:w-80">
 
-      <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+      <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-text-disabled" />
 
       <input
         type="text"
@@ -19,11 +19,11 @@ function SearchBar({
           pl-12
           pr-4
           py-3
-          rounded-xl
+          radius-xl
           border
-          border-gray-300
+          border-border
           outline-none
-          focus:border-green-600
+          focus:border-primary
           transition
         "
       />

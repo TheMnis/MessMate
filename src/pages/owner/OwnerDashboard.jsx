@@ -13,13 +13,13 @@ function OwnerDashboard() {
 
       {/* Welcome */}
 
-      <div className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-3xl p-8 shadow-lg">
+      <div className="bg-gradient-to-r from-secondary to-info text-text-inverse radius-3xl p-8 elevation-lg">
 
         <h1 className="text-4xl font-bold">
           👋 Welcome Back, Owner
         </h1>
 
-        <p className="mt-3 text-blue-100 text-lg">
+        <p className="mt-3 text-secondary-subtle text-lg">
           Manage your mess, students, inventory and revenue from one place.
         </p>
 
@@ -33,7 +33,7 @@ function OwnerDashboard() {
           title="Total Students"
           value="128"
           icon={<FaUsers />}
-          color="bg-blue-600"
+          color="bg-secondary"
           link="/owner/students"
         />
 
@@ -41,7 +41,7 @@ function OwnerDashboard() {
           title="Meals Today"
           value="356"
           icon={<FaUtensils />}
-          color="bg-green-600"
+          color="bg-primary"
           link="/owner/menu"
         />
 
@@ -49,7 +49,7 @@ function OwnerDashboard() {
           title="Inventory Items"
           value="42"
           icon={<FaBoxes />}
-          color="bg-orange-500"
+          color="bg-highlight"
           link="/owner/inventory"
         />
 
@@ -57,7 +57,7 @@ function OwnerDashboard() {
           title="Revenue"
           value="₹1.25L"
           icon={<FaMoneyBillWave />}
-          color="bg-purple-600"
+          color="bg-accent"
           link="/owner/reports"
         />
 
@@ -65,7 +65,7 @@ function OwnerDashboard() {
 
       {/* Quick Actions */}
 
-      <div className="bg-white rounded-2xl shadow-md p-6">
+      <div className="bg-surface radius-2xl elevation-md p-6">
 
         <h2 className="text-2xl font-bold mb-6">
           ⚡ Quick Actions
@@ -73,19 +73,19 @@ function OwnerDashboard() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
 
-          <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl p-4 font-semibold transition">
+          <button className="bg-secondary hover:bg-secondary-hover text-text-inverse radius-xl p-4 font-semibold transition">
             Add Student
           </button>
 
-          <button className="bg-green-600 hover:bg-green-700 text-white rounded-xl p-4 font-semibold transition">
+          <button className="bg-primary hover:bg-primary-hover text-text-inverse radius-xl p-4 font-semibold transition">
             Update Menu
           </button>
 
-          <button className="bg-orange-500 hover:bg-orange-600 text-white rounded-xl p-4 font-semibold transition">
+          <button className="bg-highlight hover:bg-highlight-hover text-text-inverse radius-xl p-4 font-semibold transition">
             Inventory
           </button>
 
-          <button className="bg-purple-600 hover:bg-purple-700 text-white rounded-xl p-4 font-semibold transition">
+          <button className="bg-accent hover:bg-accent-hover text-text-inverse radius-xl p-4 font-semibold transition">
             Reports
           </button>
 
@@ -95,7 +95,7 @@ function OwnerDashboard() {
 
       {/* Recent Activity */}
 
-      <div className="bg-white rounded-2xl shadow-md p-6">
+      <div className="bg-surface radius-2xl elevation-md p-6">
 
         <h2 className="text-2xl font-bold mb-6">
           📋 Recent Activities
@@ -103,32 +103,32 @@ function OwnerDashboard() {
 
         <div className="space-y-4">
 
-          <div className="border-l-4 border-blue-500 pl-4">
+          <div className="border-l-4 border-secondary pl-4">
             <h3 className="font-semibold">
               Menu Updated
             </h3>
 
-            <p className="text-gray-500 text-sm">
+            <p className="text-text-muted text-sm">
               Paneer Butter Masala added for today's lunch.
             </p>
           </div>
 
-          <div className="border-l-4 border-green-500 pl-4">
+          <div className="border-l-4 border-success pl-4">
             <h3 className="font-semibold">
               New Student Joined
             </h3>
 
-            <p className="text-gray-500 text-sm">
+            <p className="text-text-muted text-sm">
               Rahul Verma subscribed to Monthly Plan.
             </p>
           </div>
 
-          <div className="border-l-4 border-red-500 pl-4">
+          <div className="border-l-4 border-danger pl-4">
             <h3 className="font-semibold">
               Low Inventory Alert
             </h3>
 
-            <p className="text-gray-500 text-sm">
+            <p className="text-text-muted text-sm">
               Rice stock is below 20 KG.
             </p>
           </div>

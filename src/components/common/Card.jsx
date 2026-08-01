@@ -14,15 +14,15 @@ function Card({
         duration: 0.25,
       }}
       className={`
-        bg-white
-        rounded-3xl
-        shadow-lg
-        hover:shadow-2xl
+        bg-surface
+        radius-3xl
+        elevation-lg
+        hover:elevation-2xl
         transition-all
         duration-300
         p-6
         border
-        border-gray-100
+        border-border-subtle
         ${className}
       `}
     >

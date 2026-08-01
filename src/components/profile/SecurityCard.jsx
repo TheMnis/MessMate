@@ -47,7 +47,7 @@ function SecurityCard() {
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-8">
+    <div className="bg-surface radius-3xl elevation-lg border border-border-subtle p-8">
 
       <h2 className="text-2xl font-bold mb-8">
         Security Settings
@@ -57,20 +57,20 @@ function SecurityCard() {
 
         <div>
 
-          <label className="block mb-2 text-sm font-semibold text-gray-600">
+          <label className="block mb-2 text-sm font-semibold text-text-secondary">
             Current Password
           </label>
 
           <div className="relative">
 
-            <FaLock className="absolute left-4 top-1/2 -translate-y-1/2 text-green-600" />
+            <FaLock className="absolute left-4 top-1/2 -translate-y-1/2 text-success" />
 
             <input
               type="password"
               name="currentPassword"
               value={formData.currentPassword}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-2xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-green-500 outline-none"
+              className="w-full border border-border radius-2xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-primary outline-none"
             />
 
           </div>
@@ -79,20 +79,20 @@ function SecurityCard() {
 
         <div>
 
-          <label className="block mb-2 text-sm font-semibold text-gray-600">
+          <label className="block mb-2 text-sm font-semibold text-text-secondary">
             New Password
           </label>
 
           <div className="relative">
 
-            <FaKey className="absolute left-4 top-1/2 -translate-y-1/2 text-green-600" />
+            <FaKey className="absolute left-4 top-1/2 -translate-y-1/2 text-success" />
 
             <input
               type="password"
               name="newPassword"
               value={formData.newPassword}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-2xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-green-500 outline-none"
+              className="w-full border border-border radius-2xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-primary outline-none"
             />
 
           </div>
@@ -101,20 +101,20 @@ function SecurityCard() {
 
         <div>
 
-          <label className="block mb-2 text-sm font-semibold text-gray-600">
+          <label className="block mb-2 text-sm font-semibold text-text-secondary">
             Confirm Password
           </label>
 
           <div className="relative">
 
-            <FaKey className="absolute left-4 top-1/2 -translate-y-1/2 text-green-600" />
+            <FaKey className="absolute left-4 top-1/2 -translate-y-1/2 text-success" />
 
             <input
               type="password"
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-2xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-green-500 outline-none"
+              className="w-full border border-border radius-2xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-primary outline-none"
             />
 
           </div>
@@ -127,7 +127,7 @@ function SecurityCard() {
 
         <button
           onClick={handleSubmit}
-          className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-2xl font-semibold transition"
+          className="bg-primary hover:bg-primary-hover text-text-inverse px-8 py-3 radius-2xl font-semibold transition"
         >
           Change Password
         </button>

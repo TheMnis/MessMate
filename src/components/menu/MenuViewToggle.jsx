@@ -1,12 +1,12 @@
 function MenuViewToggle({ view, onChange }) {
   return (
-    <div className="mb-8 flex w-fit rounded-2xl bg-white p-1 shadow-md">
+    <div className="mb-8 flex w-fit radius-2xl bg-surface p-1 elevation-md">
       <button
         onClick={() => onChange("today")}
-        className={`rounded-xl px-6 py-3 font-semibold transition ${
+        className={`radius-xl px-6 py-3 font-semibold transition ${
           view === "today"
-            ? "bg-green-600 text-white"
-            : "text-gray-600"
+            ? "bg-primary text-text-inverse"
+            : "text-text-secondary"
         }`}
       >
         🍽 Today
@@ -14,10 +14,10 @@ function MenuViewToggle({ view, onChange }) {
 
       <button
         onClick={() => onChange("weekly")}
-        className={`rounded-xl px-6 py-3 font-semibold transition ${
+        className={`radius-xl px-6 py-3 font-semibold transition ${
           view === "weekly"
-            ? "bg-green-600 text-white"
-            : "text-gray-600"
+            ? "bg-primary text-text-inverse"
+            : "text-text-secondary"
         }`}
       >
         📅 Weekly

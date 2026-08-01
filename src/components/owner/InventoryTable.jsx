@@ -9,11 +9,11 @@ function InventoryTable({
   onDelete,
 }) {
   return (
-    <div className="bg-white rounded-2xl shadow-md overflow-hidden">
+    <div className="bg-surface radius-2xl elevation-md overflow-hidden">
 
       <table className="w-full">
 
-        <thead className="bg-green-600 text-white">
+        <thead className="bg-primary text-text-inverse">
 
           <tr>
 
@@ -51,7 +51,7 @@ function InventoryTable({
 
             <tr
               key={item.id}
-              className="border-b hover:bg-gray-50"
+              className="border-b hover:bg-surface-muted"
             >
 
               <td className="p-4 font-semibold">
@@ -73,10 +73,10 @@ function InventoryTable({
               <td className="p-4">
 
                 <span
-                  className={`px-3 py-1 rounded-full text-sm ${
+                  className={`px-3 py-1 radius-full text-sm ${
                     item.quantity <= item.minimumStock
-                      ? "bg-red-100 text-red-700"
-                      : "bg-green-100 text-green-700"
+                      ? "bg-danger-subtle text-danger-hover"
+                      : "bg-success-subtle text-success-hover"
                   }`}
                 >
                   {item.quantity <= item.minimumStock
@@ -92,14 +92,14 @@ function InventoryTable({
 
                   <button
                     onClick={() => onEdit(item)}
-                    className="bg-blue-600 text-white p-3 rounded-lg"
+                    className="bg-secondary text-text-inverse p-3 radius-lg"
                   >
                     <FaEdit />
                   </button>
 
                   <button
                     onClick={() => onDelete(item.id)}
-                    className="bg-red-600 text-white p-3 rounded-lg"
+                    className="bg-danger text-text-inverse p-3 radius-lg"
                   >
                     <FaTrash />
                   </button>

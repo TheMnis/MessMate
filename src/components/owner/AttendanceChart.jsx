@@ -20,7 +20,7 @@ const attendanceData = [
 
 function AttendanceChart() {
   return (
-    <div className="bg-white rounded-3xl shadow-lg p-6">
+    <div className="bg-surface radius-3xl elevation-lg p-6">
 
       <h2 className="text-2xl font-bold mb-6">
         Weekly Attendance
@@ -42,7 +42,7 @@ function AttendanceChart() {
 
             <Bar
               dataKey="attendance"
-              fill="#2563eb"
+              fill="var(--color-secondary)"
               radius={[8,8,0,0]}
             />
 

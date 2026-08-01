@@ -13,16 +13,16 @@ const mealData = [
 ];
 
 const COLORS = [
-  "#16a34a",
-  "#2563eb",
-  "#f97316",
+  "var(--chart-success)",
+  "var(--chart-secondary)",
+  "var(--color-highlight)",
 ];
 
 function MealAnalytics() {
 
   return (
 
-    <div className="bg-white rounded-3xl shadow-lg p-6">
+    <div className="bg-surface radius-3xl elevation-lg p-6">
 
       <h2 className="text-2xl font-bold mb-6">
         Meal Analytics

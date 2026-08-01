@@ -2,20 +2,20 @@ function MenuSummaryCard({ icon, title, status }) {
   const isAvailable = status === "Available";
 
   return (
-    <div className="rounded-3xl bg-white p-5 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <div className="radius-3xl bg-surface p-5 elevation-md transition-all duration-300 hover:-translate-y-1 hover:elevation-xl">
       <div className="mb-4 text-4xl">
         {icon}
       </div>
 
-      <h3 className="text-lg font-bold text-gray-800">
+      <h3 className="text-lg font-bold text-text-primary">
         {title}
       </h3>
 
       <span
-        className={`mt-4 inline-block rounded-full px-4 py-2 text-sm font-semibold ${
+        className={`mt-4 inline-block radius-full px-4 py-2 text-sm font-semibold ${
           isAvailable
-            ? "bg-green-100 text-green-700"
-            : "bg-red-100 text-red-700"
+            ? "bg-success-subtle text-success-hover"
+            : "bg-danger-subtle text-danger-hover"
         }`}
       >
         {status}

@@ -14,28 +14,28 @@ function ProfileStats({ profile }) {
       title: "Attendance",
       value: `${profile.attendance}%`,
       icon: <FaClipboardCheck />,
-      color: "bg-green-600",
+      color: "bg-primary",
     },
     {
       id: 2,
       title: "Meals Taken",
       value: profile.mealsTaken,
       icon: <FaUtensils />,
-      color: "bg-orange-500",
+      color: "bg-highlight",
     },
     {
       id: 3,
       title: "Notifications",
       value: profile.notifications,
       icon: <FaBell />,
-      color: "bg-blue-500",
+      color: "bg-secondary",
     },
     {
       id: 4,
       title: "Subscription",
       value: profile.subscription,
       icon: <FaCrown />,
-      color: "bg-purple-600",
+      color: "bg-accent",
     },
   ];
 
@@ -50,14 +50,14 @@ function ProfileStats({ profile }) {
             y: -5,
             scale: 1.02,
           }}
-          className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6"
+          className="bg-surface radius-3xl elevation-lg border border-border-subtle p-6"
         >
 
           <div className="flex items-center justify-between">
 
             <div>
 
-              <p className="text-gray-500 text-sm">
+              <p className="text-text-muted text-sm">
                 {stat.title}
               </p>
 
@@ -71,11 +71,11 @@ function ProfileStats({ profile }) {
               className={`
                 w-16
                 h-16
-                rounded-2xl
+                radius-2xl
                 flex
                 items-center
                 justify-center
-                text-white
+                text-text-inverse
                 text-2xl
                 ${stat.color}
               `}

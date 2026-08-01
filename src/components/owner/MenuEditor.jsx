@@ -13,12 +13,12 @@ const MenuEditor = () => {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h1 className="text-3xl font-bold text-gray-800">
+      <div className="bg-surface radius-xl elevation-sm border border-border-strong p-6">
+        <h1 className="text-3xl font-bold text-text-primary">
           Weekly Menu Management
         </h1>
 
-        <p className="text-gray-500 mt-2">
+        <p className="text-text-muted mt-2">
           Manage breakfast, lunch, snacks and dinner for the entire week.
         </p>
       </div>

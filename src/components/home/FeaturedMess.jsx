@@ -29,14 +29,14 @@ const messes = [
 
 function FeaturedMess() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-surface">
       <div className="max-w-7xl mx-auto px-6">
 
         <h2 className="text-4xl font-bold text-center">
           Featured Messes
         </h2>
 
-        <p className="text-center text-gray-500 mt-3">
+        <p className="text-center text-text-muted mt-3">
           Choose from top rated messes near you.
         </p>
 
@@ -46,19 +46,19 @@ function FeaturedMess() {
 
             <div
               key={mess.id}
-              className="border rounded-2xl p-6 shadow hover:shadow-xl transition"
+              className="border radius-2xl p-6 elevation-base hover:elevation-xl transition"
             >
 
               <h3 className="text-2xl font-bold">
                 {mess.name}
               </h3>
 
-              <div className="flex items-center gap-2 mt-3 text-yellow-500">
+              <div className="flex items-center gap-2 mt-3 text-warning">
                 <FaStar />
                 {mess.rating}
               </div>
 
-              <div className="flex items-center gap-2 mt-2 text-gray-500">
+              <div className="flex items-center gap-2 mt-2 text-text-muted">
                 <FaMapMarkerAlt />
                 {mess.location}
               </div>
@@ -67,11 +67,11 @@ function FeaturedMess() {
                 {mess.type}
               </p>
 
-              <p className="text-green-600 font-bold mt-2">
+              <p className="text-success font-bold mt-2">
                 {mess.price}
               </p>
 
-              <button className="w-full bg-green-600 text-white py-3 rounded-xl mt-6 hover:bg-green-700">
+              <button className="w-full bg-primary text-text-inverse py-3 radius-xl mt-6 hover:bg-primary-hover">
                 View Details
               </button>
 

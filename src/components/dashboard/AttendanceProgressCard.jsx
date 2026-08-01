@@ -25,7 +25,7 @@ function AttendanceProgressCard() {
       transition={{
         duration: 0.4,
       }}
-      className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6"
+      className="bg-surface radius-3xl elevation-lg border border-border-subtle p-6"
     >
       <div className="flex items-center justify-between mb-8">
 
@@ -33,7 +33,7 @@ function AttendanceProgressCard() {
           📈 Attendance Progress
         </h2>
 
-        <div className="flex items-center gap-2 text-green-600 font-semibold">
+        <div className="flex items-center gap-2 text-success font-semibold">
 
           <FaArrowTrendUp />
 
@@ -56,7 +56,7 @@ function AttendanceProgressCard() {
               cx="60"
               cy="60"
               r="52"
-              stroke="#E5E7EB"
+              stroke="var(--color-border-strong)"
               strokeWidth="10"
               fill="none"
             />
@@ -65,7 +65,7 @@ function AttendanceProgressCard() {
               cx="60"
               cy="60"
               r="52"
-              stroke="#16A34A"
+              stroke="var(--color-success)"
               strokeWidth="10"
               fill="none"
               strokeLinecap="round"
@@ -85,11 +85,11 @@ function AttendanceProgressCard() {
 
           <div className="absolute inset-0 flex flex-col items-center justify-center">
 
-            <h2 className="text-4xl font-bold text-green-600">
+            <h2 className="text-4xl font-bold text-success">
               {attendance}%
             </h2>
 
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-text-muted">
               Present
             </p>
 
@@ -101,7 +101,7 @@ function AttendanceProgressCard() {
 
           <div className="flex items-center gap-3">
 
-            <FaCircleCheck className="text-green-600 text-xl" />
+            <FaCircleCheck className="text-success text-xl" />
 
             <span>
               Excellent attendance this month.
@@ -111,7 +111,7 @@ function AttendanceProgressCard() {
 
           <div className="flex items-center gap-3">
 
-            <FaCircleCheck className="text-green-600 text-xl" />
+            <FaCircleCheck className="text-success text-xl" />
 
             <span>
               Eligible for attendance rewards.
@@ -121,7 +121,7 @@ function AttendanceProgressCard() {
 
           <div className="flex items-center gap-3">
 
-            <FaCircleCheck className="text-green-600 text-xl" />
+            <FaCircleCheck className="text-success text-xl" />
 
             <span>
               Keep attendance above 90%.
@@ -131,10 +131,10 @@ function AttendanceProgressCard() {
 
           <div className="pt-3">
 
-            <div className="w-full bg-gray-200 rounded-full h-3">
+            <div className="w-full bg-border-strong radius-full h-3">
 
               <div
-                className="bg-green-600 h-3 rounded-full"
+                className="bg-primary h-3 radius-full"
                 style={{
                   width: `${attendance}%`,
                 }}

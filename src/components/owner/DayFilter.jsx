@@ -20,12 +20,12 @@ function DayFilter({
       className="
         px-4
         py-3
-        rounded-xl
+        radius-xl
         border
-        border-gray-300
+        border-border
         outline-none
-        focus:border-green-600
-        bg-white
+        focus:border-primary
+        bg-surface
       "
     >
       {days.map((day) => (

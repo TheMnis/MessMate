@@ -23,7 +23,7 @@ function StudentDashboard() {
           title="Attendance"
           value="92%"
           icon={<FaClipboardCheck />}
-          color="bg-green-500"
+          color="bg-success"
           link="/student/attendance"
         />
 
@@ -31,7 +31,7 @@ function StudentDashboard() {
           title="Today's Meals"
           value="3"
           icon={<FaUtensils />}
-          color="bg-orange-500"
+          color="bg-highlight"
           link="/student/menu"
         />
 
@@ -39,7 +39,7 @@ function StudentDashboard() {
           title="Subscription"
           value="Active"
           icon={<FaWallet />}
-          color="bg-blue-500"
+          color="bg-secondary"
           link="/student/subscription"
         />
 
@@ -47,7 +47,7 @@ function StudentDashboard() {
           title="Notifications"
           value="4"
           icon={<FaBell />}
-          color="bg-red-500"
+          color="bg-danger"
           link="/student/notifications"
         />
 

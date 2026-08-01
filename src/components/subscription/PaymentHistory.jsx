@@ -18,11 +18,11 @@ function PaymentHistory() {
       initial={{ opacity: 0, y: 25 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6"
+      className="bg-surface radius-3xl elevation-lg border border-border-subtle p-6"
     >
       <div className="flex items-center gap-3 mb-6">
 
-        <FaReceipt className="text-green-600 text-2xl" />
+        <FaReceipt className="text-success text-2xl" />
 
         <h2 className="text-2xl font-bold">
           Payment History
@@ -36,7 +36,7 @@ function PaymentHistory() {
 
           <div
             key={payment.id}
-            className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 rounded-2xl border border-gray-200 p-5 hover:bg-gray-50 transition"
+            className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 radius-2xl border border-border-strong p-5 hover:bg-surface-muted transition"
           >
 
             <div>
@@ -45,7 +45,7 @@ function PaymentHistory() {
                 {payment.month}
               </h3>
 
-              <div className="flex items-center gap-2 mt-2 text-gray-500 text-sm">
+              <div className="flex items-center gap-2 mt-2 text-text-muted text-sm">
 
                 <FaCalendarAlt />
 
@@ -57,11 +57,11 @@ function PaymentHistory() {
 
             <div className="text-right">
 
-              <h3 className="text-xl font-bold text-green-600">
+              <h3 className="text-xl font-bold text-success">
                 ₹{payment.amount}
               </h3>
 
-              <div className="flex justify-end items-center gap-2 mt-2 text-green-600">
+              <div className="flex justify-end items-center gap-2 mt-2 text-success">
 
                 <FaCheckCircle />
 

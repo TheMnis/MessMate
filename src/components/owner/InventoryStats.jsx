@@ -20,25 +20,25 @@ function InventoryStats({ items }) {
       title: "Total Items",
       value: totalItems,
       icon: <FaBoxes />,
-      color: "bg-blue-600",
+      color: "bg-secondary",
     },
     {
       title: "Low Stock",
       value: lowStock,
       icon: <FaExclamationTriangle />,
-      color: "bg-red-600",
+      color: "bg-danger",
     },
     {
       title: "Available",
       value: available,
       icon: <FaCheckCircle />,
-      color: "bg-green-600",
+      color: "bg-primary",
     },
     {
       title: "Categories",
       value: 5,
       icon: <FaWarehouse />,
-      color: "bg-purple-600",
+      color: "bg-accent",
     },
   ];
 
@@ -49,12 +49,12 @@ function InventoryStats({ items }) {
 
         <div
           key={stat.title}
-          className="bg-white rounded-2xl shadow-md p-6 flex justify-between items-center"
+          className="bg-surface radius-2xl elevation-md p-6 flex justify-between items-center"
         >
 
           <div>
 
-            <p className="text-gray-500">
+            <p className="text-text-muted">
               {stat.title}
             </p>
 
@@ -65,7 +65,7 @@ function InventoryStats({ items }) {
           </div>
 
           <div
-            className={`${stat.color} w-14 h-14 rounded-xl flex items-center justify-center text-white text-2xl`}
+            className={`${stat.color} w-14 h-14 radius-xl flex items-center justify-center text-text-inverse text-2xl`}
           >
             {stat.icon}
           </div>

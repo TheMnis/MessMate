@@ -41,7 +41,7 @@ function PlanDetails() {
       initial={{ opacity: 0, y: 25 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="bg-white rounded-3xl shadow-lg border border-gray-100 p-6"
+      className="bg-surface radius-3xl elevation-lg border border-border-subtle p-6"
     >
       <h2 className="text-2xl font-bold mb-6">
         Plan Features
@@ -53,10 +53,10 @@ function PlanDetails() {
 
           <div
             key={feature.id}
-            className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-green-50 transition-all"
+            className="flex items-center gap-4 p-4 radius-2xl bg-surface-muted hover:bg-primary-subtle transition-all"
           >
 
-            <div className="w-12 h-12 rounded-2xl bg-green-600 text-white flex items-center justify-center text-xl">
+            <div className="w-12 h-12 radius-2xl bg-primary text-text-inverse flex items-center justify-center text-xl">
 
               {getIcon(feature.icon)}
 
@@ -68,14 +68,14 @@ function PlanDetails() {
                 {feature.title}
               </h3>
 
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-text-muted">
                 {feature.description}
               </p>
 
             </div>
 
             {feature.available && (
-              <FaCheckCircle className="text-green-600 text-xl" />
+              <FaCheckCircle className="text-success text-xl" />
             )}
 
           </div>

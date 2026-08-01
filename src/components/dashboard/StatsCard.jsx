@@ -24,22 +24,22 @@ function StatsCard({
         to={link}
         className="
           block
-          bg-white
-          rounded-3xl
-          shadow-lg
-          hover:shadow-2xl
+          bg-surface
+          radius-3xl
+          elevation-lg
+          hover:elevation-2xl
           transition-all
           duration-300
           p-6
           border
-          border-gray-100
+          border-border-subtle
         "
       >
         <div className="flex items-start justify-between">
 
           <div>
 
-            <p className="text-gray-500 text-sm font-medium">
+            <p className="text-text-muted text-sm font-medium">
               {title}
             </p>
 
@@ -49,13 +49,13 @@ function StatsCard({
 
             <div className="flex items-center gap-2 mt-5">
 
-              <FaArrowTrendUp className="text-green-600 text-sm" />
+              <FaArrowTrendUp className="text-success text-sm" />
 
-              <span className="text-green-600 text-sm font-semibold">
+              <span className="text-success text-sm font-semibold">
                 {change}
               </span>
 
-              <span className="text-gray-400 text-sm">
+              <span className="text-text-disabled text-sm">
                 This Month
               </span>
 
@@ -67,13 +67,13 @@ function StatsCard({
             className={`
               w-16
               h-16
-              rounded-2xl
+              radius-2xl
               flex
               items-center
               justify-center
               text-3xl
-              text-white
-              shadow-lg
+              text-text-inverse
+              elevation-lg
               ${color}
             `}
           >

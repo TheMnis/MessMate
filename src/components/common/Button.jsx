@@ -10,13 +10,13 @@ function Button({
 
   const variants = {
     primary:
-      "bg-green-600 hover:bg-green-700 text-white",
+      "bg-primary hover:bg-primary-hover text-text-inverse",
 
     secondary:
-      "bg-gray-100 hover:bg-gray-200 text-gray-700",
+      "bg-surface-hover hover:bg-border-strong text-text-secondary",
 
     danger:
-      "bg-red-600 hover:bg-red-700 text-white",
+      "bg-danger hover:bg-danger-hover text-text-inverse",
   };
 
   return (
@@ -29,7 +29,7 @@ function Button({
       className={`
         px-6
         py-3
-        rounded-2xl
+        radius-2xl
         font-semibold
         transition-all
         duration-300

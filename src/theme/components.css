@@ -1,0 +1,11 @@
+@layer components {
+  .btn { @apply inline-flex items-center justify-center font-semibold transition; }
+  .btn-primary { @apply bg-primary hover:bg-primary-hover text-text-inverse; }
+  .btn-secondary { @apply bg-surface-hover hover:bg-border-strong text-text-secondary; }
+  .btn-danger { @apply bg-danger hover:bg-danger-hover text-text-inverse; }
+  .card { @apply bg-card border border-border-subtle elevation-lg radius-3xl; }
+  .input { @apply w-full border border-border radius-xl outline-none focus:border-primary; }
+  .badge { @apply inline-flex items-center radius-full px-3 py-1 text-sm font-semibold; }
+  .modal { @apply bg-card radius-2xl elevation-xl; }
+  .table { @apply w-full; }
+}

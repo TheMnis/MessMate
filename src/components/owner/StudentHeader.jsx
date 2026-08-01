@@ -8,11 +8,11 @@ function StudentHeader({
 
       <div>
 
-        <h1 className="text-4xl font-bold text-gray-800">
+        <h1 className="text-4xl font-bold text-text-primary">
           Student Management
         </h1>
 
-        <p className="text-gray-500 mt-2">
+        <p className="text-text-muted mt-2">
           Manage all students, subscriptions and status.
         </p>
 
@@ -24,14 +24,14 @@ function StudentHeader({
           flex
           items-center
           gap-3
-          bg-green-600
-          hover:bg-green-700
-          text-white
+          bg-primary
+          hover:bg-primary-hover
+          text-text-inverse
           px-6
           py-3
-          rounded-xl
+          radius-xl
           font-semibold
-          shadow-lg
+          elevation-lg
           transition
         "
       >

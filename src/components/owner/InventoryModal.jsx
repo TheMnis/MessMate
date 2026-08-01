@@ -23,9 +23,9 @@ function InventoryModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-overlay flex items-center justify-center z-50">
 
-      <div className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-lg">
+      <div className="bg-surface radius-2xl elevation-xl p-6 w-full max-w-lg">
 
         <h2 className="text-2xl font-bold mb-6">
           Add Inventory Item
@@ -37,34 +37,34 @@ function InventoryModal({
             name="name"
             placeholder="Item Name"
             onChange={handleChange}
-            className="w-full border rounded-xl p-3"
+            className="w-full border radius-xl p-3"
           />
 
           <input
             name="quantity"
             placeholder="Quantity"
             onChange={handleChange}
-            className="w-full border rounded-xl p-3"
+            className="w-full border radius-xl p-3"
           />
 
           <input
             name="minimumStock"
             placeholder="Minimum Stock"
             onChange={handleChange}
-            className="w-full border rounded-xl p-3"
+            className="w-full border radius-xl p-3"
           />
 
           <div className="flex justify-end gap-3 pt-3">
 
             <button
               onClick={onClose}
-              className="px-5 py-2 border rounded-xl"
+              className="px-5 py-2 border radius-xl"
             >
               Cancel
             </button>
 
             <button
-              className="px-5 py-2 bg-green-600 text-white rounded-xl"
+              className="px-5 py-2 bg-primary text-text-inverse radius-xl"
             >
               Save
             </button>

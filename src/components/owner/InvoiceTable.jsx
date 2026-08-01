@@ -1,10 +1,10 @@
 function InvoiceTable({ payments }) {
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div className="bg-surface radius-2xl elevation-lg overflow-hidden">
 
       <table className="w-full">
 
-        <thead className="bg-green-600 text-white">
+        <thead className="bg-primary text-text-inverse">
 
           <tr>
 
@@ -34,7 +34,7 @@ function InvoiceTable({ payments }) {
 
             <tr
               key={payment.id}
-              className="border-b hover:bg-gray-50"
+              className="border-b hover:bg-surface-muted"
             >
 
               <td className="p-4">
@@ -49,7 +49,7 @@ function InvoiceTable({ payments }) {
                 ₹{payment.amount}
               </td>
 
-              <td className="p-4 text-center text-green-600 font-semibold">
+              <td className="p-4 text-center text-success font-semibold">
                 {payment.status}
               </td>
 

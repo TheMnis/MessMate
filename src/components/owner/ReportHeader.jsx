@@ -10,7 +10,7 @@ function ReportHeader() {
           Reports Dashboard
         </h1>
 
-        <p className="text-gray-500 mt-2">
+        <p className="text-text-muted mt-2">
           Track revenue, attendance and analytics.
         </p>
 

@@ -9,11 +9,11 @@ function MenuTable({
   onDelete,
 }) {
   return (
-    <div className="bg-white rounded-2xl shadow-md overflow-hidden">
+    <div className="bg-surface radius-2xl elevation-md overflow-hidden">
 
       <table className="w-full">
 
-        <thead className="bg-green-600 text-white">
+        <thead className="bg-primary text-text-inverse">
 
           <tr>
 
@@ -49,7 +49,7 @@ function MenuTable({
 
               <td
                 colSpan="5"
-                className="text-center py-10 text-gray-500"
+                className="text-center py-10 text-text-muted"
               >
                 No Meals Found
               </td>
@@ -62,7 +62,7 @@ function MenuTable({
 
               <tr
                 key={meal.id}
-                className="border-b hover:bg-gray-50 transition"
+                className="border-b hover:bg-surface-muted transition"
               >
 
                 <td className="p-4 font-semibold">
@@ -87,14 +87,14 @@ function MenuTable({
 
                     <button
                       onClick={() => onEdit(meal)}
-                      className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg transition"
+                      className="bg-secondary hover:bg-secondary text-text-inverse p-3 radius-lg transition"
                     >
                       <FaEdit />
                     </button>
 
                     <button
                       onClick={() => onDelete(meal.id)}
-                      className="bg-red-500 hover:bg-red-600 text-white p-3 rounded-lg transition"
+                      className="bg-danger hover:bg-danger text-text-inverse p-3 radius-lg transition"
                     >
                       <FaTrash />
                     </button>

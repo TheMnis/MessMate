@@ -56,7 +56,7 @@ function ProfileCard({ profile, onSave }) {
   ];
 
   return (
-    <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-8">
+    <div className="bg-surface radius-3xl elevation-lg border border-border-subtle p-8">
 
       <h2 className="text-2xl font-bold mb-8">
         Personal Information
@@ -68,13 +68,13 @@ function ProfileCard({ profile, onSave }) {
 
           <div key={field.name}>
 
-            <label className="block text-sm font-semibold mb-2 text-gray-600">
+            <label className="block text-sm font-semibold mb-2 text-text-secondary">
               {field.label}
             </label>
 
             <div className="relative">
 
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-green-600">
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-success">
 
                 {field.icon}
 
@@ -85,7 +85,7 @@ function ProfileCard({ profile, onSave }) {
                 name={field.name}
                 value={formData[field.name]}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-2xl py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full border border-border radius-2xl py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary"
               />
 
             </div>
@@ -96,13 +96,13 @@ function ProfileCard({ profile, onSave }) {
 
         <div className="md:col-span-2">
 
-          <label className="block text-sm font-semibold mb-2 text-gray-600">
+          <label className="block text-sm font-semibold mb-2 text-text-secondary">
             Address
           </label>
 
           <div className="relative">
 
-            <span className="absolute left-4 top-5 text-green-600">
+            <span className="absolute left-4 top-5 text-success">
 
               <FaLocationDot />
 
@@ -113,7 +113,7 @@ function ProfileCard({ profile, onSave }) {
               name="address"
               value={formData.address}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-2xl py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
+              className="w-full border border-border radius-2xl py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
             />
 
           </div>
@@ -126,7 +126,7 @@ function ProfileCard({ profile, onSave }) {
 
         <button
           onClick={handleSubmit}
-          className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-2xl font-semibold flex items-center gap-3 transition"
+          className="bg-primary hover:bg-primary-hover text-text-inverse px-8 py-3 radius-2xl font-semibold flex items-center gap-3 transition"
         >
 
           <FaFloppyDisk />
