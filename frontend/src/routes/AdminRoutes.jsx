@@ -6,7 +6,9 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import Users from "../pages/admin/Users";
 import Messes from "../pages/admin/Messes";
 import Reports from "../pages/admin/Reports";
+import Subscriptions from "../pages/admin/Subscriptions";
 import Settings from "../pages/admin/Settings";
+
 
 function AdminRoutes() {
   return (
@@ -26,30 +28,54 @@ function AdminRoutes() {
           }
         />
 
+
         <Route
           path="dashboard"
-          element={<AdminDashboard />}
+          element={
+            <AdminDashboard />
+          }
         />
+
 
         <Route
           path="users"
-          element={<Users />}
+          element={
+            <Users />
+          }
         />
+
 
         <Route
           path="messes"
-          element={<Messes />}
+          element={
+            <Messes />
+          }
         />
+
 
         <Route
           path="reports"
-          element={<Reports />}
+          element={
+            <Reports />
+          }
         />
+
+
+        <Route
+          path="subscriptions"
+          element={
+            <Subscriptions />
+          }
+        />
+
 
         <Route
           path="settings"
-          element={<Settings />}
+          element={
+            <Settings />
+          }
         />
+
 
       </Route>
 

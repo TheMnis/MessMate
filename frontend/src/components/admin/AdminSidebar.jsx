@@ -1,178 +1,167 @@
-import { NavLink } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaUsers,
-  FaBuilding,
+  FaStore,
   FaChartBar,
+  FaCrown,
   FaCog,
   FaSignOutAlt,
-  FaUserShield,
 } from "react-icons/fa";
 
+import { NavLink } from "react-router-dom";
+
+
 const menuItems = [
+
   {
-    title: "Dashboard",
+    name: "Dashboard",
     path: "/admin/dashboard",
     icon: <FaTachometerAlt />,
   },
+
   {
-    title: "Users",
+    name: "Users",
     path: "/admin/users",
     icon: <FaUsers />,
   },
+
   {
-    title: "Messes",
+    name: "Messes",
     path: "/admin/messes",
-    icon: <FaBuilding />,
+    icon: <FaStore />,
   },
+
   {
-    title: "Reports",
+    name: "Reports",
     path: "/admin/reports",
     icon: <FaChartBar />,
   },
+
   {
-    title: "Settings",
+    name: "Subscriptions",
+    path: "/admin/subscriptions",
+    icon: <FaCrown />,
+  },
+
+  {
+    name: "Settings",
     path: "/admin/settings",
     icon: <FaCog />,
   },
+
 ];
 
+
 function AdminSidebar() {
+
   return (
     <aside
-      className="sticky top-0 flex h-screen w-72 flex-col justify-between border-r"
+      className="flex h-full flex-col p-5"
       style={{
-        background: "var(--color-surface)",
-        borderColor: "var(--color-border)",
+        background:
+          "var(--color-surface)",
+        borderRight:
+          "1px solid var(--color-border)",
       }}
     >
-      <div>
+
+      <div className="mb-8 flex items-center gap-3">
 
         <div
-          className="flex items-center gap-4 border-b p-6"
+          className="flex h-12 w-12 items-center justify-center rounded-2xl text-xl font-bold"
           style={{
-            borderColor: "var(--color-border)",
+            background:
+              "var(--gradient-primary)",
+            color:
+              "var(--color-text-inverse)",
           }}
         >
-          <div
-            className="flex h-14 w-14 items-center justify-center rounded-2xl text-2xl"
-            style={{
-              background: "var(--gradient-primary)",
-              color: "var(--color-text-inverse)",
-            }}
-          >
-            <FaUserShield />
-          </div>
-
-          <div>
-
-            <h2
-              className="text-2xl font-bold"
-              style={{
-                color: "var(--color-text-primary)",
-              }}
-            >
-              MessMate
-            </h2>
-
-            <p
-              style={{
-                color: "var(--color-text-secondary)",
-              }}
-            >
-              Super Admin
-            </p>
-
-          </div>
-
+          M
         </div>
 
-        <nav className="space-y-2 p-5">
 
-          {menuItems.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              className={({ isActive }) =>
-                `flex items-center gap-4 rounded-2xl px-5 py-4 font-semibold transition-all ${
-                  isActive
-                    ? "scale-[1.02]"
-                    : "hover:translate-x-1"
-                }`
-              }
-              style={({ isActive }) => ({
-                background: isActive
-                  ? "var(--gradient-primary)"
-                  : "transparent",
-                color: isActive
-                  ? "var(--color-text-inverse)"
-                  : "var(--color-text-primary)",
-              })}
-            >
-              <span className="text-xl">
+        <div>
 
-                {item.icon}
+          <h1
+            className="text-xl font-bold"
+            style={{
+              color:
+                "var(--color-text-primary)",
+            }}
+          >
+            MessMate
+          </h1>
 
-              </span>
 
-              {item.title}
-
-            </NavLink>
-          ))}
-
-        </nav>
-
-      </div>
-
-      <div
-        className="border-t p-5"
-        style={{
-          borderColor: "var(--color-border)",
-        }}
-      >
-        <div
-          className="mb-5 rounded-2xl p-4"
-          style={{
-            background: "var(--color-background)",
-          }}
-        >
-          <div
+          <p
             className="text-sm"
             style={{
-              color: "var(--color-text-secondary)",
+              color:
+                "var(--color-text-secondary)",
             }}
           >
-            Logged in as
-          </div>
-
-          <div
-            className="mt-2 text-lg font-bold"
-            style={{
-              color: "var(--color-text-primary)",
-            }}
-          >
-            Super Admin
-          </div>
+            Admin Panel
+          </p>
 
         </div>
 
-        <button
-          className="flex w-full items-center justify-center gap-3 rounded-2xl py-4 font-semibold transition-all hover:scale-[1.02]"
-          style={{
-            background: "var(--color-danger)",
-            color: "var(--color-text-inverse)",
-          }}
-        >
-          <FaSignOutAlt />
-
-          Logout
-
-        </button>
-
       </div>
+
+
+
+      <nav className="flex-1 space-y-2">
+
+        {menuItems.map((item) => (
+
+          <NavLink
+            key={item.name}
+            to={item.path}
+            className="flex items-center gap-4 rounded-2xl px-4 py-3 font-semibold transition-all"
+            style={({ isActive }) => ({
+              background: isActive
+                ? "var(--color-primary-subtle)"
+                : "transparent",
+
+              color: isActive
+                ? "var(--color-primary)"
+                : "var(--color-text-secondary)",
+            })}
+          >
+
+            <span className="text-lg">
+              {item.icon}
+            </span>
+
+            {item.name}
+
+          </NavLink>
+
+        ))}
+
+      </nav>
+
+
+
+      <button
+        className="flex items-center gap-4 rounded-2xl px-4 py-3 font-semibold"
+        style={{
+          background:
+            "var(--color-danger-subtle)",
+          color:
+            "var(--color-danger)",
+        }}
+      >
+
+        <FaSignOutAlt />
+
+        Logout
+
+      </button>
+
 
     </aside>
   );
 }
+
 
 export default AdminSidebar;
