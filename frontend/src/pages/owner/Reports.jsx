@@ -4,42 +4,36 @@ import RevenueChart from "../../components/owner/RevenueChart";
 import AttendanceChart from "../../components/owner/AttendanceChart";
 import MealAnalytics from "../../components/owner/MealAnalytics";
 import RecentActivity from "../../components/owner/RecentActivity";
-
-import {
-  dashboardStats,
-  revenueData,
-} from "../../services/owner/reports.service";
+import InvoiceTable from "../../components/owner/InvoiceTable";
 
 function Reports() {
-
   return (
-
     <div className="space-y-8">
 
       <ReportHeader />
 
-      <ReportStats
-        stats={dashboardStats}
-      />
+      <ReportStats />
 
-      <RevenueChart
-        data={revenueData}
-      />
+      <div className="grid gap-8 xl:grid-cols-2">
 
-      <div className="grid lg:grid-cols-2 gap-8">
+        <RevenueChart />
 
         <AttendanceChart />
 
+      </div>
+
+      <div className="grid gap-8 xl:grid-cols-2">
+
         <MealAnalytics />
+
+        <RecentActivity />
 
       </div>
 
-      <RecentActivity />
+      <InvoiceTable />
 
     </div>
-
   );
-
 }
 
 export default Reports;

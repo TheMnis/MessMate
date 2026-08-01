@@ -9,26 +9,22 @@ import {
   Tooltip,
 } from "recharts";
 
-const data = [
-  { month: "Jan", revenue: 48000 },
-  { month: "Feb", revenue: 53000 },
-  { month: "Mar", revenue: 61000 },
-  { month: "Apr", revenue: 59000 },
-  { month: "May", revenue: 67000 },
-  { month: "Jun", revenue: 72000 },
-  { month: "Jul", revenue: 78000 },
+const revenueData = [
+  { month: "Jan", revenue: 280000 },
+  { month: "Feb", revenue: 315000 },
+  { month: "Mar", revenue: 338000 },
+  { month: "Apr", revenue: 356000 },
+  { month: "May", revenue: 392000 },
+  { month: "Jun", revenue: 418000 },
+  { month: "Jul", revenue: 452000 },
+  { month: "Aug", revenue: 482000 },
 ];
 
 function RevenueChart() {
   return (
     <motion.section
-      initial={{
-        opacity: 0,
-        y: 20,
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
+      whileHover={{
+        y: -4,
       }}
       className="rounded-3xl p-6"
       style={{
@@ -37,25 +33,41 @@ function RevenueChart() {
         boxShadow: "var(--shadow-lg)",
       }}
     >
-      <div className="mb-6">
+      <div className="mb-6 flex items-center justify-between">
 
-        <h2
-          className="text-2xl font-bold"
+        <div>
+
+          <h2
+            className="text-2xl font-bold"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
+          >
+            Revenue Overview
+          </h2>
+
+          <p
+            className="mt-1"
+            style={{
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            Monthly revenue performance.
+          </p>
+
+        </div>
+
+        <div
+          className="rounded-2xl px-4 py-2 font-semibold"
           style={{
-            color: "var(--color-text-primary)",
+            background:
+              "var(--color-success-subtle)",
+            color:
+              "var(--color-success)",
           }}
         >
-          Revenue Overview
-        </h2>
-
-        <p
-          className="mt-2"
-          style={{
-            color: "var(--color-text-secondary)",
-          }}
-        >
-          Monthly income generated from student subscriptions.
-        </p>
+          +18%
+        </div>
 
       </div>
 
@@ -63,12 +75,12 @@ function RevenueChart() {
 
         <ResponsiveContainer>
 
-          <AreaChart data={data}>
+          <AreaChart data={revenueData}>
 
             <defs>
 
               <linearGradient
-                id="revenueFill"
+                id="revenueGradient"
                 x1="0"
                 y1="0"
                 x2="0"
@@ -83,7 +95,7 @@ function RevenueChart() {
                 <stop
                   offset="95%"
                   stopColor="var(--color-primary)"
-                  stopOpacity={0}
+                  stopOpacity={0.02}
                 />
 
               </linearGradient>
@@ -92,17 +104,12 @@ function RevenueChart() {
 
             <CartesianGrid
               strokeDasharray="4 4"
-              stroke="var(--color-border)"
+              opacity={0.2}
             />
 
-            <XAxis
-              dataKey="month"
-              stroke="var(--color-text-secondary)"
-            />
+            <XAxis dataKey="month" />
 
-            <YAxis
-              stroke="var(--color-text-secondary)"
-            />
+            <YAxis />
 
             <Tooltip />
 
@@ -111,7 +118,7 @@ function RevenueChart() {
               dataKey="revenue"
               stroke="var(--color-primary)"
               strokeWidth={3}
-              fill="url(#revenueFill)"
+              fill="url(#revenueGradient)"
             />
 
           </AreaChart>
