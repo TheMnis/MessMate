@@ -1,24 +1,12 @@
 import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import {
   FaCalendarAlt,
   FaSearch,
+  FaCheckCircle,
+  FaTimesCircle,
 } from "react-icons/fa";
-
-function getBadge(status) {
-  const styles = {
-    Present: "[background:var(--color-success-subtle)] [color:var(--color-success-hover)]",
-    Absent: "[background:var(--color-danger-subtle)] [color:var(--color-danger-hover)]",
-    Leave: "[background:var(--color-warning-subtle)] [color:var(--color-warning-hover)]",
-  };
-
-  return (
-    <span
-      className={`px-4 py-1 radius-full text-sm font-semibold ${styles[status]}`}
-    >
-      {status}
-    </span>
-  );
-}
+import { MdOutlineEventAvailable } from "react-icons/md";
 
 function AttendanceHistory({ attendance }) {
   const [search, setSearch] = useState("");
@@ -29,89 +17,217 @@ function AttendanceHistory({ attendance }) {
     );
   }, [attendance, search]);
 
+  const getStatus = (status) => {
+    switch (status) {
+      case "Present":
+        return {
+          icon: <FaCheckCircle />,
+          color: "var(--color-success)",
+          bg: "var(--color-success-subtle)",
+        };
+
+      case "Absent":
+        return {
+          icon: <FaTimesCircle />,
+          color: "var(--color-danger)",
+          bg: "var(--color-danger-subtle)",
+        };
+
+      default:
+        return {
+          icon: <MdOutlineEventAvailable />,
+          color: "var(--color-warning)",
+          bg: "var(--color-warning-subtle)",
+        };
+    }
+  };
+
   return (
-    <div className="mt-8 [background:var(--color-surface)] radius-3xl elevation-lg border [border-color:var(--color-border-subtle)] p-6">
+    <div
+      className="mt-8 rounded-3xl p-8"
+      style={{
+        background: "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
+    >
+      {/* Header */}
 
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 mb-6">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
 
-        <h2 className="text-2xl font-bold">
-          📅 Attendance History
-        </h2>
+        <div>
 
-        <div className="relative w-full md:w-72">
+          <div
+            className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-4"
+            style={{
+              background: "var(--color-primary-subtle)",
+              color: "var(--color-primary)",
+            }}
+          >
+            <FaCalendarAlt />
+            History
+          </div>
 
-          <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 [color:var(--color-text-disabled)]" />
+          <h2
+            className="text-3xl font-bold"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
+          >
+            Attendance History
+          </h2>
+
+          <p
+            style={{
+              color: "var(--color-text-muted)",
+            }}
+          >
+            Complete attendance records.
+          </p>
+
+        </div>
+
+        {/* Search */}
+
+        <div className="relative w-full lg:w-80">
+
+          <FaSearch
+            className="absolute left-5 top-1/2 -translate-y-1/2"
+            style={{
+              color: "var(--color-primary)",
+            }}
+          />
 
           <input
             type="text"
-            placeholder="Search by date..."
+            placeholder="Search date..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full radius-2xl border [border-color:var(--color-border)] py-3 pl-12 pr-4 outline-none focus:ring-2 focus:[--tw-ring-color:var(--color-primary)]"
+            onChange={(e) =>
+              setSearch(e.target.value)
+            }
+            className="w-full rounded-3xl py-4 pl-14 pr-5 outline-none"
+            style={{
+              background: "var(--color-background)",
+              border: "1px solid var(--color-border)",
+              color: "var(--color-text-primary)",
+            }}
           />
 
         </div>
 
       </div>
 
+      {/* Empty */}
+
       {filteredAttendance.length === 0 ? (
 
-        <div className="text-center py-12">
+        <div className="py-16 text-center">
 
-          <FaCalendarAlt className="mx-auto text-5xl [color:var(--color-text-disabled)]" />
+          <div
+            style={{
+              fontSize: 60,
+            }}
+          >
+            📅
+          </div>
 
-          <p className="mt-4 [color:var(--color-text-muted)]">
-            No attendance records found.
+          <h3
+            className="mt-5 text-2xl font-bold"
+            style={{
+              color:
+                "var(--color-text-primary)",
+            }}
+          >
+            No Records Found
+          </h3>
+
+          <p
+            className="mt-2"
+            style={{
+              color:
+                "var(--color-text-muted)",
+            }}
+          >
+            Try another search.
           </p>
 
         </div>
 
       ) : (
 
-        <div className="overflow-x-auto">
+        <div className="space-y-4">
 
-          <table className="w-full">
+          {filteredAttendance.map((item) => {
 
-            <thead>
+            const status = getStatus(item.status);
 
-              <tr className="border-b">
+            return (
 
-                <th className="text-left py-4 [color:var(--color-text-muted)]">
-                  Date
-                </th>
+              <motion.div
+                key={item.id}
+                whileHover={{
+                  y: -3,
+                }}
+                className="flex items-center justify-between rounded-3xl p-5 transition-all"
+                style={{
+                  background:
+                    "var(--color-background)",
+                }}
+              >
 
-                <th className="text-left py-4 [color:var(--color-text-muted)]">
-                  Status
-                </th>
+                {/* Date */}
 
-              </tr>
+                <div>
 
-            </thead>
+                  <div
+                    className="font-bold"
+                    style={{
+                      color:
+                        "var(--color-text-primary)",
+                    }}
+                  >
+                    {item.date}
+                  </div>
 
-            <tbody>
+                  <div
+                    style={{
+                      color:
+                        "var(--color-text-muted)",
+                      fontSize: 13,
+                    }}
+                  >
+                    Attendance Record
+                  </div>
 
-              {filteredAttendance.map((item) => (
+                </div>
 
-                <tr
-                  key={item.id}
-                  className="border-b last:border-none hover:[background:var(--color-surface-muted)] transition"
+                {/* Status */}
+
+                <div
+                  className="flex items-center gap-3 rounded-full px-5 py-3"
+                  style={{
+                    background: status.bg,
+                    color: status.color,
+                  }}
                 >
 
-                  <td className="py-4 font-medium">
-                    {item.date}
-                  </td>
+                  {status.icon}
 
-                  <td className="py-4">
-                    {getBadge(item.status)}
-                  </td>
+                  <span
+                    style={{
+                      fontWeight: 700,
+                    }}
+                  >
+                    {item.status}
+                  </span>
 
-                </tr>
+                </div>
 
-              ))}
+              </motion.div>
 
-            </tbody>
+            );
 
-          </table>
+          })}
 
         </div>
 
