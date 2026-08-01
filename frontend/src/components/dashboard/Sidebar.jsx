@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   FaHome,
   FaUtensils,
@@ -21,6 +21,14 @@ const menuItems = [
 ];
 
 function Sidebar({ isOpen, closeSidebar }) {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("messmate_token");
+    localStorage.removeItem("messmate_user");
+    navigate("/login");
+  };
+
   return (
     <>
       {isOpen && (
@@ -114,6 +122,7 @@ function Sidebar({ isOpen, closeSidebar }) {
           <motion.button
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
+            onClick={handleLogout}
             className="group flex w-full items-center justify-center gap-3 rounded-2xl py-3.5 text-sm font-semibold [background:color-mix(in_srgb,var(--color-danger)_15%,transparent)] [border:1px_solid_color-mix(in_srgb,var(--color-danger)_30%,transparent)] [color:color-mix(in_srgb,var(--color-text-inverse)_88%,var(--color-danger))] hover:[background:color-mix(in_srgb,var(--color-danger)_25%,transparent)] hover:[box-shadow:0_12px_24px_color-mix(in_srgb,var(--color-danger)_20%,transparent)] transition-all duration-200"
           >
             <FaSignOutAlt className="transition-transform duration-200 group-hover:-translate-x-0.5" />
