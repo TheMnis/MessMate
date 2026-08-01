@@ -4,7 +4,10 @@ import Home from "../pages/Home";
 
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
+import OwnerLogin from "../pages/auth/OwnerLogin";
+import OwnerRegister from "../pages/auth/OwnerRegister";
 
+import ProtectedRoute from "./ProtectedRoute";
 import StudentRoutes from "./StudentRoutes";
 import OwnerRoutes from "./OwnerRoutes";
 import AdminRoutes from "./AdminRoutes";
@@ -21,11 +24,20 @@ function AppRoutes() {
 
       <Route path="/register" element={<Register />} />
 
+      <Route path="/owner/login" element={<OwnerLogin />} />
+
+      <Route path="/owner/register" element={<OwnerRegister />} />
+
       {/* Student Routes */}
       <Route path="/student/*" element={<StudentRoutes />} />
 
       {/* Owner Routes */}
-      <Route path="/owner/*" element={<OwnerRoutes />} />
+      <Route
+        path="/owner/*"
+        element={<ProtectedRoute allowedRoles={["Owner"]} />}
+      >
+        <Route path="*" element={<OwnerRoutes />} />
+      </Route>
 
       {/* Admin Routes */}
       <Route path="/admin/*" element={<AdminRoutes />} />

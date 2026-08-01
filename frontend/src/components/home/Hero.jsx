@@ -3,6 +3,8 @@
 // MessMate Landing Page
 // ==========================================
 
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FaArrowRight,
   FaCheckCircle,
@@ -13,6 +15,18 @@ import {
 } from "react-icons/fa";
 
 function Hero() {
+  const navigate = useNavigate();
+  const [role, setRole] = useState("student");
+  const [mode, setMode] = useState("login");
+
+  const handleContinue = () => {
+    if (role === "owner") {
+      navigate(mode === "login" ? "/owner/login" : "/owner/register");
+      return;
+    }
+
+    navigate(mode === "login" ? "/login" : "/register");
+  };
   return (
     <section className="bg-gradient-to-br from-[var(--color-primary-subtle)] via-[var(--color-surface)] to-[var(--color-success-subtle)]">
       <div className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-16 items-center">
@@ -44,24 +58,56 @@ function Hero() {
             reduce food waste and enjoy hassle-free dining.
           </p>
 
-          {/* Buttons */}
+          {/* Auth CTA */}
 
-          <div className="flex flex-wrap gap-5 mt-10">
+          <div className="mt-10 rounded-3xl border [border-color:var(--color-border)] [background:var(--color-surface)] p-5 elevation-md max-w-xl">
+            <div className="flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => setMode("login")}
+                className={`px-4 py-2 radius-full font-semibold transition ${mode === "login" ? "[background:var(--color-primary)] [color:var(--color-text-inverse)]" : "[background:var(--color-primary-subtle)] [color:var(--color-text-primary)]"}`}
+              >
+                Login
+              </button>
+              <button
+                type="button"
+                onClick={() => setMode("register")}
+                className={`px-4 py-2 radius-full font-semibold transition ${mode === "register" ? "[background:var(--color-primary)] [color:var(--color-text-inverse)]" : "[background:var(--color-primary-subtle)] [color:var(--color-text-primary)]"}`}
+              >
+                Register
+              </button>
+            </div>
 
-            <button className="[background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)] px-8 py-4 radius-xl flex items-center gap-3 text-lg font-semibold transition">
+            <div className="mt-4 flex flex-wrap gap-3">
+              <label className="flex items-center gap-2 rounded-2xl border px-4 py-3 [border-color:var(--color-border)]">
+                <input
+                  type="radio"
+                  name="role"
+                  value="student"
+                  checked={role === "student"}
+                  onChange={() => setRole("student")}
+                />
+                <span className="font-semibold">Student</span>
+              </label>
+              <label className="flex items-center gap-2 rounded-2xl border px-4 py-3 [border-color:var(--color-border)]">
+                <input
+                  type="radio"
+                  name="role"
+                  value="owner"
+                  checked={role === "owner"}
+                  onChange={() => setRole("owner")}
+                />
+                <span className="font-semibold">Mess Owner</span>
+              </label>
+            </div>
 
-              Find a Mess
-
+            <button
+              onClick={handleContinue}
+              className="mt-5 [background:var(--color-primary)] hover:[background:var(--color-primary-hover)] [color:var(--color-text-inverse)] px-8 py-4 radius-xl flex items-center gap-3 text-lg font-semibold transition"
+            >
+              Continue as {role === "owner" ? "Mess Owner" : "Student"}
               <FaArrowRight />
-
             </button>
-
-            <button className="border-2 [border-color:var(--color-primary)] [color:var(--color-success)] hover:[background:var(--color-primary)] hover:[color:var(--color-text-inverse)] px-8 py-4 radius-xl text-lg font-semibold transition">
-
-              Register Your Mess
-
-            </button>
-
           </div>
 
           {/* Features */}

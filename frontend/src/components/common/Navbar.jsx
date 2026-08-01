@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FaUtensils,
   FaMoon,
@@ -7,6 +8,7 @@ import {
 } from "react-icons/fa";
 
 function Navbar() {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -79,11 +81,17 @@ function Navbar() {
               <FaMoon />
             </button>
 
-            <button className="border-2 [border-color:var(--color-primary)] [color:var(--color-success)] px-6 py-2 radius-xl font-semibold hover:[background:var(--color-primary)] hover:[color:var(--color-text-inverse)] transition duration-300">
+            <button
+              onClick={() => navigate("/login")}
+              className="border-2 [border-color:var(--color-primary)] [color:var(--color-success)] px-6 py-2 radius-xl font-semibold hover:[background:var(--color-primary)] hover:[color:var(--color-text-inverse)] transition duration-300"
+            >
               Login
             </button>
 
-            <button className="[background:var(--color-primary)] [color:var(--color-text-inverse)] px-6 py-2 radius-xl font-semibold hover:[background:var(--color-primary-hover)] hover:scale-105 transition duration-300 elevation-lg">
+            <button
+              onClick={() => navigate("/register")}
+              className="[background:var(--color-primary)] [color:var(--color-text-inverse)] px-6 py-2 radius-xl font-semibold hover:[background:var(--color-primary-hover)] hover:scale-105 transition duration-300 elevation-lg"
+            >
               Get Started
             </button>
 
@@ -126,11 +134,23 @@ function Navbar() {
 
         <div className="p-6 flex flex-col gap-4">
 
-          <button className="border-2 [border-color:var(--color-primary)] [color:var(--color-success)] py-3 radius-xl font-semibold hover:[background:var(--color-primary)] hover:[color:var(--color-text-inverse)] transition">
+          <button
+            onClick={() => {
+              setMenuOpen(false);
+              navigate("/login");
+            }}
+            className="border-2 [border-color:var(--color-primary)] [color:var(--color-success)] py-3 radius-xl font-semibold hover:[background:var(--color-primary)] hover:[color:var(--color-text-inverse)] transition"
+          >
             Login
           </button>
 
-          <button className="[background:var(--color-primary)] [color:var(--color-text-inverse)] py-3 radius-xl font-semibold hover:[background:var(--color-primary-hover)] transition">
+          <button
+            onClick={() => {
+              setMenuOpen(false);
+              navigate("/register");
+            }}
+            className="[background:var(--color-primary)] [color:var(--color-text-inverse)] py-3 radius-xl font-semibold hover:[background:var(--color-primary-hover)] transition"
+          >
             Get Started
           </button>
 

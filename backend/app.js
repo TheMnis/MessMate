@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 
 const authRoutes = require("./routes/auth.routes");
 const studentRoutes = require("./routes/student.routes");
+const ownerRoutes = require("./routes/owner.routes");
 
 const notFoundMiddleware = require("./middlewares/notFound.middleware");
 const errorMiddleware = require("./middlewares/error.middleware");
@@ -34,6 +35,8 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 
 app.use("/api/students", studentRoutes);
+
+app.use("/api/owners", ownerRoutes);
 
 /* --------------------------- Error Handlers ---------------------------- */
 
