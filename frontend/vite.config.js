@@ -11,10 +11,13 @@ export default defineConfig({
   ],
 <<<<<<< HEAD
   server: {
+    host: '0.0.0.0',
+    port: 5173,
     proxy: {
       '/api': {
         target,
         changeOrigin: true,
+        secure: false,
       },
     },
   },

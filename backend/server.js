@@ -7,15 +7,22 @@ const connectDatabase = require("./config/database");
 
 const PORT = process.env.PORT || 5000;
 
-// Connect MongoDB
-connectDatabase();
+const startServer = async () => {
+  try {
+    await connectDatabase();
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`
+    app.listen(PORT, () => {
+      console.log(`
 ====================================
 🚀 MessMate Backend Started
 🌐 Server : http://localhost:${PORT}
 ====================================
 `);
-});
+    });
+  } catch (error) {
+    console.error("Failed to start backend server", error);
+    process.exit(1);
+  }
+};
+
+startServer();
