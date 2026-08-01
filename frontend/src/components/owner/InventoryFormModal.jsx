@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FaTimes, FaSave } from "react-icons/fa";
 
-function MealFormModal({
+function InventoryFormModal({
   open,
   onClose,
 }) {
@@ -31,7 +31,7 @@ function MealFormModal({
               scale: 0.9,
               opacity: 0,
             }}
-            className="w-full max-w-3xl rounded-3xl p-8"
+            className="w-full max-w-4xl rounded-3xl p-8"
             style={{
               background: "var(--color-surface)",
               border: "1px solid var(--color-border)",
@@ -48,7 +48,7 @@ function MealFormModal({
                     color: "var(--color-text-primary)",
                   }}
                 >
-                  Add / Edit Meal
+                  Add / Edit Inventory Item
                 </h2>
 
                 <p
@@ -57,7 +57,7 @@ function MealFormModal({
                     color: "var(--color-text-secondary)",
                   }}
                 >
-                  Create or update a reusable meal.
+                  Create or update inventory stock.
                 </p>
 
               </div>
@@ -66,8 +66,10 @@ function MealFormModal({
                 onClick={onClose}
                 className="flex h-11 w-11 items-center justify-center rounded-2xl"
                 style={{
-                  background: "var(--color-danger-subtle)",
-                  color: "var(--color-danger)",
+                  background:
+                    "var(--color-danger-subtle)",
+                  color:
+                    "var(--color-danger)",
                 }}
               >
                 <FaTimes />
@@ -82,19 +84,22 @@ function MealFormModal({
                 <label
                   className="mb-2 block font-semibold"
                   style={{
-                    color: "var(--color-text-primary)",
+                    color:
+                      "var(--color-text-primary)",
                   }}
                 >
-                  Meal Name
+                  Item Name
                 </label>
 
                 <input
                   type="text"
-                  placeholder="Paneer Butter Masala"
+                  placeholder="Rice"
                   className="w-full rounded-2xl px-4 py-3 outline-none"
                   style={{
-                    background: "var(--color-background)",
-                    border: "1px solid var(--color-border)",
+                    background:
+                      "var(--color-background)",
+                    border:
+                      "1px solid var(--color-border)",
                   }}
                 />
 
@@ -105,7 +110,8 @@ function MealFormModal({
                 <label
                   className="mb-2 block font-semibold"
                   style={{
-                    color: "var(--color-text-primary)",
+                    color:
+                      "var(--color-text-primary)",
                   }}
                 >
                   Category
@@ -114,15 +120,20 @@ function MealFormModal({
                 <select
                   className="w-full rounded-2xl px-4 py-3 outline-none"
                   style={{
-                    background: "var(--color-background)",
-                    border: "1px solid var(--color-border)",
+                    background:
+                      "var(--color-background)",
+                    border:
+                      "1px solid var(--color-border)",
                   }}
                 >
-                  <option>Breakfast</option>
-                  <option>Lunch</option>
-                  <option>Dinner</option>
-                  <option>Snacks</option>
+                  <option>Grains</option>
+                  <option>Vegetables</option>
+                  <option>Fruits</option>
+                  <option>Dairy</option>
+                  <option>Spices</option>
+                  <option>Oil</option>
                   <option>Beverages</option>
+                  <option>Cleaning</option>
                 </select>
 
               </div>
@@ -132,19 +143,22 @@ function MealFormModal({
                 <label
                   className="mb-2 block font-semibold"
                   style={{
-                    color: "var(--color-text-primary)",
+                    color:
+                      "var(--color-text-primary)",
                   }}
                 >
-                  Price (₹)
+                  Quantity
                 </label>
 
                 <input
                   type="number"
-                  placeholder="120"
+                  placeholder="50"
                   className="w-full rounded-2xl px-4 py-3 outline-none"
                   style={{
-                    background: "var(--color-background)",
-                    border: "1px solid var(--color-border)",
+                    background:
+                      "var(--color-background)",
+                    border:
+                      "1px solid var(--color-border)",
                   }}
                 />
 
@@ -155,19 +169,79 @@ function MealFormModal({
                 <label
                   className="mb-2 block font-semibold"
                   style={{
-                    color: "var(--color-text-primary)",
+                    color:
+                      "var(--color-text-primary)",
                   }}
                 >
-                  Calories
+                  Unit
+                </label>
+
+                <select
+                  className="w-full rounded-2xl px-4 py-3 outline-none"
+                  style={{
+                    background:
+                      "var(--color-background)",
+                    border:
+                      "1px solid var(--color-border)",
+                  }}
+                >
+                  <option>Kg</option>
+                  <option>Gram</option>
+                  <option>Liter</option>
+                  <option>ml</option>
+                  <option>Packet</option>
+                  <option>Piece</option>
+                </select>
+
+              </div>
+
+              <div>
+
+                <label
+                  className="mb-2 block font-semibold"
+                  style={{
+                    color:
+                      "var(--color-text-primary)",
+                  }}
+                >
+                  Price
                 </label>
 
                 <input
                   type="number"
-                  placeholder="420"
+                  placeholder="65"
                   className="w-full rounded-2xl px-4 py-3 outline-none"
                   style={{
-                    background: "var(--color-background)",
-                    border: "1px solid var(--color-border)",
+                    background:
+                      "var(--color-background)",
+                    border:
+                      "1px solid var(--color-border)",
+                  }}
+                />
+
+              </div>
+
+              <div>
+
+                <label
+                  className="mb-2 block font-semibold"
+                  style={{
+                    color:
+                      "var(--color-text-primary)",
+                  }}
+                >
+                  Supplier
+                </label>
+
+                <input
+                  type="text"
+                  placeholder="ABC Traders"
+                  className="w-full rounded-2xl px-4 py-3 outline-none"
+                  style={{
+                    background:
+                      "var(--color-background)",
+                    border:
+                      "1px solid var(--color-border)",
                   }}
                 />
 
@@ -178,30 +252,8 @@ function MealFormModal({
                 <label
                   className="mb-2 block font-semibold"
                   style={{
-                    color: "var(--color-text-primary)",
-                  }}
-                >
-                  Description
-                </label>
-
-                <textarea
-                  rows={4}
-                  placeholder="Freshly prepared delicious meal..."
-                  className="w-full resize-none rounded-2xl px-4 py-3 outline-none"
-                  style={{
-                    background: "var(--color-background)",
-                    border: "1px solid var(--color-border)",
-                  }}
-                />
-
-              </div>
-
-              <div>
-
-                <label
-                  className="mb-2 block font-semibold"
-                  style={{
-                    color: "var(--color-text-primary)",
+                    color:
+                      "var(--color-text-primary)",
                   }}
                 >
                   Status
@@ -210,12 +262,15 @@ function MealFormModal({
                 <select
                   className="w-full rounded-2xl px-4 py-3 outline-none"
                   style={{
-                    background: "var(--color-background)",
-                    border: "1px solid var(--color-border)",
+                    background:
+                      "var(--color-background)",
+                    border:
+                      "1px solid var(--color-border)",
                   }}
                 >
-                  <option>Available</option>
-                  <option>Unavailable</option>
+                  <option>In Stock</option>
+                  <option>Low Stock</option>
+                  <option>Out of Stock</option>
                 </select>
 
               </div>
@@ -228,9 +283,12 @@ function MealFormModal({
                 onClick={onClose}
                 className="rounded-2xl px-6 py-3 font-semibold"
                 style={{
-                  background: "var(--color-background)",
-                  border: "1px solid var(--color-border)",
-                  color: "var(--color-text-primary)",
+                  background:
+                    "var(--color-background)",
+                  border:
+                    "1px solid var(--color-border)",
+                  color:
+                    "var(--color-text-primary)",
                 }}
               >
                 Cancel
@@ -239,13 +297,15 @@ function MealFormModal({
               <button
                 className="flex items-center gap-2 rounded-2xl px-6 py-3 font-semibold"
                 style={{
-                  background: "var(--color-primary)",
-                  color: "var(--color-text-inverse)",
+                  background:
+                    "var(--color-primary)",
+                  color:
+                    "var(--color-text-inverse)",
                 }}
               >
                 <FaSave />
 
-                Save Meal
+                Save Item
 
               </button>
 
@@ -258,4 +318,4 @@ function MealFormModal({
   );
 }
 
-export default MealFormModal;
+export default InventoryFormModal;

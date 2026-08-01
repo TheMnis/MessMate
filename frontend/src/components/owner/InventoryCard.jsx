@@ -3,13 +3,13 @@ import {
   FaEye,
   FaEdit,
   FaTrash,
-  FaFireAlt,
-  FaLeaf,
+  FaBoxes,
   FaRupeeSign,
+  FaWarehouse,
 } from "react-icons/fa";
 
-function MealCard({
-  meal,
+function InventoryCard({
+  item,
   onView = () => {},
   onEdit = () => {},
   onDelete = () => {},
@@ -42,16 +42,16 @@ function MealCard({
 
             <div className="flex items-center gap-2">
 
-              <FaLeaf />
+              <FaBoxes />
 
               <span className="font-semibold">
-                {meal.category}
+                {item.category}
               </span>
 
             </div>
 
             <h2 className="mt-4 text-3xl font-bold">
-              {meal.name}
+              {item.name}
             </h2>
 
           </div>
@@ -62,7 +62,7 @@ function MealCard({
               background: "rgba(255,255,255,.15)",
             }}
           >
-            <FaLeaf />
+            <FaWarehouse />
           </div>
 
         </div>
@@ -71,15 +71,62 @@ function MealCard({
 
       <div className="space-y-5 p-6">
 
-        <p
+        <div
+          className="rounded-2xl p-4"
           style={{
-            color: "var(--color-text-secondary)",
+            background: "var(--color-background)",
           }}
         >
-          {meal.description}
-        </p>
+          <div
+            className="text-sm"
+            style={{
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            Supplier
+          </div>
+
+          <div
+            className="mt-2 text-lg font-semibold"
+            style={{
+              color: "var(--color-text-primary)",
+            }}
+          >
+            {item.supplier}
+          </div>
+
+        </div>
 
         <div className="grid grid-cols-2 gap-4">
+
+          <div
+            className="rounded-2xl p-4"
+            style={{
+              background: "var(--color-background)",
+            }}
+          >
+            <div
+              className="flex items-center gap-2"
+              style={{
+                color: "var(--color-text-secondary)",
+              }}
+            >
+              <FaBoxes />
+
+              Quantity
+
+            </div>
+
+            <h3
+              className="mt-2 text-2xl font-bold"
+              style={{
+                color: "var(--color-text-primary)",
+              }}
+            >
+              {item.quantity} {item.unit}
+            </h3>
+
+          </div>
 
           <div
             className="rounded-2xl p-4"
@@ -105,36 +152,7 @@ function MealCard({
                 color: "var(--color-text-primary)",
               }}
             >
-              ₹{meal.price}
-            </h3>
-
-          </div>
-
-          <div
-            className="rounded-2xl p-4"
-            style={{
-              background: "var(--color-background)",
-            }}
-          >
-            <div
-              className="flex items-center gap-2"
-              style={{
-                color: "var(--color-text-secondary)",
-              }}
-            >
-              <FaFireAlt />
-
-              Calories
-
-            </div>
-
-            <h3
-              className="mt-2 text-2xl font-bold"
-              style={{
-                color: "var(--color-text-primary)",
-              }}
-            >
-              {meal.calories}
+              ₹{item.price}
             </h3>
 
           </div>
@@ -147,16 +165,20 @@ function MealCard({
             className="rounded-full px-4 py-2 text-sm font-semibold"
             style={{
               background:
-                meal.status === "Available"
+                item.status === "In Stock"
                   ? "var(--color-success-subtle)"
+                  : item.status === "Low Stock"
+                  ? "var(--color-warning-subtle)"
                   : "var(--color-danger-subtle)",
               color:
-                meal.status === "Available"
+                item.status === "In Stock"
                   ? "var(--color-success)"
+                  : item.status === "Low Stock"
+                  ? "var(--color-warning)"
                   : "var(--color-danger)",
             }}
           >
-            {meal.status}
+            {item.status}
           </span>
 
         </div>
@@ -170,7 +192,7 @@ function MealCard({
             whileTap={{
               scale: 0.95,
             }}
-            onClick={() => onView(meal)}
+            onClick={() => onView(item)}
             className="flex items-center justify-center rounded-2xl py-3"
             style={{
               background:
@@ -189,7 +211,7 @@ function MealCard({
             whileTap={{
               scale: 0.95,
             }}
-            onClick={() => onEdit(meal)}
+            onClick={() => onEdit(item)}
             className="flex items-center justify-center rounded-2xl py-3"
             style={{
               background:
@@ -208,7 +230,7 @@ function MealCard({
             whileTap={{
               scale: 0.95,
             }}
-            onClick={() => onDelete(meal)}
+            onClick={() => onDelete(item)}
             className="flex items-center justify-center rounded-2xl py-3"
             style={{
               background:
@@ -228,4 +250,4 @@ function MealCard({
   );
 }
 
-export default MealCard;
+export default InventoryCard;

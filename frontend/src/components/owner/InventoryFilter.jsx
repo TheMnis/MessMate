@@ -7,14 +7,17 @@ import {
 
 const categories = [
   "All",
-  "Breakfast",
-  "Lunch",
-  "Dinner",
-  "Snacks",
+  "Grains",
+  "Vegetables",
+  "Fruits",
+  "Dairy",
+  "Spices",
+  "Oil",
   "Beverages",
+  "Cleaning",
 ];
 
-function MealFilter({
+function InventoryFilter({
   search,
   setSearch,
   category,
@@ -50,7 +53,7 @@ function MealFilter({
 
             <input
               type="text"
-              placeholder="Search meals..."
+              placeholder="Search inventory..."
               value={search}
               onChange={(e) =>
                 setSearch(e.target.value)
@@ -160,4 +163,4 @@ function MealFilter({
   );
 }
 
-export default MealFilter;
+export default InventoryFilter;

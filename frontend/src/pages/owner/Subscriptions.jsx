@@ -1,42 +1,47 @@
-import SubscriptionHeader from "../../components/owner/SubscriptionHeader";
-import CurrentPlanCard from "../../components/owner/CurrentPlanCard";
-import PaymentHistory from "../../components/owner/PaymentHistory";
-import SubscriptionPlans from "../../components/owner/SubscriptionPlans";
-import InvoiceTable from "../../components/owner/InvoiceTable";
+import { useState } from "react";
 
-import {
-  getSubscription,
-  getPaymentHistory,
-} from "../../services/owner/subscription.service";
+import SubscriptionHeader from "../../components/owner/SubscriptionHeader";
+import SubscriptionStats from "../../components/owner/SubscriptionStats";
+import CurrentPlanCard from "../../components/owner/CurrentPlanCard";
+import SubscriptionPlans from "../../components/owner/SubscriptionPlans";
+import UpgradePlanCard from "../../components/owner/UpgradePlanCard";
+import PaymentHistory from "../../components/owner/PaymentHistory";
 
 function Subscriptions() {
-
-  const subscription = getSubscription();
-
-  const payments = getPaymentHistory();
+  const [selectedPlan, setSelectedPlan] =
+    useState("Premium");
 
   return (
-
     <div className="space-y-8">
 
       <SubscriptionHeader />
 
-      <CurrentPlanCard
-        plan={subscription}
+      <SubscriptionStats />
+
+      <div className="grid gap-8 xl:grid-cols-3">
+
+        <div className="xl:col-span-2">
+
+          <CurrentPlanCard
+            plan={selectedPlan}
+          />
+
+        </div>
+
+        <UpgradePlanCard
+          selectedPlan={selectedPlan}
+        />
+
+      </div>
+
+      <SubscriptionPlans
+        selectedPlan={selectedPlan}
+        onSelectPlan={setSelectedPlan}
       />
 
-      <SubscriptionPlans />
-
-      <PaymentHistory
-        payments={payments}
-      />
-
-      <InvoiceTable
-        payments={payments}
-      />
+      <PaymentHistory />
 
     </div>
-
   );
 }
 

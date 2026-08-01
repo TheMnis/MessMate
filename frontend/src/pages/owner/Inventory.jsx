@@ -1,73 +1,167 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { FaPlus } from "react-icons/fa";
 
 import InventoryHeader from "../../components/owner/InventoryHeader";
 import InventoryStats from "../../components/owner/InventoryStats";
+import InventoryFilter from "../../components/owner/InventoryFilter";
 import InventoryTable from "../../components/owner/InventoryTable";
-import InventoryModal from "../../components/owner/InventoryModal";
-import CategoryFilter from "../../components/owner/CategoryFilter";
-import SearchBar from "../../components/owner/SearchBar";
+import InventoryCard from "../../components/owner/InventoryCard";
+import InventoryFormModal from "../../components/owner/InventoryFormModal";
+import InventoryDetailsDrawer from "../../components/owner/InventoryDetailsDrawer";
+import InventoryDeleteDialog from "../../components/owner/InventoryDeleteDialog";
 
-import {
-  getInventory,
-} from "../../services/owner/inventory.service";
+import inventoryData from "../../data/inventoryData";
 
 function Inventory() {
+  const [items] = useState(inventoryData);
 
-  const [items] = useState(getInventory());
+  const [search, setSearch] =
+    useState("");
 
-  const [search, setSearch] = useState("");
+  const [category, setCategory] =
+    useState("All");
 
-  const [category, setCategory] = useState("All");
+  const [view, setView] =
+    useState("table");
 
-  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] =
+    useState(null);
 
-  const filteredItems = items.filter((item) => {
+  const [openForm, setOpenForm] =
+    useState(false);
 
-    const matchSearch =
-      item.name.toLowerCase().includes(search.toLowerCase());
+  const [openDrawer, setOpenDrawer] =
+    useState(false);
 
-    const matchCategory =
-      category === "All" ||
-      item.category === category;
+  const [openDelete, setOpenDelete] =
+    useState(false);
 
-    return matchSearch && matchCategory;
+  const filteredItems = useMemo(() => {
+    return items.filter((item) => {
+      const categoryMatch =
+        category === "All"
+          ? true
+          : item.category === category;
 
-  });
+      const searchMatch =
+        item.name
+          .toLowerCase()
+          .includes(search.toLowerCase());
+
+      return (
+        categoryMatch &&
+        searchMatch
+      );
+    });
+  }, [
+    items,
+    search,
+    category,
+  ]);
 
   return (
     <div className="space-y-8">
 
-      <InventoryHeader
-        onAddItem={() => setModalOpen(true)}
+      <InventoryHeader />
+
+      <InventoryStats />
+
+      <InventoryFilter
+        search={search}
+        setSearch={setSearch}
+        category={category}
+        setCategory={setCategory}
+        view={view}
+        setView={setView}
       />
 
-      <InventoryStats
-        items={items}
-      />
+      <div className="flex justify-end">
 
-      <div className="flex flex-col md:flex-row justify-between gap-4">
+        <button
+          onClick={() =>
+            setOpenForm(true)
+          }
+          className="flex items-center gap-3 rounded-2xl px-6 py-3 font-semibold"
+          style={{
+            background:
+              "var(--color-primary)",
+            color:
+              "var(--color-text-inverse)",
+          }}
+        >
+          <FaPlus />
 
-        <SearchBar
-          value={search}
-          onChange={setSearch}
-        />
+          Add Item
 
-        <CategoryFilter
-          value={category}
-          onChange={setCategory}
-        />
+        </button>
 
       </div>
 
-      <InventoryTable
-        items={filteredItems}
-        onEdit={(item) => console.log(item)}
-        onDelete={(id) => console.log(id)}
+      {view === "table" ? (
+        <InventoryTable
+          items={filteredItems}
+          onView={(item) => {
+            setSelectedItem(item);
+            setOpenDrawer(true);
+          }}
+          onEdit={(item) => {
+            setSelectedItem(item);
+            setOpenForm(true);
+          }}
+          onDelete={(item) => {
+            setSelectedItem(item);
+            setOpenDelete(true);
+          }}
+        />
+      ) : (
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+
+          {filteredItems.map((item) => (
+            <InventoryCard
+              key={item.id}
+              item={item}
+              onView={(data) => {
+                setSelectedItem(data);
+                setOpenDrawer(true);
+              }}
+              onEdit={(data) => {
+                setSelectedItem(data);
+                setOpenForm(true);
+              }}
+              onDelete={(data) => {
+                setSelectedItem(data);
+                setOpenDelete(true);
+              }}
+            />
+          ))}
+
+        </div>
+      )}
+
+      <InventoryFormModal
+        open={openForm}
+        onClose={() =>
+          setOpenForm(false)
+        }
       />
 
-      <InventoryModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
+      <InventoryDetailsDrawer
+        open={openDrawer}
+        item={selectedItem}
+        onClose={() =>
+          setOpenDrawer(false)
+        }
+      />
+
+      <InventoryDeleteDialog
+        open={openDelete}
+        item={selectedItem}
+        onClose={() =>
+          setOpenDelete(false)
+        }
+        onConfirm={() =>
+          setOpenDelete(false)
+        }
       />
 
     </div>

@@ -4,9 +4,9 @@ import {
   FaTimes,
 } from "react-icons/fa";
 
-function MealDeleteDialog({
+function InventoryDeleteDialog({
   open,
-  meal,
+  item,
   onClose,
   onConfirm,
 }) {
@@ -72,7 +72,7 @@ function MealDeleteDialog({
                   "var(--color-text-primary)",
               }}
             >
-              Delete Meal
+              Delete Inventory Item
             </h2>
 
             <p
@@ -85,7 +85,7 @@ function MealDeleteDialog({
               Are you sure you want to
               delete{" "}
               <strong>
-                {meal?.name || "this meal"}
+                {item?.name || "this item"}
               </strong>
               ?
             </p>
@@ -136,7 +136,7 @@ function MealDeleteDialog({
                   scale: 0.96,
                 }}
                 onClick={() =>
-                  onConfirm(meal)
+                  onConfirm(item)
                 }
                 className="flex flex-1 items-center justify-center gap-2 rounded-2xl py-3 font-semibold"
                 style={{
@@ -161,4 +161,4 @@ function MealDeleteDialog({
   );
 }
 
-export default MealDeleteDialog;
+export default InventoryDeleteDialog;

@@ -4,7 +4,6 @@ function InventoryModal({
   isOpen,
   onClose,
 }) {
-
   const [formData, setFormData] = useState({
     name: "",
     category: "Grains",
@@ -24,15 +23,12 @@ function InventoryModal({
 
   return (
     <div className="fixed inset-0 [background:var(--color-overlay)] flex items-center justify-center z-50">
-
       <div className="[background:var(--color-surface)] radius-2xl elevation-xl p-6 w-full max-w-lg">
-
         <h2 className="text-2xl font-bold mb-6">
           Add Inventory Item
         </h2>
 
         <div className="space-y-4">
-
           <input
             name="name"
             placeholder="Item Name"
@@ -55,7 +51,6 @@ function InventoryModal({
           />
 
           <div className="flex justify-end gap-3 pt-3">
-
             <button
               onClick={onClose}
               className="px-5 py-2 border radius-xl"
@@ -68,13 +63,9 @@ function InventoryModal({
             >
               Save
             </button>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 }

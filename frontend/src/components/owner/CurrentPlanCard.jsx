@@ -1,46 +1,188 @@
 import {
   FaCrown,
   FaCalendarAlt,
+  FaCheckCircle,
+  FaStar,
 } from "react-icons/fa";
 
-function CurrentPlanCard({ plan }) {
+function CurrentPlanCard({
+  plan = "Premium",
+}) {
   return (
-    <div className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-hover)] [color:var(--color-text-inverse)] radius-3xl p-8 elevation-xl">
-
-      <div className="flex justify-between items-center">
+    <section
+      className="rounded-3xl p-8"
+      style={{
+        background: "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
+    >
+      <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
 
         <div>
 
-          <p className="opacity-80">
-            Current Plan
-          </p>
+          <div
+            className="inline-flex items-center gap-2 rounded-full px-4 py-2"
+            style={{
+              background:
+                "var(--color-warning-subtle)",
+              color:
+                "var(--color-warning)",
+            }}
+          >
+            <FaCrown />
 
-          <h2 className="text-4xl font-bold mt-2">
-            {plan.currentPlan}
+            Current Plan
+
+          </div>
+
+          <h2
+            className="mt-5 text-5xl font-bold"
+            style={{
+              color:
+                "var(--color-text-primary)",
+            }}
+          >
+            {plan}
           </h2>
 
-          <p className="mt-4 text-xl">
-            ₹{plan.amount} / {plan.billingCycle}
+          <p
+            className="mt-4"
+            style={{
+              color:
+                "var(--color-text-secondary)",
+            }}
+          >
+            Your subscription is currently active
+            and all premium features are enabled.
           </p>
 
         </div>
 
-        <FaCrown className="text-6xl opacity-80" />
+        <div className="grid gap-5 sm:grid-cols-2">
+
+          <div
+            className="rounded-2xl p-5"
+            style={{
+              background:
+                "var(--color-background)",
+            }}
+          >
+            <div className="flex items-center gap-2">
+
+              <FaCalendarAlt
+                style={{
+                  color:
+                    "var(--color-primary)",
+                }}
+              />
+
+              Renewal
+
+            </div>
+
+            <h3
+              className="mt-3 text-2xl font-bold"
+              style={{
+                color:
+                  "var(--color-text-primary)",
+              }}
+            >
+              24 Aug 2026
+            </h3>
+
+          </div>
+
+          <div
+            className="rounded-2xl p-5"
+            style={{
+              background:
+                "var(--color-background)",
+            }}
+          >
+            <div className="flex items-center gap-2">
+
+              <FaCheckCircle
+                style={{
+                  color:
+                    "var(--color-success)",
+                }}
+              />
+
+              Status
+
+            </div>
+
+            <h3
+              className="mt-3 text-2xl font-bold"
+              style={{
+                color:
+                  "var(--color-success)",
+              }}
+            >
+              Active
+            </h3>
+
+          </div>
+
+        </div>
 
       </div>
 
-      <div className="mt-8 flex items-center gap-3">
+      <div className="mt-8">
 
-        <FaCalendarAlt />
+        <h3
+          className="mb-4 text-xl font-bold"
+          style={{
+            color:
+              "var(--color-text-primary)",
+          }}
+        >
+          Plan Features
+        </h3>
 
-        <span>
-          Expires on {plan.expiryDate}
-        </span>
+        <div className="grid gap-4 md:grid-cols-2">
+
+          {[
+            "Unlimited Students",
+            "Meal Management",
+            "Inventory Management",
+            "Reports & Analytics",
+            "Attendance Tracking",
+            "Priority Support",
+          ].map((feature) => (
+            <div
+              key={feature}
+              className="flex items-center gap-3 rounded-2xl p-4"
+              style={{
+                background:
+                  "var(--color-background)",
+              }}
+            >
+              <FaStar
+                style={{
+                  color:
+                    "var(--color-warning)",
+                }}
+              />
+
+              <span
+                style={{
+                  color:
+                    "var(--color-text-primary)",
+                }}
+              >
+                {feature}
+              </span>
+
+            </div>
+          ))}
+
+        </div>
 
       </div>
 
-    </div>
+    </section>
   );
 }
-
 export default CurrentPlanCard;

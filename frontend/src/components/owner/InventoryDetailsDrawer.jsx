@@ -1,15 +1,15 @@
 import { AnimatePresence, motion } from "framer-motion";
 import {
   FaTimes,
-  FaUtensils,
-  FaFireAlt,
+  FaBoxes,
+  FaWarehouse,
   FaRupeeSign,
-  FaTag,
+  FaTruck,
 } from "react-icons/fa";
 
-function MealDetailsDrawer({
+function InventoryDetailsDrawer({
   open,
-  meal,
+  item,
   onClose,
 }) {
   return (
@@ -54,7 +54,7 @@ function MealDetailsDrawer({
                     color: "var(--color-text-primary)",
                   }}
                 >
-                  Meal Details
+                  Inventory Details
                 </h2>
 
                 <p
@@ -63,7 +63,7 @@ function MealDetailsDrawer({
                     color: "var(--color-text-secondary)",
                   }}
                 >
-                  Complete information about this meal.
+                  Complete information about this inventory item.
                 </p>
 
               </div>
@@ -90,18 +90,25 @@ function MealDetailsDrawer({
                   color: "var(--color-text-inverse)",
                 }}
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
 
-                  <FaUtensils size={24} />
+                  <div
+                    className="flex h-16 w-16 items-center justify-center rounded-2xl"
+                    style={{
+                      background: "rgba(255,255,255,.15)",
+                    }}
+                  >
+                    <FaBoxes size={28} />
+                  </div>
 
                   <div>
 
                     <div className="text-sm opacity-80">
-                      Meal Name
+                      Item Name
                     </div>
 
                     <div className="text-3xl font-bold">
-                      {meal?.name || "-"}
+                      {item?.name || "-"}
                     </div>
 
                   </div>
@@ -109,9 +116,7 @@ function MealDetailsDrawer({
                 </div>
               </div>
 
-              <div
-                className="grid gap-5 md:grid-cols-2"
-              >
+              <div className="grid gap-5 md:grid-cols-2">
 
                 <div
                   className="rounded-2xl p-5"
@@ -122,7 +127,7 @@ function MealDetailsDrawer({
                 >
                   <div className="flex items-center gap-2">
 
-                    <FaTag
+                    <FaWarehouse
                       style={{
                         color: "var(--color-primary)",
                       }}
@@ -144,7 +149,43 @@ function MealDetailsDrawer({
                       color: "var(--color-text-primary)",
                     }}
                   >
-                    {meal?.category || "-"}
+                    {item?.category || "-"}
+                  </h3>
+
+                </div>
+
+                <div
+                  className="rounded-2xl p-5"
+                  style={{
+                    background: "var(--color-background)",
+                    border: "1px solid var(--color-border)",
+                  }}
+                >
+                  <div className="flex items-center gap-2">
+
+                    <FaBoxes
+                      style={{
+                        color: "var(--color-success)",
+                      }}
+                    />
+
+                    <span
+                      style={{
+                        color: "var(--color-text-secondary)",
+                      }}
+                    >
+                      Quantity
+                    </span>
+
+                  </div>
+
+                  <h3
+                    className="mt-3 text-2xl font-bold"
+                    style={{
+                      color: "var(--color-text-primary)",
+                    }}
+                  >
+                    {item?.quantity ?? "-"} {item?.unit}
                   </h3>
 
                 </div>
@@ -160,7 +201,7 @@ function MealDetailsDrawer({
 
                     <FaRupeeSign
                       style={{
-                        color: "var(--color-success)",
+                        color: "var(--color-warning)",
                       }}
                     />
 
@@ -180,7 +221,7 @@ function MealDetailsDrawer({
                       color: "var(--color-text-primary)",
                     }}
                   >
-                    ₹{meal?.price ?? "-"}
+                    ₹{item?.price ?? "-"}
                   </h3>
 
                 </div>
@@ -194,9 +235,9 @@ function MealDetailsDrawer({
                 >
                   <div className="flex items-center gap-2">
 
-                    <FaFireAlt
+                    <FaTruck
                       style={{
-                        color: "var(--color-warning)",
+                        color: "var(--color-secondary)",
                       }}
                     />
 
@@ -205,7 +246,7 @@ function MealDetailsDrawer({
                         color: "var(--color-text-secondary)",
                       }}
                     >
-                      Calories
+                      Supplier
                     </span>
 
                   </div>
@@ -216,33 +257,7 @@ function MealDetailsDrawer({
                       color: "var(--color-text-primary)",
                     }}
                   >
-                    {meal?.calories ?? "-"} kcal
-                  </h3>
-
-                </div>
-
-                <div
-                  className="rounded-2xl p-5"
-                  style={{
-                    background:
-                      meal?.status === "Available"
-                        ? "var(--color-success-subtle)"
-                        : "var(--color-danger-subtle)",
-                  }}
-                >
-                  <div
-                    style={{
-                      color:
-                        meal?.status === "Available"
-                          ? "var(--color-success)"
-                          : "var(--color-danger)",
-                    }}
-                  >
-                    Status
-                  </div>
-
-                  <h3 className="mt-3 text-2xl font-bold">
-                    {meal?.status || "-"}
+                    {item?.supplier || "-"}
                   </h3>
 
                 </div>
@@ -252,28 +267,31 @@ function MealDetailsDrawer({
               <div
                 className="rounded-3xl p-6"
                 style={{
-                  background: "var(--color-background)",
-                  border: "1px solid var(--color-border)",
+                  background:
+                    item?.status === "In Stock"
+                      ? "var(--color-success-subtle)"
+                      : item?.status === "Low Stock"
+                      ? "var(--color-warning-subtle)"
+                      : "var(--color-danger-subtle)",
                 }}
               >
                 <h4
-                  className="text-lg font-bold"
+                  className="font-bold"
                   style={{
-                    color: "var(--color-text-primary)",
+                    color:
+                      item?.status === "In Stock"
+                        ? "var(--color-success)"
+                        : item?.status === "Low Stock"
+                        ? "var(--color-warning)"
+                        : "var(--color-danger)",
                   }}
                 >
-                  Description
+                  Stock Status
                 </h4>
 
-                <p
-                  className="mt-4 leading-7"
-                  style={{
-                    color: "var(--color-text-secondary)",
-                  }}
-                >
-                  {meal?.description ||
-                    "No description available."}
-                </p>
+                <div className="mt-3 text-2xl font-bold">
+                  {item?.status || "-"}
+                </div>
 
               </div>
 
@@ -286,4 +304,4 @@ function MealDetailsDrawer({
   );
 }
 
-export default MealDetailsDrawer;
+export default InventoryDetailsDrawer;
