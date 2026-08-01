@@ -13,8 +13,8 @@ function StatsCard({
   return (
     <motion.div
       whileHover={{
-        y: -6,
-        scale: 1.02,
+        y: -8,
+        scale: 1.015,
       }}
       transition={{
         duration: 0.25,
@@ -23,64 +23,76 @@ function StatsCard({
       <Link
         to={link}
         className="
-          block
-          bg-surface
-          radius-3xl
-          elevation-lg
-          hover:elevation-2xl
-          transition-all
-          duration-300
-          p-6
-          border
-          border-border-subtle
+        group
+        relative
+        overflow-hidden
+        block
+        bg-surface
+        rounded-3xl
+        border
+        border-border
+        shadow-sm
+        hover:shadow-xl
+        transition-all
+        duration-300
+        p-7
         "
       >
-        <div className="flex items-start justify-between">
+        {/* Accent */}
+
+        <div className="absolute left-0 top-0 h-full w-1 bg-primary opacity-80 group-hover:opacity-100 transition-all"></div>
+
+        <div className="flex justify-between items-start">
+
+          {/* Left */}
 
           <div>
 
-            <p className="text-text-muted text-sm font-medium">
+            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide">
               {title}
             </p>
 
-            <h2 className="text-3xl font-bold mt-3">
+            <h2 className="text-4xl font-extrabold mt-4 text-text-primary">
               {value}
             </h2>
 
-            <div className="flex items-center gap-2 mt-5">
+            <div className="flex items-center gap-2 mt-6">
 
-              <FaArrowTrendUp className="text-success text-sm" />
+              <FaArrowTrendUp className="text-success" />
 
-              <span className="text-success text-sm font-semibold">
+              <span className="font-semibold text-success">
                 {change}
               </span>
 
-              <span className="text-text-disabled text-sm">
-                This Month
+              <span className="text-sm text-text-muted">
+                vs last month
               </span>
 
             </div>
 
           </div>
 
+          {/* Right */}
+
           <div
             className={`
-              w-16
-              h-16
-              radius-2xl
-              flex
-              items-center
-              justify-center
-              text-3xl
-              text-text-inverse
-              elevation-lg
-              ${color}
+            w-16
+            h-16
+            rounded-2xl
+            flex
+            items-center
+            justify-center
+            text-3xl
+            text-white
+            shadow-lg
+            ${color}
             `}
           >
             {icon}
           </div>
 
         </div>
+
       </Link>
     </motion.div>
   );

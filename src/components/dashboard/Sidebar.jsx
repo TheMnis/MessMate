@@ -46,79 +46,119 @@ const menuItems = [
 function Sidebar({ isOpen, closeSidebar }) {
   return (
     <>
-      {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden"
           onClick={closeSidebar}
         />
       )}
 
-      {/* Sidebar */}
       <aside
         className={`
           fixed lg:static
-          top-0 left-0
+          top-0
+          left-0
           h-screen
           w-72
           bg-surface
-          elevation-xl
           border-r
+          border-border
+          flex
+          flex-col
           z-50
           transition-transform
           duration-300
           ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
         `}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b">
-          <div>
-            <h1 className="text-3xl font-bold text-success">
-              MessMate
-            </h1>
+        {/* Logo */}
 
-            <p className="text-sm text-text-muted mt-1">
-              Student Dashboard
-            </p>
+        <div className="px-7 py-8 border-b border-border">
+
+          <div className="flex items-center gap-4">
+
+            <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+              M
+            </div>
+
+            <div>
+
+              <h1 className="text-2xl font-extrabold tracking-tight text-text-primary">
+                MessMate
+              </h1>
+
+              <p className="text-sm text-text-muted">
+                Student Portal
+              </p>
+
+            </div>
+
+            <button
+              onClick={closeSidebar}
+              className="ml-auto lg:hidden text-xl text-text-secondary"
+            >
+              <FaTimes />
+            </button>
+
           </div>
 
-          <button
-            onClick={closeSidebar}
-            className="lg:hidden text-2xl"
-          >
-            <FaTimes />
-          </button>
         </div>
 
-        {/* Menu */}
-        <nav className="p-5">
-          <ul className="space-y-3">
+        {/* Navigation */}
+
+        <div className="flex-1 px-5 py-7">
+
+          <p className="text-xs uppercase tracking-[0.25em] text-text-muted px-4 mb-5">
+            Navigation
+          </p>
+
+          <ul className="space-y-2">
+
             {menuItems.map((item) => (
               <li key={item.title}>
+
                 <NavLink
                   to={item.path}
                   onClick={closeSidebar}
                   className={({ isActive }) =>
-                    `flex items-center gap-4 px-5 py-4 radius-xl font-medium transition-all duration-300 ${
+                    `
+                    flex
+                    items-center
+                    gap-4
+                    px-5
+                    py-4
+                    rounded-2xl
+                    font-medium
+                    transition-all
+                    duration-300
+                    ${
                       isActive
-                        ? "bg-primary text-text-inverse elevation-lg"
-                        : "text-text-secondary hover:bg-primary-subtle hover:text-success"
-                    }`
+                        ? "bg-primary text-white shadow-xl"
+                        : "text-text-secondary hover:bg-primary-subtle hover:text-primary"
+                    }
+                    `
                   }
                 >
+
                   <span className="text-xl">
                     {item.icon}
                   </span>
 
-                  {item.title}
+                  <span>{item.title}</span>
+
                 </NavLink>
+
               </li>
             ))}
-          </ul>
-        </nav>
 
-        {/* Bottom */}
-        <div className="absolute bottom-6 left-5 right-5">
+          </ul>
+
+        </div>
+
+        {/* Logout */}
+
+        <div className="border-t border-border p-5">
+
           <button
             className="
               w-full
@@ -126,18 +166,25 @@ function Sidebar({ isOpen, closeSidebar }) {
               items-center
               justify-center
               gap-3
-              bg-danger
-              hover:bg-danger
-              text-text-inverse
-              py-3
-              radius-xl
-              transition
+              rounded-2xl
+              bg-danger/10
+              hover:bg-danger/20
+              text-danger
+              py-4
+              font-semibold
+              transition-all
+              duration-300
             "
           >
+
             <FaSignOutAlt />
+
             Logout
+
           </button>
+
         </div>
+
       </aside>
     </>
   );
