@@ -1,0 +1,96 @@
+:root {
+
+  /* ===========================
+     BRAND
+  =========================== */
+
+  --color-primary: #4F46E5;
+  --color-primary-hover: #4338CA;
+  --color-primary-subtle: #EEF2FF;
+
+  --color-secondary: #06B6D4;
+  --color-secondary-hover: #0891B2;
+  --color-secondary-subtle: #ECFEFF;
+
+  /* ===========================
+     SUCCESS
+  =========================== */
+
+  --color-success: #22C55E;
+  --color-success-hover: #16A34A;
+  --color-success-subtle: #DCFCE7;
+
+  /* ===========================
+     WARNING
+  =========================== */
+
+  --color-warning: #F59E0B;
+  --color-warning-hover: #D97706;
+  --color-warning-subtle: #FEF3C7;
+
+  /* ===========================
+     DANGER
+  =========================== */
+
+  --color-danger: #EF4444;
+  --color-danger-hover: #DC2626;
+  --color-danger-subtle: #FEE2E2;
+
+  /* ===========================
+     SURFACE
+  =========================== */
+
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #F1F5F9;
+
+  /* ===========================
+     BORDER
+  =========================== */
+
+  --color-border: #E2E8F0;
+  --color-border-subtle: #F1F5F9;
+
+  /* ===========================
+     TEXT
+  =========================== */
+
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748B;
+  --color-text-disabled: #94A3B8;
+  --color-text-inverse: #FFFFFF;
+
+  /* ===========================
+     GRADIENTS
+  =========================== */
+
+  --gradient-primary:
+    linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-secondary)
+    );
+
+  --gradient-success:
+    linear-gradient(
+      135deg,
+      var(--color-success),
+      #34D399
+    );
+
+  --gradient-warning:
+    linear-gradient(
+      135deg,
+      var(--color-warning),
+      #FBBF24
+    );
+
+  --gradient-danger:
+    linear-gradient(
+      135deg,
+      var(--color-danger),
+      #FB7185
+    );
+
+}

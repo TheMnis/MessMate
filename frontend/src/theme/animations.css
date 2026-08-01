@@ -1,0 +1,11 @@
+@theme {
+
+  --transition-fast:.18s;
+
+  --transition-normal:.28s;
+
+  --transition-slow:.4s;
+
+  --ease-standard:cubic-bezier(.2,0,0,1);
+
+}

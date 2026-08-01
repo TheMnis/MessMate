@@ -1,0 +1,55 @@
+/* ===========================================================
+   RADIUS
+=========================================================== */
+
+@utility radius-sm {
+  border-radius: var(--radius-sm);
+}
+
+@utility radius-md {
+  border-radius: var(--radius-md);
+}
+
+@utility radius-lg {
+  border-radius: var(--radius-lg);
+}
+
+@utility radius-xl {
+  border-radius: var(--radius-xl);
+}
+
+@utility radius-2xl {
+  border-radius: var(--radius-2xl);
+}
+
+@utility radius-3xl {
+  border-radius: var(--radius-3xl);
+}
+
+@utility radius-full {
+  border-radius: 9999px;
+}
+
+/* ===========================================================
+   SHADOW
+=========================================================== */
+
+@utility elevation-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+@utility elevation-md {
+  box-shadow: var(--shadow-md);
+}
+
+@utility elevation-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+@utility elevation-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+@utility elevation-2xl {
+  box-shadow: var(--shadow-2xl);
+}
