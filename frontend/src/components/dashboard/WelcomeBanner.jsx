@@ -1,72 +1,219 @@
-import { motion } from "framer-motion";
-import { FaCalendarDays, FaClock } from "react-icons/fa6";
+import {
+  FaSun,
+  FaCalendarAlt,
+  FaUtensils,
+  FaChartLine,
+  FaBell,
+} from "react-icons/fa";
 
-function WelcomeBanner() {
-  const now = new Date();
-  const hour = now.getHours();
-  let greeting = "Good Evening";
-
-  if (hour < 12) {
-    greeting = "Good Morning";
-  } else if (hour < 18) {
-    greeting = "Good Afternoon";
-  }
-
-  const currentDate = now.toLocaleDateString("en-IN", {
+function WelcomeBanner({
+  studentName = "Student",
+  attendance = 92,
+  todaysMeals = 4,
+  notifications = 3,
+}) {
+  const today = new Date().toLocaleDateString("en-IN", {
     weekday: "long",
     day: "numeric",
     month: "long",
     year: "numeric",
   });
 
-  const currentTime = now.toLocaleTimeString("en-IN", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const greetingHour = new Date().getHours();
+
+  const greeting =
+    greetingHour < 12
+      ? "Good Morning"
+      : greetingHour < 17
+      ? "Good Afternoon"
+      : "Good Evening";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -14 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45, ease: "easeOut" }}
+    <section
+      className="relative overflow-hidden rounded-3xl p-8"
       style={{
-        backgroundColor: "var(--color-primary)",
-        background: "var(--hero-gradient, linear-gradient(135deg, var(--color-primary), var(--color-secondary)))",
+        background: "var(--gradient-primary)",
+        color: "var(--color-text-inverse)",
+        boxShadow: "var(--shadow-xl)",
       }}
-      className="relative overflow-hidden radius-3xl p-8 [box-shadow:0_20px_45px_color-mix(in_srgb,var(--color-primary)_24%,transparent)]"
     >
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div
+        style={{
+          position: "absolute",
+          top: -80,
+          right: -80,
+          width: 240,
+          height: 240,
+          borderRadius: "var(--radius-full)",
+          background: "var(--color-surface)",
+          opacity: 0.08,
+        }}
+      />
+
+      <div
+        style={{
+          position: "absolute",
+          bottom: -90,
+          left: -90,
+          width: 220,
+          height: 220,
+          borderRadius: "var(--radius-full)",
+          background: "var(--color-surface)",
+          opacity: 0.05,
+        }}
+      />
+
+      <div className="relative flex flex-col gap-8 xl:flex-row xl:items-center xl:justify-between">
         <div>
-          <h1 className="text-4xl font-extrabold tracking-tight" style={{ color: "var(--color-text-inverse)" }}>
-            👋 {greeting}, Deva Yadav
+          <div
+            className="inline-flex items-center gap-2 rounded-full px-4 py-2"
+            style={{
+              background: "rgba(255,255,255,.15)",
+              backdropFilter: "blur(12px)",
+            }}
+          >
+            <FaSun />
+            {greeting}
+          </div>
+
+          <h1 className="mt-6 text-5xl font-bold">
+            Welcome back,
+            <br />
+            {studentName} 👋
           </h1>
 
-          <p className="mt-3 max-w-2xl text-lg leading-7" style={{ color: "var(--color-text-inverse)" }}>
-            Welcome back to MessMate. Manage your meals, attendance and subscription from one place.
+          <p
+            className="mt-5 max-w-2xl text-lg"
+            style={{
+              color: "rgba(255,255,255,.9)",
+            }}
+          >
+            Track your attendance, today's meals,
+            notifications and hostel activities from one
+            beautiful dashboard.
           </p>
+
+          <div
+            className="mt-6 inline-flex items-center gap-3 rounded-2xl px-5 py-3"
+            style={{
+              background: "rgba(255,255,255,.12)",
+              backdropFilter: "blur(12px)",
+            }}
+          >
+            <FaCalendarAlt />
+            {today}
+          </div>
         </div>
 
-        <motion.div
-          whileHover={{ y: -2 }}
-          transition={{ duration: 0.2 }}
-          style={{
-            backgroundColor: "var(--color-primary)",
-            color: "var(--color-text-inverse)",
-          }}
-          className="space-y-3 radius-2xl border px-6 py-4 [background:color-mix(in_srgb,var(--color-surface)_14%,transparent)] [border-color:color-mix(in_srgb,var(--color-surface)_22%,transparent)] [box-shadow:0_12px_28px_color-mix(in_srgb,var(--color-text-primary)_14%,transparent)] backdrop-blur-md"
-        >
-          <div className="flex items-center gap-3">
-            <span className="grid h-8 w-8 place-items-center radius-lg [background:color-mix(in_srgb,var(--color-surface)_14%,transparent)]"><FaCalendarDays /></span>
-            <span className="font-medium">{currentDate}</span>
+        <div className="grid gap-5 sm:grid-cols-2">
+          <div
+            className="rounded-3xl p-6"
+            style={{
+              background: "rgba(255,255,255,.12)",
+              backdropFilter: "blur(14px)",
+            }}
+          >
+            <div className="flex items-center justify-between">
+              <FaChartLine size={26} />
+
+              <span
+                className="rounded-full px-3 py-1 text-sm font-semibold"
+                style={{
+                  background: "rgba(255,255,255,.18)",
+                }}
+              >
+                Live
+              </span>
+            </div>
+
+            <div className="mt-5 text-5xl font-bold">
+              {attendance}%
+            </div>
+
+            <div
+              className="mt-2"
+              style={{
+                color: "rgba(255,255,255,.9)",
+              }}
+            >
+              Attendance
+            </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            <span className="grid h-8 w-8 place-items-center radius-lg [background:color-mix(in_srgb,var(--color-surface)_14%,transparent)]"><FaClock /></span>
-            <span className="font-medium">{currentTime}</span>
+          <div
+            className="rounded-3xl p-6"
+            style={{
+              background: "rgba(255,255,255,.12)",
+              backdropFilter: "blur(14px)",
+            }}
+          >
+            <div className="flex items-center justify-between">
+              <FaUtensils size={26} />
+
+              <span
+                className="rounded-full px-3 py-1 text-sm font-semibold"
+                style={{
+                  background: "rgba(255,255,255,.18)",
+                }}
+              >
+                Today
+              </span>
+            </div>
+
+            <div className="mt-5 text-5xl font-bold">
+              {todaysMeals}
+            </div>
+
+            <div
+              className="mt-2"
+              style={{
+                color: "rgba(255,255,255,.9)",
+              }}
+            >
+              Meals Available
+            </div>
           </div>
-        </motion.div>
+
+          <div
+            className="rounded-3xl p-6 sm:col-span-2"
+            style={{
+              background: "rgba(255,255,255,.12)",
+              backdropFilter: "blur(14px)",
+            }}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <FaBell size={24} />
+
+                <div>
+                  <div className="text-xl font-bold">
+                    Notifications
+                  </div>
+
+                  <div
+                    style={{
+                      color: "rgba(255,255,255,.9)",
+                    }}
+                  >
+                    Stay updated with the latest hostel
+                    announcements.
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="flex h-16 w-16 items-center justify-center rounded-full text-2xl font-bold"
+                style={{
+                  background: "rgba(255,255,255,.18)",
+                }}
+              >
+                {notifications}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </motion.div>
+    </section>
   );
 }
 

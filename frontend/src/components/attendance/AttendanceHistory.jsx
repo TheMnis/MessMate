@@ -157,77 +157,166 @@ function AttendanceHistory({ attendance }) {
 
         <div className="space-y-4">
 
-          {filteredAttendance.map((item) => {
+          {filteredAttendance.map((item) => (
 
-            const status = getStatus(item.status);
+  <motion.div
+    key={item.id}
+    whileHover={{ y: -4 }}
+    transition={{ duration: .2 }}
+    className="rounded-3xl p-6"
+    style={{
+      background: "var(--color-background)",
+      border: "1px solid var(--color-border)",
+      boxShadow: "var(--shadow-sm)",
+    }}
+  >
 
-            return (
+    {/* Header */}
 
-              <motion.div
-                key={item.id}
-                whileHover={{
-                  y: -3,
-                }}
-                className="flex items-center justify-between rounded-3xl p-5 transition-all"
-                style={{
-                  background:
-                    "var(--color-background)",
-                }}
-              >
+    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
 
-                {/* Date */}
+      <div>
 
-                <div>
+        <div
+          style={{
+            color: "var(--color-primary)",
+            fontWeight: 700,
+            fontSize: 18,
+          }}
+        >
+          {item.day}
+        </div>
 
-                  <div
-                    className="font-bold"
-                    style={{
-                      color:
-                        "var(--color-text-primary)",
-                    }}
-                  >
-                    {item.date}
-                  </div>
-
-                  <div
-                    style={{
-                      color:
-                        "var(--color-text-muted)",
-                      fontSize: 13,
-                    }}
-                  >
-                    Attendance Record
-                  </div>
-
-                </div>
-
-                {/* Status */}
-
-                <div
-                  className="flex items-center gap-3 rounded-full px-5 py-3"
-                  style={{
-                    background: status.bg,
-                    color: status.color,
-                  }}
-                >
-
-                  {status.icon}
-
-                  <span
-                    style={{
-                      fontWeight: 700,
-                    }}
-                  >
-                    {item.status}
-                  </span>
-
-                </div>
-
-              </motion.div>
-
-            );
-
+        <div
+          style={{
+            color: "var(--color-text-secondary)",
+            marginTop: 4,
+          }}
+        >
+          {new Date(item.date).toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
           })}
+        </div>
+
+      </div>
+
+      <div
+        className="rounded-full px-5 py-2"
+        style={{
+          background:
+            item.status === "Present"
+              ? "var(--color-success-subtle)"
+              : item.status === "Absent"
+              ? "var(--color-danger-subtle)"
+              : "var(--color-warning-subtle)",
+
+          color:
+            item.status === "Present"
+              ? "var(--color-success)"
+              : item.status === "Absent"
+              ? "var(--color-danger)"
+              : "var(--color-warning)",
+
+          fontWeight: 700,
+        }}
+      >
+        {item.status}
+      </div>
+
+    </div>
+
+    {/* Meals */}
+
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-7">
+
+      {[
+        ["🍳","Breakfast",item.breakfast],
+        ["🍛","Lunch",item.lunch],
+        ["☕","Snacks",item.snacks],
+        ["🌙","Dinner",item.dinner],
+      ].map(([emoji,title,value])=>(
+
+        <div
+          key={title}
+          className="rounded-2xl p-4"
+          style={{
+            background:
+              value
+                ? "var(--color-success-subtle)"
+                : "var(--color-danger-subtle)",
+          }}
+        >
+
+          <div
+            style={{
+              fontSize: 26,
+            }}
+          >
+            {emoji}
+          </div>
+
+          <div
+            style={{
+              marginTop: 8,
+              fontWeight: 700,
+            }}
+          >
+            {title}
+          </div>
+
+          <div
+            style={{
+              marginTop: 4,
+              color: value
+                ? "var(--color-success)"
+                : "var(--color-danger)",
+              fontWeight: 600,
+            }}
+          >
+            {value ? "Present" : "Missed"}
+          </div>
+
+        </div>
+
+      ))}
+
+    </div>
+
+    {/* Footer */}
+
+    <div
+      className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mt-7 pt-6"
+      style={{
+        borderTop: "1px solid var(--color-border)",
+      }}
+    >
+
+      <div
+        className="rounded-full px-5 py-2"
+        style={{
+          background: "var(--color-primary-subtle)",
+          color: "var(--color-primary)",
+          fontWeight: 700,
+        }}
+      >
+        🍱 Extra Tiffin : {item.extraTiffin}
+      </div>
+
+      <div
+        style={{
+          color: "var(--color-text-muted)",
+        }}
+      >
+        {item.remarks || "No Remarks"}
+      </div>
+
+    </div>
+
+  </motion.div>
+
+))}
 
         </div>
 

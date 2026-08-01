@@ -7,8 +7,10 @@ import { MdOutlineEventAvailable } from "react-icons/md";
 
 import AttendanceSummaryCard from "../../components/attendance/AttendanceSummaryCard";
 import AttendanceProgress from "../../components/attendance/AttendanceProgress";
-import AttendanceHistory from "../../components/attendance/AttendanceHistory";
+import AttendanceInsights from "../../components/attendance/AttendanceInsights";
 import AttendanceFilter from "../../components/attendance/AttendanceFilter";
+import AttendanceCalendar from "../../components/attendance/AttendanceCalendar";
+import AttendanceHistory from "../../components/attendance/AttendanceHistory";
 
 import attendanceData from "../../data/attendanceData";
 import { getAttendanceSummary } from "../../services/student/attendance.service";
@@ -19,58 +21,53 @@ function Attendance() {
   const [filter, setFilter] = useState("All");
 
   const filteredAttendance = useMemo(() => {
-    if (filter === "All") return attendanceData;
+    if (filter === "All") {
+      return attendanceData;
+    }
 
     return attendanceData.filter(
       (item) => item.status === filter
     );
   }, [filter]);
 
-  const total =
-    summary.present +
-    summary.absent +
-    summary.leave;
-
-  const percentage = Math.round(
-    (summary.present / total) * 100
-  );
-
   return (
     <div className="relative space-y-8 overflow-hidden">
 
-      {/* Background */}
+      {/* Background Decoration */}
 
       <div
         style={{
           position: "absolute",
-          top: -180,
-          right: -120,
-          width: 340,
-          height: 340,
+          top: -220,
+          right: -150,
+          width: 380,
+          height: 380,
           borderRadius: "var(--radius-full)",
           background: "var(--gradient-primary)",
-          opacity: .05,
-          filter: "blur(30px)",
+          opacity: 0.05,
+          filter: "blur(40px)",
+          pointerEvents: "none",
         }}
       />
 
       <div
         style={{
           position: "absolute",
-          bottom: -180,
-          left: -120,
-          width: 320,
-          height: 320,
+          bottom: -220,
+          left: -150,
+          width: 360,
+          height: 360,
           borderRadius: "var(--radius-full)",
           background: "var(--gradient-success)",
-          opacity: .05,
-          filter: "blur(30px)",
+          opacity: 0.05,
+          filter: "blur(40px)",
+          pointerEvents: "none",
         }}
       />
 
       {/* Hero */}
 
-      <div
+      <section
         className="relative overflow-hidden rounded-3xl p-8"
         style={{
           background: "var(--color-surface)",
@@ -78,87 +75,76 @@ function Attendance() {
           boxShadow: "var(--shadow-lg)",
         }}
       >
-
-        <div className="flex flex-col lg:flex-row justify-between gap-8">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
 
           <div>
 
             <div
-              className="inline-flex items-center rounded-full px-4 py-2 mb-5"
+              className="mb-5 inline-flex items-center gap-2 rounded-full px-4 py-2"
               style={{
-                background:
-                  "var(--color-primary-subtle)",
-                color:
-                  "var(--color-primary)",
+                background: "var(--color-primary-subtle)",
+                color: "var(--color-primary)",
               }}
             >
-              📅 Monthly Attendance
+              📅 Attendance Dashboard
             </div>
 
             <h1
               className="text-5xl font-bold"
               style={{
-                color:
-                  "var(--color-text-primary)",
+                color: "var(--color-text-primary)",
               }}
             >
               Attendance
             </h1>
 
             <p
-              className="mt-4 max-w-xl text-lg"
+              className="mt-4 max-w-2xl text-lg"
               style={{
-                color:
-                  "var(--color-text-secondary)",
+                color: "var(--color-text-secondary)",
               }}
             >
-              Track attendance,
-              monitor consistency and
-              maintain your attendance
-              percentage.
+              Monitor meal attendance, breakfast, lunch,
+              snacks, dinner, attendance percentage,
+              extra tiffin history and attendance insights
+              from one place.
             </p>
 
           </div>
 
           <div
-            className="rounded-3xl p-6 text-center"
+            className="rounded-3xl px-8 py-7 text-center"
             style={{
-              background:
-                "var(--color-background)",
-              border:
-                "1px solid var(--color-border)",
+              background: "var(--gradient-primary)",
+              color: "var(--color-text-inverse)",
+              boxShadow: "var(--shadow-md)",
             }}
           >
-
-            <div
-              className="text-6xl font-bold"
-              style={{
-                color:
-                  "var(--color-primary)",
-              }}
-            >
-              {percentage}%
+            <div className="text-6xl font-bold">
+              {summary.percentage}%
             </div>
 
-            <p
+            <div className="mt-2 text-lg font-semibold">
+              {summary.attendanceScore}
+            </div>
+
+            <div
               className="mt-2"
               style={{
-                color:
-                  "var(--color-text-muted)",
+                opacity: 0.9,
               }}
             >
               Overall Attendance
-            </p>
+            </div>
 
           </div>
 
         </div>
-
-      </div>
+      </section>
 
       {/* Summary */}
 
-      <div className="grid gap-6 md:grid-cols-3">
+      <section className="grid gap-6 md:grid-cols-3">
 
         <AttendanceSummaryCard
           title="Present"
@@ -184,11 +170,15 @@ function Attendance() {
           textColor="--color-warning"
         />
 
-      </div>
+      </section>
 
-      {/* Progress */}
+      {/* Analytics */}
 
       <AttendanceProgress />
+
+      {/* Insights */}
+
+      <AttendanceInsights />
 
       {/* Filter */}
 
@@ -196,6 +186,10 @@ function Attendance() {
         selected={filter}
         onChange={setFilter}
       />
+
+      {/* Calendar */}
+
+      <AttendanceCalendar />
 
       {/* History */}
 
