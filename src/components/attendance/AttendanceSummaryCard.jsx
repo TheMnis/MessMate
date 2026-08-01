@@ -11,46 +11,96 @@ function AttendanceSummaryCard({
   return (
     <motion.div
       whileHover={{
-        y: -6,
+        y: -8,
         scale: 1.02,
       }}
       transition={{
         duration: 0.25,
       }}
-      className={`
-        ${bgColor}
-        radius-3xl
-        elevation-lg
-        border
-        [border-color:var(--color-border-subtle)]
-        p-6
-        overflow-hidden
-        relative
-      `}
+      className="relative overflow-hidden rounded-3xl p-6"
+      style={{
+        background: bgColor
+          ? `var(${bgColor})`
+          : "var(--color-surface)",
+        border: "1px solid var(--color-border)",
+        boxShadow: "var(--shadow-lg)",
+      }}
     >
-      <div className="absolute -right-6 -top-6 w-24 h-24 radius-full [background:color-mix(in_srgb,var(--color-surface) 20%,transparent)]"></div>
+      {/* Decorative Blob */}
+
+      <div
+        style={{
+          position: "absolute",
+          top: -50,
+          right: -50,
+          width: 160,
+          height: 160,
+          borderRadius: "var(--radius-full)",
+          background: "var(--gradient-primary)",
+          opacity: 0.08,
+        }}
+      />
 
       <div className="relative flex items-center justify-between">
 
+        {/* Left */}
+
         <div>
 
-          <p className="[color:var(--color-text-secondary)] text-sm font-semibold uppercase tracking-wide">
+          <span
+            style={{
+              color: "var(--color-text-muted)",
+              fontSize: "13px",
+              fontWeight: 600,
+              letterSpacing: ".08em",
+              textTransform: "uppercase",
+            }}
+          >
             {title}
-          </p>
+          </span>
 
-          <h2 className={`mt-3 text-4xl font-bold ${textColor}`}>
+          <h2
+            className="mt-3 text-4xl font-bold"
+            style={{
+              color: textColor
+                ? `var(${textColor})`
+                : "var(--color-text-primary)",
+            }}
+          >
             {value}
           </h2>
 
-          <div className="flex items-center gap-2 mt-4">
+          <div className="mt-5 flex items-center gap-2">
 
-            <FaArrowTrendUp className="[color:var(--color-success)] text-sm" />
+            <div
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: "var(--radius-full)",
+                background: "var(--color-success-subtle)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "var(--color-success)",
+              }}
+            >
+              <FaArrowTrendUp size={12} />
+            </div>
 
-            <span className="[color:var(--color-success)] text-sm font-semibold">
+            <span
+              style={{
+                color: "var(--color-success)",
+                fontWeight: 700,
+              }}
+            >
               +5%
             </span>
 
-            <span className="[color:var(--color-text-muted)] text-sm">
+            <span
+              style={{
+                color: "var(--color-text-muted)",
+              }}
+            >
               This Month
             </span>
 
@@ -58,19 +108,21 @@ function AttendanceSummaryCard({
 
         </div>
 
+        {/* Right */}
+
         <div
-          className={`
-            w-16
-            h-16
-            radius-2xl
-            [background:var(--color-surface)]
-            elevation-md
-            flex
-            items-center
-            justify-center
-            text-3xl
-            ${textColor}
-          `}
+          style={{
+            width: 72,
+            height: 72,
+            borderRadius: "var(--radius-2xl)",
+            background: "var(--gradient-primary)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "var(--color-text-inverse)",
+            fontSize: 30,
+            boxShadow: "var(--shadow-md)",
+          }}
         >
           {icon}
         </div>

@@ -1,21 +1,17 @@
 @theme {
 
-  /* ===========================
-      BORDER RADIUS
-  ============================ */
+  --radius-sm:.5rem;
 
-  --radius-sm: 0.5rem;
+  --radius-md:.75rem;
 
-  --radius-md: 0.75rem;
+  --radius-lg:1rem;
 
-  --radius-lg: 1rem;
+  --radius-xl:1.25rem;
 
-  --radius-xl: 1.25rem;
+  --radius-2xl:1.75rem;
 
-  --radius-2xl: 1.5rem;
+  --radius-3xl:2rem;
 
-  --radius-3xl: 2rem;
-
-  --radius-full: 9999px;
+  --radius-full:9999px;
 
 }
